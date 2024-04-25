@@ -1,0 +1,110 @@
+.side-menu {
+    .border-btm {
+        border-bottom: 1px solid #50a3d5;
+    }
+    .name {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        color: #ffffff;
+        text-align: center;
+    }
+    .id {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 18px;
+        color: #ffffff;
+        text-align: center;
+    }
+    .txt-2 {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 18px;
+        color: #ffffff;
+    }
+    .h-6 {
+        height: 6px;
+    }
+    .border-r-5 {
+        border-radius: 5px !important;
+    }
+    .color-light-red {
+        color: #d73435 !important;
+    }
+    .w-2 {
+        width: 2% !important;
+    }
+    .side-menu-txt {
+        font-family: Poppins-Regular;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        color: #858585;
+    }
+    .side-menu-txt-selected {
+        color: #008c99;
+    }
+    .selected-menu-item-bg {
+        background: #f4faec;
+    }
+    .border-btm-g {
+        border-bottom: 1px solid #ebebeb;
+    }
+    .txt-1 {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 20px;
+        color: #2a2d32;
+    }
+    .txt-3 {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 11px;
+        line-height: 16px;
+        color: #858585;
+    }
+    .doctor-speciality {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 18px;
+        color: #dadada;
+    }
+    .right-side-broder {
+        border-right: 2px solid #ebebeb;
+    }
+    .w-98 {
+        width: 98% !important;
+    }
+    .image-class {
+        top: 20px;
+        right: 15px;
+        position: relative;
+        background-color: white;
+        border-radius: 50%;
+        border-color: #a1a1a1;
+        border-width: 10px;
+    }
+    .logo-img {
+        width: 72px;
+        height: 72px;
+    }
+    .w-15 {
+        width: 15.83px;
+        height: 15px;
+    }
+    .w-28 {
+        width: 28px;
+    }
+}

@@ -1,0 +1,455 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+// @import "~@angular/material/theming";
+// @import "~video.js/dist/video-js.css";
+// @import "~videojs-record/dist/css/videojs.record.css";
+// @import "~cropperjs/src/css/cropper.css";
+// @import "../node_modules/bootstrap/scss/bootstrap";
+// @import "../node_modules/bootstrap/dist/css/bootstrap.css";
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "bootstrap/scss/bootstrap";
+
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+// @include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+// $hi-webapp-master-primary: mat-palette($mat-indigo);
+// $hi-webapp-master-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+// $hi-webapp-master-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+// $hi-webapp-master-theme: mat-light-theme($hi-webapp-master-primary, $hi-webapp-master-accent, $hi-webapp-master-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+// @include angular-material-theme($hi-webapp-master-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+@font-face {
+  font-family: Lexend-Black;
+  src: url(assets/font/Lexend-Black.ttf) format("opentype");
+}
+@font-face {
+  font-family: Lexend-Bold;
+  src: url(assets/font/Lexend-Bold.ttf) format("opentype");
+}
+@font-face {
+  font-family: Lexend-ExtraBold;
+  src: url(assets/font/Lexend-ExtraBold.ttf) format("opentype");
+}
+@font-face {
+  font-family: Lexend-ExtraLight;
+  src: url(assets/font/Lexend-ExtraLight.ttf) format("opentype");
+}
+@font-face {
+  font-family: Lexend-Light;
+  src: url(assets/font/Lexend-Light.ttf) format("opentype");
+}
+@font-face {
+  font-family: Lexend-Medium;
+  src: url(assets/font/Lexend-Medium.ttf) format("opentype");
+}
+@font-face {
+  font-family: Lexend-Regular;
+  src: url(assets/font/Lexend-Regular.ttf) format("opentype");
+}
+@font-face {
+  font-family: Lexend-SemiBold;
+  src: url(assets/font/Lexend-SemiBold.ttf) format("opentype");
+}
+@font-face {
+  font-family: Lexend-Thin;
+  src: url(assets/font/Lexend-Thin.ttf) format("opentype");
+}
+@font-face {
+  font-family: Inter-Black;
+  src: url(assets/font/Inter-Black.ttf) format("opentype");
+}
+@font-face {
+  font-family: Inter-Bold;
+  src: url(assets/font/Inter-Bold.ttf) format("opentype");
+}
+@font-face {
+  font-family: Inter-ExtraBold;
+  src: url(assets/font/Inter-ExtraBold.ttf) format("opentype");
+}
+@font-face {
+  font-family: Inter-ExtraLight;
+  src: url(assets/font/Inter-ExtraLight.ttf) format("opentype");
+}
+@font-face {
+  font-family: Inter-Light;
+  src: url(assets/font/Inter-Light.ttf) format("opentype");
+}
+@font-face {
+  font-family: Inter-Medium;
+  src: url(assets/font/Inter-Medium.ttf) format("opentype");
+}
+@font-face {
+  font-family: Inter-Regular;
+  src: url(assets/font/Inter-Regular.ttf) format("opentype");
+}
+@font-face {
+  font-family: Inter-SemiBold;
+  src: url(assets/font/Inter-SemiBold.ttf) format("opentype");
+}
+@font-face {
+  font-family: Inter-Thin;
+  src: url(assets/font/Inter-Thin.ttf) format("opentype");
+}
+@font-face {
+  font-family: PlusJakartaSans-SemiBold;
+  src: url(assets/font/PlusJakartaSans-SemiBold.ttf) format("opentype");
+}
+
+@font-face {
+  font-family: Avenir;
+  src: url(assets/font/Avenir_Regular.ttf) format("opentype");
+}
+
+@font-face {
+  font-family: Avenir-Heavy;
+  src: url(assets/font/Avenir-Heavy.ttf) format("opentype");
+}
+
+@font-face {
+  font-family: Avenir-Black;
+  src: url(assets/font/Avenir-Black.ttf) format("opentype");
+}
+
+@font-face {
+  font-family: AvenirLTStd-Light;
+  src: url(assets/font/AvenirLTStd-Light.otf) format("opentype");
+}
+@font-face {
+  font-family: Tahoma;
+  src: url(assets/font/TAHOMABD.TTF) format("opentype");
+}
+@font-face {
+  font-family: Tahoma_Regular;
+  src: url(assets/font/Tahoma-Regular-font.ttf) format("opentype");
+}
+@font-face {
+  font-family: Poppins;
+  src: url(assets/font/Poppins-Medium.ttf) format("opentype");
+}
+@font-face {
+  font-family: Poppins-Regular;
+  src: url(assets/font/Poppins-Regular.ttf) format("opentype");
+}
+@font-face {
+  font-family: Poppins-Bold;
+  src: url(assets/font/Poppins-Bold.ttf) format("opentype");
+}
+@font-face {
+  font-family: Poppins-Medium;
+  src: url(assets/font/Poppins-Medium.ttf) format("opentype");
+}
+@font-face {
+  font-family: Poppins-SemiBold;
+  src: url(assets/font/Poppins-SemiBold.ttf) format("opentype");
+}
+@font-face {
+  font-family: Be Vietnam;
+  src: url(assets/font/BeVietnam-Bold.ttf) format("opentype");
+}
+@font-face {
+  font-family: NotoColorEmojiLimited;
+  unicode-range: U+1F1E6-1F1FF;
+  src: url(https://raw.githack.com/googlefonts/noto-emoji/main/fonts/NotoColorEmoji.ttf);
+}
+
+.container {
+  max-width: 100%;
+  padding-left: 6%;
+  padding-right: 6%;
+  margin-top: 6%;
+}
+// $phone : '(max-width: 480px)';
+// $phone-landscape : '(max-height: 480px)';
+// $tablet-portrait: '(max-width: 767px)';
+// $tablet-landscape: '(min-width: 768px) and (max-width: 979px) and (max-height: 768px)';
+// $large-desktop: '(min-width: 1200px)';
+// $non-retina: 'screen and (-webkit-max-device-pixel-ratio: 1)';
+// $retina: '(min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx)';
+
+// @mixin respond-to($media) {
+//     @media only screen and #{$media} {
+//         @content;
+//     }
+// }
+
+// .container{
+//     max-width:1480px;
+
+//     @include respond-to($tablet-landscape){
+//         max-width:1180px;
+//     }
+// }
+@media only screen and (max-device-width: 640px) {
+  .mobile-reverse {
+    display: flex;
+    flex-flow: column-reverse;
+  }
+  .small-text {
+    text-align: center !important;
+  }
+}
+
+@media (min-width: 320px) {
+  .small-text {
+    text-align: center !important;
+  }
+  .bottom-space {
+    margin-bottom: 2%;
+  }
+}
+
+@media (min-width: 481px) {
+  .small-text {
+    text-align: center !important;
+  }
+  .bottom-space {
+    margin-bottom: 2%;
+  }
+}
+/* Absolute Center Spinner */
+.Loader {
+  /* color: #0dc5c1; */
+  position: fixed;
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+  overflow: visible;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* Transparent Overlay */
+.Loader:before {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* :not(:required) hides these rules from IE9 and below */
+.Loader:not(:required) {
+  /* hide "Loader..." text */
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+.Loader:not(:required):after {
+  content: "";
+  display: block;
+  font-size: 10px;
+  width: 1em;
+  height: 1em;
+  margin-top: -0.5em;
+  -webkit-animation: spinner 1500ms infinite linear;
+  -moz-animation: spinner 1500ms infinite linear;
+  -ms-animation: spinner 1500ms infinite linear;
+  -o-animation: spinner 1500ms infinite linear;
+  animation: spinner 1500ms infinite linear;
+  border-radius: 0.5em;
+  -webkit-box-shadow:
+    rgb(5, 182, 138) 1.5em 0 0 0,
+    rgb(5, 182, 138) 1.1em 1.1em 0 0,
+    rgb(5, 182, 138) 0 1.5em 0 0,
+    rgb(5, 182, 138) -1.1em 1.1em 0 0,
+    rgb(59, 162, 193) -1.5em 0 0 0,
+    rgb(59, 162, 193) -1.1em -1.1em 0 0,
+    rgb(5, 182, 138) 0 -1.5em 0 0,
+    rgb(5, 182, 138) 1.1em -1.1em 0 0;
+  box-shadow:
+    rgb(5, 182, 138) 1.5em 0 0 0,
+    rgb(5, 182, 138) 1.1em 1.1em 0 0,
+    rgb(5, 182, 138) 0 1.5em 0 0,
+    rgb(5, 182, 138) -1.1em 1.1em 0 0,
+    rgb(5, 182, 138) -1.5em 0 0 0,
+    rgb(5, 182, 138) -1.1em -1.1em 0 0,
+    rgb(5, 182, 138) 0 -1.5em 0 0,
+    rgb(5, 182, 138) 1.1em -1.1em 0 0;
+}
+
+.cdk-global-overlay-wrapper,
+.cdk-overlay-container {
+  z-index: 99999 !important;
+}
+
+.cursor-pointer:hover {
+  cursor: pointer;
+}
+
+.brand-color {
+  color: #008C99 !important;
+}
+.brand-color-bg {
+  background: #008c99 !important;
+}
+.brand-color-light-bg {
+  background: #f2f6fb !important;
+}
+.txt-h1 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 38px;
+  color: #000000;
+}
+.txt-h2 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 33px;
+  color: #dadada;
+}
+.txt-h3 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  color: #2a2d32;
+}
+.txt-h4 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  color: #dadada;
+}
+.txt-h5 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #2a2d32;
+}
+.txt-base-regular {
+  font-family: Poppins-Regular;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: #1d1d1f;
+}
+.txt-base-medium {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: #1d1d1f;
+}
+.btn-txt-1 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  color: #2a2d32;
+}
+.btn-txt-2 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #ffffff;
+}
+.secondary-text {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: #1d1d1f;
+}
+.color-mid-grey {
+  color: #858585 !important;
+}
+.color-dark-grey {
+  color: #66676b !important;
+}
+.hero-btn {
+  background: #057cc3;
+  border-radius: 3px;
+}
+.cancel-btn {
+  background: rgba(5, 124, 195, 0.1);
+  border-radius: 3px;
+}
+.hero-btn-txt {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #ffffff;
+}
+.secondary-text-2 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #2a2d32;
+}
+.poppins-Regular {
+  font-family: Poppins-Regular !important;
+}
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.recorded-by {
+  color: #2a2d32;
+  font-family: Poppins-Regular;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+@for $i from 1 through 99 {
+  /* Generate a unique class for each percentage */
+  .hi-box-#{$i} {
+    flex: 0 0 #{$i + "%"};
+    max-width: #{$i + "%"};
+  }
+}

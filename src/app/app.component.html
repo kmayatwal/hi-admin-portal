@@ -1,0 +1,157 @@
+<div class="dashboard">
+    <div class="row m-0">
+        <div class="col-2 p-0 py-3 border-right">
+            <app-side-menu></app-side-menu>
+        </div>
+        <div class="col-10 p-0">
+            <router-outlet class="html"></router-outlet>
+        </div>
+    </div>
+</div>
+<!-- <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-newton-cradle">
+    <p class="txt-h2"> Loading... </p>
+</ngx-spinner> -->
+
+<!-- <div id="chatButton" (click)="openChatBox()" class="row m-0 justify-content-center align-items-center">
+    <div class="row m-0 justify-content-end align-items-center cursor-pointer">
+        <img [ngClass]="{'hi-25': !showChatBox}"
+            [src]="showChatBox ? './assets/images/profile/chatbot/virtual-nurse-close.svg' : './assets/images/profile/chatbot/virtual-nurse.svg'"
+            alt="virtual-nurse">
+    </div>
+</div>
+
+<div id="chatBoxTooltipBox" *ngIf="showChatBoxTooltip">
+    <img class="home-chat-box-img" src="./assets/images/profile/chatbot/virtual-nurse-2.svg" alt="virtual-nurse">
+    <img class="home-chat-box-close-img" src="./assets/images/profile/close.svg" alt="close"
+        (click)="closeChatBoxTooltip()">
+    <div class="row m-0 justify-content-start align-items-center">
+        <span class="home-chat-box-1"><img src="./assets/images/profile/chatbot/waving-hand-emoji.svg"
+                alt="waving-hand-emoji"> Hi Doctor! I'm HiDoc, your personal virtual assistant. I
+            am here to provide you with the assistance you need. How may I assist you today?</span>
+    </div>
+</div> -->
+<!-- <div id="chatBotBox" *ngIf="showChatBox">
+    <div class="home-chat-box-r-5">
+        <div class="row m-0 justify-content-start align-items-center home-chat-box-2 py-2">
+            <div class="row m-0 justify-content-end align-items-center cursor-pointer px-2">
+                <img src="./assets/images/profile/chatbot/virtual-nurse-3.svg" alt="virtual-nurse-3">
+            </div>
+            <div class="row m-0 justify-content-start align-items-center">
+                <span class="home-chat-box-txt-2">HI Doc</span>
+            </div>
+        </div>
+    </div>
+    <div id="chatbotMessages" class="py-2 h-325" *ngIf="isHiDocEnabled">
+        <div *ngFor="let item of chatBoxChats; let i = index">
+            <div *ngIf="item.userType === 'HI_DOC'" class="pb-2">
+                <div class="row m-0 justify-content-center align-items-end">
+                    <div class="home-box-15">
+                        <div class="row m-0 justify-content-end align-items-center cursor-pointer px-2">
+                            <img src="./assets/images/profile/chatbot/virtual-nurse-2.svg" alt="virtual-nurse-2">
+                        </div>
+                    </div>
+                    <div class="home-box-75">
+                        <div class="row m-0 justify-content-start align-items-center home-chat-ai-box p-2">
+                            <span class="home-chat-ai-txt">{{item.message}}</span>
+                        </div>
+                    </div>
+                    <div class="home-box-10">
+
+                    </div>
+                </div>
+                <div class="row m-0 justify-content-center align-items-end">
+                    <div class="home-box-15"></div>
+                    <div class="home-box-75">
+                        <div class="row m-0 justify-content-start align-items-center py-2">
+                            <span class="home-chat-time-txt">{{item.timetoken | date: 'shortTime'}}</span>
+                        </div>
+                    </div>
+                    <div class="home-box-10"></div>
+                </div>
+            </div>
+            <div *ngIf="item.userType === 'user'" class="pb-2">
+                <div class="row m-0 justify-content-center align-items-end">
+                    <div class="home-box-20"></div>
+                    <div class="home-box-75">
+                        <div class="row m-0 justify-content-start align-items-center home-chat-doc-box p-2">
+                            <span class="home-chat-ai-txt text-dark">{{item.message}}</span>
+                        </div>
+                    </div>
+                    <div class="home-box-5"></div>
+                </div>
+                <div class="row m-0 justify-content-center align-items-end">
+                    <div class="home-box-20"></div>
+                    <div class="home-box-75">
+                        <div class="row m-0 justify-content-start align-items-center py-2">
+                            <span class="home-chat-time-txt">{{item.timetoken | date: 'shortTime'}}</span>
+                        </div>
+                    </div>
+                    <div class="home-box-5"></div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="showTyping" class="row m-0 justify-content-center align-items-end pb-2">
+            <div class="home-box-15">
+                <div class="row m-0 justify-content-end align-items-center cursor-pointer px-2">
+                    <img src="./assets/images/profile/chatbot/virtual-nurse-2.svg" alt="virtual-nurse-2">
+                </div>
+            </div>
+            <div class="home-box-75">
+                <div class="typing">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="home-box-10">
+
+            </div>
+        </div>
+    </div>
+    <div class="row m-0 bg-white justify-content-between pr-2 chat-bot-box mx-2 mb-2" *ngIf="isHiDocEnabled">
+        <div class="box-88 row m-0">
+            <input class="chat-text-area-input" type="text" (keyup.enter)="sendMessage()" [(ngModel)]="messageText"
+                placeholder="Type your message">
+        </div>
+        <div class="row m-0 bg-white" (click)="sendMessage()">
+            <img class="padding-horizontal btn-cursor" src="./assets/images/profile/chatbot/chat-send.svg">
+        </div>
+    </div>
+    <div class="grid text-center" *ngIf="!isHiDocEnabled">
+        <div class="mt-4"><img src="./assets/images/profile/chatbot/virtual-nurse-2.svg" alt="virtual-nurse-2"></div>
+        <div class="m-3">Introducing HiDoc, your dedicated virtual assistant! Unlock a world of enhanced features by
+            upgrading your plan to access HiDoc. Seamlessly manage appointments, patient data, and more with ease.
+            Upgrade now to make the most of HiDoc's powerful capabilities and take your practice to new heights.</div>
+        <div><img src="./assets/images/profile/upgrade-button.svg" alt="upgrade" (click)="redirectToUpgrade()"
+                class="cursor-pointer"></div>
+    </div>
+</div> -->
+
+<!-- Incoming Call Notification -->
+<!-- <div id="incoming-call" *ngIf="showIncomingCall" class="bg-chat-box incoming-call-div">
+    <div class="incoming-call-box p-3">
+        <div class="row m-0 justify-content-between">
+            <div class="col-3 p-0 row m-0 justify-content-center align-items-center">
+                <img alt="logo" class="rounded-circle logo-img p-1" height="72" width="72"
+                    [src]="(userData.profileImage && userData.profileImage !== '') ? userData.profileImage : getAvatar(userData, 'F2F6FB')">
+            </div>
+            <div class="col-9 p-0 pl-2 row m-0 justify-contetnt-center align-items-center">
+                <span class="txt-h3 text-white jn-f-16">{{userData?.firstName}}{{'
+                    '}}{{userData?.lastName}} is inviting you for a consultation</span>
+            </div>
+        </div>
+        <div class="row m-0 justify-content-end align-items-center">
+            <div class="jn-btn-1 row m-0 justify-content-center align-items-center p-2 cursor-pointer"
+                (click)="callAction('reject')">
+                <span class="txt-h5 text-white">Not Now</span>
+            </div>
+            <div class="jn-btn-2 row m-0 justify-content-center align-items-center p-2 ml-3 cursor-pointer"
+                (click)="callAction('accept')">
+                <div class="row m-0 justify-content-center align-items-center">
+                    <img src="./assets/images/profile/headphones.svg" alt="headphones">
+                </div>
+                <span class="txt-h5 brand-color pl-2">Join</span>
+            </div>
+        </div>
+    </div>
+</div> -->

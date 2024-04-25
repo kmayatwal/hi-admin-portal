@@ -1,0 +1,84 @@
+<div class="side-menu">
+    <div class="row m-0 justify-content-start align-items-center cursor-pointer px-3">
+        <img src="./assets/images/dha-logo.svg" alt="dha-logo">
+    </div>
+    <div class="py-3"></div>
+
+    <div class="border-btm-g right-side-broder">
+        <div class="row m-0 cursor-pointer" [ngClass]="{'selected-menu-item-bg' : selectedPage === 'overview'}"
+            (click)="show('overview')">
+            <div class="w-2" [ngClass]="{'brand-color-bg' : selectedPage === 'overview'}"></div>
+            <div class="row m-0 py-3 px-4"
+                [ngClass]="{'justify-content-center' : !sidebarMenuOpened, 'align-items-center' : !sidebarMenuOpened, 'w-98': !sidebarMenuOpened}">
+                <div class="row m-0 pr-2">
+                    <img [src]="selectedPage === 'overview' ? './assets/images/overview.svg' : '/assets/images/overview.svg'"
+                        alt="overview">
+                </div>
+                <div class="row m-0" *ngIf="sidebarMenuOpened">
+                    <span class="side-menu-txt"
+                        [ngClass]="{'side-menu-txt-selected' : selectedPage === 'overview'}">Overview</span>
+                </div>
+            </div>
+        </div>
+        <div class="row m-0 cursor-pointer" [ngClass]="{'selected-menu-item-bg' : selectedPage === 'members'}"
+            (click)="show('members')">
+            <div class="w-2" [ngClass]="{'brand-color-bg' : selectedPage === 'members'}"></div>
+            <div class="row m-0 py-3 px-4"
+                [ngClass]="{'justify-content-center' : !sidebarMenuOpened, 'align-items-center' : !sidebarMenuOpened, 'w-98': !sidebarMenuOpened}">
+                <div class="row m-0 pr-2">
+                    <img [src]="selectedPage === 'members' ? './assets/images/members-outlined.svg' : './assets/images/members.svg'"
+                        alt="members">
+                </div>
+                <div class="row m-0" *ngIf="sidebarMenuOpened">
+                    <span class="side-menu-txt"
+                        [ngClass]="{'side-menu-txt-selected' : selectedPage === 'members'}">Members</span>
+                </div>
+            </div>
+        </div>
+        <div class="row m-0 cursor-pointer" [ngClass]="{'selected-menu-item-bg' : selectedPage === 'health-hub'}"
+            (click)="show('health-hub')">
+            <div class="w-2" [ngClass]="{'brand-color-bg' : selectedPage === 'health-hub'}"></div>
+            <div class="row m-0 py-3 px-4"
+                [ngClass]="{'justify-content-center' : !sidebarMenuOpened, 'align-items-center' : !sidebarMenuOpened, 'w-98': !sidebarMenuOpened}">
+                <div class="row m-0 pr-2">
+                    <img [src]="selectedPage === 'health-hub' ? './assets/images/health-hub-outlined.svg' : './assets/images/health-hub.svg'"
+                        alt="health-hub">
+                </div>
+                <div class="row m-0" *ngIf="sidebarMenuOpened">
+                    <span class="side-menu-txt"
+                        [ngClass]="{'side-menu-txt-selected' : selectedPage === 'health-hub'}">Health-hub</span>
+                </div>
+            </div>
+        </div>
+        <div class="row m-0 cursor-pointer" [ngClass]="{'selected-menu-item-bg' : selectedPage === 'message'}"
+            (click)="show('message')">
+            <div class="w-2" [ngClass]="{'brand-color-bg' : selectedPage === 'message'}"></div>
+            <div class="row m-0 py-3 px-4"
+                [ngClass]="{'justify-content-center' : !sidebarMenuOpened, 'align-items-center' : !sidebarMenuOpened, 'w-98': !sidebarMenuOpened}">
+                <div class="row m-0 pr-2">
+                    <img [src]="selectedPage === 'message' ? './assets/images/message.svg' : './assets/images/message.svg'"
+                        alt="contact">
+                </div>
+                <div class="row m-0" *ngIf="sidebarMenuOpened">
+                    <span class="side-menu-txt"
+                        [ngClass]="{'side-menu-txt-selected' : selectedPage === 'message'}">Message</span>
+                </div>
+            </div>
+        </div>
+        <div class="row m-0 cursor-pointer" [ngClass]="{'selected-menu-item-bg' : selectedPage === 'logout'}"
+            (click)="logout()">
+            <div class="w-2" [ngClass]="{'brand-color-bg' : selectedPage === 'logout'}"></div>
+            <div class="row m-0 py-3 px-4"
+                [ngClass]="{'justify-content-center' : !sidebarMenuOpened, 'align-items-center' : !sidebarMenuOpened, 'w-98': !sidebarMenuOpened}">
+                <div class="row m-0 pr-2">
+                    <img [src]="selectedPage === 'logout' ? './assets/images/logout.svg' : './assets/images/logout.svg'"
+                        alt="logout">
+                </div>
+                <div class="row m-0" *ngIf="sidebarMenuOpened">
+                    <span class="side-menu-txt"
+                        [ngClass]="{'side-menu-txt-selected' : selectedPage === 'logout'}">Logout</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

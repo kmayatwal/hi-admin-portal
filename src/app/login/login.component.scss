@@ -1,0 +1,79 @@
+.login {
+    .text-box-30 {
+        max-width: 31.5%;
+        flex: 0 0 31.5%;
+    }
+    .login-txt-1 {
+        font-family: "Poppins-Regular";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 25px;
+        line-height: 38px;
+        color: #2a2d32;
+    }
+    .login-txt-2 {
+        font-family: "Poppins-Regular";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 25px;
+        line-height: 38px;
+        color: #2a2d32;
+    }
+    .login-txt-3 {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 18px;
+        color: #057cc3;
+    }
+    .login-txt-4 {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: #2a2d32;
+    }
+    .login-txt-5 {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 20px;
+        text-align: center;
+        color: #2a2d32;
+    }
+    .login-box {
+        background: #ffffff;
+        border: 1px solid #f2f6fb;
+        box-shadow: 0px 20px 49px rgba(0, 0, 0, 0.08);
+        border-radius: 4px;
+    }
+    .login-txt-6 {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: #2a2d32;
+    }
+    .save-btn {
+        background: #057cc3;
+        border-radius: 3px;
+    }
+    .save-btn-txt {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        color: #ffffff;
+    }
+    .w-90 {
+        width: 90%;
+    }
+    .w-10 {
+        width: 10%;
+    }
+}

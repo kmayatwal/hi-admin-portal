@@ -1,0 +1,349 @@
+.arrow {
+    position: fixed;
+    top: 50%;
+    right: 5%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+}
+.arrow span {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-bottom: 5px solid #06a8ff;
+    border-right: 5px solid #06a8ff;
+    transform: rotate(45deg);
+    margin: -10px;
+    animation: animate 2s infinite;
+}
+.arrow span:nth-child(2) {
+    animation-delay: -0.2s;
+}
+.arrow span:nth-child(3) {
+    animation-delay: -0.4s;
+}
+@keyframes animate {
+    0% {
+        opacity: 0;
+        transform: rotate(45deg) translate(-20px, -20px);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: rotate(45deg) translate(20px, 20px);
+    }
+}
+
+.icon-bar {
+    position: fixed;
+    top: 50%;
+    right: 0%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    background: #53bf9b;
+    z-index: 1;
+    padding: 7px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.icon-bar a {
+    display: block;
+    text-align: center;
+    padding: 0px 5px;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.icon-bar a:hover {
+    background-color: #000;
+}
+
+.html {
+    overflow-x: hidden;
+}
+
+/* Position the chat button */
+#chatButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    background-color: #263238;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+/* Position the chat box */
+#chatBotBox {
+    position: fixed;
+    bottom: 75px; /* Adjust this value to change the gap */
+    right: 25px;
+    width: 350px;
+    height: 425px;
+
+    background: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
+
+/* Position the chat box */
+#chatBoxTooltipBox {
+    position: fixed;
+    bottom: 95px; /* Adjust this value to change the gap */
+    right: 20px;
+    width: 300px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background: #ffffff;
+}
+
+#incoming-call {
+    position: fixed;
+    bottom: 20px; /* Adjust this value to change the gap */
+    right: 20px;
+}
+
+.home-chat-box-txt-1 {
+    font-family: "Poppins-Regular";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 15px;
+    text-align: justify;
+    color: #000000;
+}
+
+.home-chat-box-img {
+    display: block;
+    margin: -15px auto 10px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.home-chat-box-close-img {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.closeButton {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    background-color: #ccc;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+.home-chat-box-txt-2 {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: #ffffff;
+}
+
+.home-chat-box-2 {
+    background-color: #235ee8;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.home-chat-box-r-5 {
+    border-radius: 5px;
+}
+
+.home-chat-ai-box {
+    background-color: #235ee8;
+    border-radius: 8px 8px 8px 0px;
+}
+
+.home-chat-doc-box {
+    background-color: rgba(35, 94, 232, 0.1);
+    border-radius: 8px 8px 0px 8px;
+}
+
+.home-chat-ai-txt {
+    font-family: "Poppins-Regular";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #ffffff;
+}
+
+.home-box-15 {
+    max-width: 15%;
+    flex: 0 0 15%;
+}
+.home-box-75 {
+    max-width: 75%;
+    flex: 0 0 75%;
+}
+.home-box-10 {
+    max-width: 10%;
+    flex: 0 0 10%;
+}
+.home-box-20 {
+    max-width: 20%;
+    flex: 0 0 20%;
+}
+.home-box-5 {
+    max-width: 5%;
+    flex: 0 0 5%;
+}
+.home-chat-time-txt {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 14px;
+    letter-spacing: 0.5px;
+    color: #4f4f4f;
+}
+
+.chat-text-area-input {
+    border-radius: 23px;
+    overflow: hidden;
+    resize: none;
+    border: none;
+    width: 100%;
+    padding: 10px 10px 10px 10px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+.box-88 {
+    flex: 0 0 88%;
+    max-width: 88%;
+}
+
+.chat-bot-box {
+    border: 2px solid #263238;
+    border-radius: 8px;
+}
+
+.h-325 {
+    height: 325px;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    /* border: transparent;
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none; */
+}
+
+.h-325 {
+    height: 325px;
+    overflow-x: scroll;
+
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.h-325::-webkit-scrollbar {
+    display: none;
+}
+
+.hi-25 {
+    height: 25px;
+}
+
+$dot-width: 10px;
+$dot-color: #057cc3;
+$speed: 1.5s;
+
+.typing {
+    position: relative;
+
+    span {
+        content: "";
+        animation: blink $speed infinite;
+        animation-fill-mode: both;
+        height: $dot-width;
+        width: $dot-width;
+        background: $dot-color;
+        position: absolute;
+        left: 0;
+        top: -15px;
+        border-radius: 50%;
+
+        &:nth-child(2) {
+            animation-delay: 0.2s;
+            margin-left: $dot-width * 1.5;
+        }
+
+        &:nth-child(3) {
+            animation-delay: 0.4s;
+            margin-left: $dot-width * 3;
+        }
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0.1;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.1;
+    }
+}
+
+.logo-img {
+    width: 72px;
+    height: 72px;
+}
+
+.incoming-call-div {
+    position: fixed;
+    bottom: 55px;
+    max-width: 23%;
+    right: 15px;
+}
+
+.incoming-call-box {
+    border-radius: 10px;
+    background: #057cc3;
+}
+
+.jn-btn-1 {
+    border-radius: 2px;
+    background: #2ba4ec;
+}
+
+.jn-btn-2 {
+    border-radius: 2px;
+    background: #fff;
+}
+
+.jn-f-16 {
+    font-size: 16px;
+}

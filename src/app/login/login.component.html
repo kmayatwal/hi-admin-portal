@@ -1,0 +1,116 @@
+<div class="login">
+    <div class="row m-0">
+        <div class="col-6 p-0 p-4">
+            <div class="row m-0 justify-content-start align-items-center cursor-pointer">
+                <img src="./assets/images/dha-logo.svg" alt="dha-logo">
+            </div>
+        </div>
+        <div class="col-6 p-0 pt-5">
+            <div class="row m-0">
+                <div class="col-1 p-0"></div>
+                <div class="col-8 p-0">
+                    <div class="login-box p-5">
+                        <div class="row m-0 justify-content-start align-items-center">
+                            <span class="txt-h1">Login</span>
+                        </div>
+                        <div class="row m-0 justify-content-start align-items-center">
+                            <span class="login-txt-6">Welcome back!</span>
+                        </div>
+                        <form [formGroup]="loginForm">
+                            <div class="py-4">
+                                <div class="text-box col-12 p-1"
+                                    [ngClass]="{'error-class' : checkEmailStyleError(lctrl.email_id)}">
+                                    <div class="material-textfield">
+                                        <input class="input-box-txt"
+                                            [ngClass]="{'error-class-lable' : checkEmailStyleError(lctrl.email_id)}"
+                                            type="text" placeholder=" " formControlName="email_id">
+                                        <label class="label-txt"
+                                            [ngClass]="{'error-class-lable' : checkEmailStyleError(lctrl.email_id)}">Registered
+                                            Email/Phone</label>
+                                    </div>
+                                </div>
+                                <mat-error class="error-txt-class" *ngIf="checkEmailError(lctrl.email_id)">
+                                    {{emailError}}
+                                </mat-error>
+                            </div>
+                            <div class="pb-4">
+                                <div class="text-box col-12 p-1"
+                                    [ngClass]="{'error-class' : checkPasswordStyleError(lctrl.password)}">
+                                    <div class="row m-0">
+                                        <div class="material-textfield w-90">
+                                            <input class="input-box-txt"
+                                                [ngClass]="{'error-class-lable' : checkPasswordStyleError(lctrl.password)}"
+                                                [type]="showPassword ? 'text' : 'password'" placeholder=" "
+                                                formControlName="password">
+                                            <label class="label-txt"
+                                                [ngClass]="{'error-class-lable' : checkPasswordStyleError(lctrl.password)}">Enter
+                                                Password</label>
+                                        </div>
+                                        <!-- <div class="row m-0 justify-content-center align-items-center w-10"
+                                            (click)="passwordEye()">
+                                            <img [src]="showPassword ? './assets/images/profile/eye_open.svg' : './assets/images/profile/eye_close.svg'"
+                                                alt="eye">
+                                        </div> -->
+                                    </div>
+                                </div>
+                                <mat-error class="error-txt-class" *ngIf="checkPasswordError(lctrl.password)">
+                                    {{passwordError}}
+                                </mat-error>
+                            </div>
+                        </form>
+                        <!-- TODO: Add Two Text box for email and password -->
+                        <div class="row m-0 justify-content-between py-4">
+                            <!-- <div class="row m-0 py-2">
+                                <div class="row m-0 justify-content-center align-items-center"
+                                    (click)="setRememberMe()">
+                                    <img [src]="rememberMe ? './assets/images/profile/box-check.svg' : './assets/images/profile/box-un-check.svg'"
+                                        alt="checkbox">
+                                </div>
+                                <div class="row m-0 justify-content-center align-items-center ml-1">
+                                    <span class="txt-base-medium">Remember me</span>
+                                </div>
+                            </div> -->
+                            <!-- <div class="row m-0 justify-content-start align-items-center cursor-pointer"
+                                (click)="redirect('/forgot-password')">
+                                <span class="txt-base-medium brand-color">Forgot password?</span>
+                            </div> -->
+                        </div>
+                        <div class="hero-btn my-1 py-1 px-5 row m-0 justify-content-center align-items-center cursor-pointer"
+                            (click)="onSubmit()">
+                            <span class="hero-btn-txt py-2">Login</span>
+                        </div>
+                        <!-- <div class="row m-0 justify-content-center align-items-center pt-4 pb-2">
+                            <div class="row m-0 justify-content-center align-items-center">
+                                <span class="txt-base-medium">Don’t have an account? <span
+                                        class="brand-color cursor-pointer" (click)="redirect('/pricing')">Register
+                                        Now</span></span>
+                            </div>
+                        </div> -->
+                    </div>
+                    <!-- <div class="py-2">
+                        <div class="row m-0 justify-content-center align-items-center py-4">
+                            <span class="txt-base-medium">For any enquiries, feel free to <span
+                                    class="brand-color cursor-pointer" (click)="redirect('/contactus')">Contact
+                                    Us</span></span>
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center py-4">
+                            <span class="txt-base-medium">Download the Health Interface App Now!</span>
+                        </div>
+                    </div>
+                    <div class="row m-0 py-2 justify-content-center align-items-center">
+                        <div class="row m-0 col-7 p-0 justify-content-between">
+                            <div class="row m-0 justify-content-center align-items-center cursor-pointer"
+                                (click)="goTo('https://apps.apple.com/ae/app/healthinterface/id1527985913')">
+                                <img src="./assets/images/profile/app-store.svg" alt="app-store">
+                            </div>
+                            <div class="row m-0 justify-content-center align-items-center cursor-pointer"
+                                (click)="goTo('https://play.google.com/store/apps/details?id=app.artelir.android')">
+                                <img src="./assets/images/profile/google-play.svg" alt="google-play">
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

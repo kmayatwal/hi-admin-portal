@@ -1,0 +1,434 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-newton-cradle">
+    <p class="txt-h2"> Loading... </p>
+</ngx-spinner>
+<app-header></app-header>
+<div class="members-list">
+    <div class="col p-0 justify-content-center" *ngIf="patients.length === 0">
+        <div class="pt-2 row m-0 justify-content-center align-items-center">
+            <img src="./assets/images/no-patients.svg" alt="no-patients">
+        </div>
+        <div class="row m-0 justify-content-center align-items-center">
+            <span class="no-data-heading-text">My Patients</span>
+        </div>
+        <div class="row m-0 justify-content-center align-items-center">
+            <img src="./assets/images/line-brush.svg" alt="no-patients" class="m-10-minus">
+        </div>
+        <div class="row m-0 justify-content-center align-items-center">
+            <span class="alphabet-txt no-data-text">The <span class="alphabet-txt-s">"Patients"</span> page is a
+                comprehensive overview of all registered patients in the EMR system. It provides quick access to patient
+                profiles and their relevant medical information. From this page, healthcare professionals can
+                efficiently manage and navigate patient records, view medical histories, schedule appointments, and
+                track ongoing treatments. The "Patients" page serves as a <span class="alphabet-txt-s">centralized
+                    hub</span> for healthcare providers to effectively coordinate patient care and ensure accurate
+                documentation of their healthcare journeys.</span>
+        </div>
+        <!-- <div class="row m-0 justify-content-center align-items-center mt-4">
+            <img src="./assets/images/add-button.svg" alt="no-patients" class="cursor-pointer"
+                (click)="registerNewPatient()">
+        </div> -->
+    </div>
+    <div class="col pb-3" *ngIf="patients.length > 0">
+        <!-- <div class="grid mb-3 mt-2">
+            <span class="heading-txt mb-3">My Patients</span>
+            <span class="heading-txt-2">Easily access and view comprehensive patient details, including medical history,
+                files, invoices, and outstanding balances.</span>
+        </div> -->
+        <div class="border-box mb-2">
+            <div class="grid grid-auto-columns">
+                <div *ngFor="let latter of alphabets; let i=index;"
+                    [ngClass]="{'alphabet-box-s' : selectedAlphabet === latter}"
+                    class="alphabet-box border cursor-pointer justify-content-center align-items-center d-flex"
+                    (click)="selectAlphabet(selectedAlphabet === latter ? '' : latter)">
+                    <span class="alphabet-txt"
+                        [ngClass]="{'alphabet-txt-s' : selectedAlphabet === latter}">{{latter}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between m-0 flex-column flex-xl-row">
+            <div class="text-box row m-0 w-400">
+                <div class="col-1 p-0 row m-0 justify-content-center align-items-center">
+                    <img src="./assets/images/searchicon.svg" alt="searchicon">
+                </div>
+                <div class="col-11">
+                    <div class="material-textfield">
+                        <input class="input-box-txt" type="text" placeholder=" " [ngbTypeahead]="searchGenericName"
+                            [(ngModel)]="searchTerm">
+                        <label class="label-txt">Search</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="d-flex align-items-center justify-content-center patient-add col5 mt-2 mt-xl-0 ml-xl-2 p-2">
+                <img src="/assets/Icons/Wheel_Patient.png" alt="merge">
+                <button (click)="registerNewPatient()">+ Add New Patient</button>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-center patient-merge col5 mt-2 mt-xl-0 ml-xl-2 p-2">
+                <img src="/assets/Icons/Code_Merge.png" alt="merge">
+                <button (click)="handlePatientDataMerge()">Patient data merge</button>
+            </div> -->
+
+            <form [formGroup]="patientForm"
+                class="row flex-row justify-content-xl-end align-items-center m-0 mt-2 mt-xl-0">
+                <div class="text-box row m-0 col-5 p-1">
+                    <div class="material-textfield w-82">
+                        <input matInput [matDatepicker]="startDate_picker" placeholder=" " class="input-box-txt"
+                            type="text" formControlName="startDate" (dateChange)="setStartDate($event)"
+                            (focus)="startDate_picker.open()" [max]="getStartDateMaxDate()">
+                        <label class="label-txt">Start Date</label>
+                        <mat-datepicker #startDate_picker></mat-datepicker>
+                    </div>
+                    <div (click)="startDate_picker.open()" class="row m-0 justify-content-center align-items-center">
+                        <img src="./assets/images/calendar.svg" alt="calendar">
+                    </div>
+                </div>
+                <div class="row m-0 justify-content-center align-items-center px-2 px-lg-1">
+                    -
+                </div>
+                <div class="text-box row m-0 col-5 p-1">
+                    <div class="material-textfield w-82">
+                        <input matInput [matDatepicker]="endDate_picker" placeholder=" " class="input-box-txt"
+                            type="text" formControlName="endDate" (dateChange)="setEndDate($event)"
+                            (focus)="endDate_picker.open()" [min]="getEndDateMinDate()">
+                        <label class="label-txt">End Date</label>
+                        <mat-datepicker #endDate_picker></mat-datepicker>
+                    </div>
+                    <div (click)="endDate_picker.open()" class="row m-0 justify-content-center align-items-center">
+                        <img src="./assets/images/calendar.svg" alt="calendar">
+                    </div>
+                </div>
+                <div class="cursor-pointer mlxl-3" (click)="openFilter()">
+                    <img src="./assets/images/filter.svg" alt="filter">
+                </div>
+            </form>
+            <div class="filter-box height-480" *ngIf="showFilter">
+                <div class="filter-heading-brd-btm">
+                    <div class="p-3 row m-0 justify-content-between">
+                        <div class="row m-0 justify-content-center align-items-center">
+                            <span class="filter-heading-txt">Filter by</span>
+                        </div>
+                        <div class="row m-0 align-items-center justify-content-center cursor-pointer" (click)="reset()">
+                            <img src="./assets/images/refresh.svg" alt="filter">
+                        </div>
+                    </div>
+                </div>
+                <div class="p-3">
+                    <div class="row m-0 align-items-center pb-3">
+                        <span class="filter-heading-txt-2">Appointment Type</span>
+                    </div>
+                    <div class="row m-0 text-box p-2 mb-2">
+                        <div class="row m-0 justify-content-center align-items-center"
+                            (click)="setFilter('checkClinicConsultation', checkClinicConsultation)">
+                            <img [src]="checkClinicConsultation ? './assets/images/box-check.svg' : './assets/images/box-un-check.svg'"
+                                alt="checkbox">
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center ml-1">
+                            <span class="filter-item-txt" [ngClass]="{'brand-color' : checkClinicConsultation}">Clinic
+                                visit</span>
+                        </div>
+                    </div>
+                    <div class="row m-0 text-box p-2">
+                        <div class="row m-0 justify-content-center align-items-center"
+                            (click)="setFilter('checkVirtualConsultation', checkVirtualConsultation)">
+                            <img [src]="checkVirtualConsultation ? './assets/images/box-check.svg' : './assets/images/box-un-check.svg'"
+                                alt="checkbox">
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center ml-1">
+                            <span class="filter-item-txt" [ngClass]="{'brand-color' : checkVirtualConsultation}">Virtual
+                                visit</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-3 pb-3">
+                    <div class="row m-0 align-items-center pb-3">
+                        <span class="filter-heading-txt-2">Appointment Status</span>
+                    </div>
+                    <div class="row m-0 text-box p-2 mb-2">
+                        <div class="row m-0 justify-content-center align-items-center"
+                            (click)="setFilter('checkConfirmedStatus', checkConfirmedStatus)">
+                            <img [src]="checkConfirmedStatus ? './assets/images/box-check.svg' : './assets/images/box-un-check.svg'"
+                                alt="checkbox">
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center ml-1">
+                            <span class="filter-item-txt"
+                                [ngClass]="{'brand-color' : checkConfirmedStatus}">Completed</span>
+                        </div>
+                    </div>
+                    <div class="row m-0 text-box p-2 mb-2">
+                        <div class="row m-0 justify-content-center align-items-center"
+                            (click)="setFilter('checkCanceledStatus', checkCanceledStatus)">
+                            <img [src]="checkCanceledStatus ? './assets/images/box-check.svg' : './assets/images/box-un-check.svg'"
+                                alt="checkbox">
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center ml-1">
+                            <span class="filter-item-txt"
+                                [ngClass]="{'brand-color' : checkCanceledStatus}">Canceled</span>
+                        </div>
+                    </div>
+                    <div class="row m-0 text-box p-2 mb-2">
+                        <div class="row m-0 justify-content-center align-items-center"
+                            (click)="setFilter('checkRescheduleStatus', checkRescheduleStatus)">
+                            <img [src]="checkRescheduleStatus ? './assets/images/box-check.svg' : './assets/images/box-un-check.svg'"
+                                alt="checkbox">
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center ml-1">
+                            <span class="filter-item-txt" [ngClass]="{'brand-color' : checkRescheduleStatus}">Checked
+                                In</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0 justify-content-between px-3">
+                    <div class="save-btn py-1 px-5 row m-0 justify-content-center align-items-center cursor-pointer"
+                        (click)="applyFilter()">
+                        <span class="save-btn-txt">Apply</span>
+                    </div>
+                    <div class="save-btn cancel-btn py-1 px-5 row m-0 justify-content-center align-items-center cursor-pointer"
+                        (click)="close()">
+                        <span class="save-btn-txt cancel-txt">Cancel</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="py-3" *ngIf="patients.length > 0">
+            <div class="row m-0 header-box pl-2">
+                <div class="col-2 p-0 d-flex align-items-center">
+                    <span class="heading-txt-3 d-flex align-items-center"><img src="./assets/images/clipboard-user.svg"
+                            alt="chevron-left" class="mr-1 img-align">Patients Name</span>
+                </div>
+                <div class="col-1 p-0 row m-0 justify-content-center justify-content-lg-start align-items-center">
+                    <span class="heading-txt-3"><img src="./assets/images/calendar.svg" alt="chevron-left"
+                            class="mr-1">Date</span>
+                </div>
+                <div class="col-2 p-0 row m-0 justify-content-center align-items-center">
+                    <span class="heading-txt-3"><img src="./assets/images/doctor-bag.svg" alt="chevron-left"
+                            class="mr-1 img-align">Services</span>
+                </div>
+                <div class="col-2 p-0 d-flex justify-content-center align-items-center">
+                    <span class="heading-txt-3 d-flex align-items-center"><img src="./assets/images/user-md.svg"
+                            alt="chevron-left" class="mr-1 img-align">Appointment</span>
+                </div>
+                <div class="col-2 p-0 row m-0 justify-content-center align-items-center">
+                    <span class="heading-txt-3"><img src="./assets/images/heart-rate.svg" alt="chevron-left"
+                            class="mr-1 img-align">Care Provider</span>
+                </div>
+                <div class="col-1 p-0 row m-0 justify-content-start align-items-center">
+                    <span class="heading-txt-3 mb-1 mb-lg-0"><img src="./assets/images/heart-rate.svg" alt="heart-rate"
+                            class="mr-1 img-align">HbA1C</span>
+                </div>
+                <div class="col-1 p-0 row m-0 justify-content-center align-items-center">
+                    <span class="heading-txt-3">Lab Report</span>
+                </div>
+                <div class="col-1 p-0 row m-0 justify-content-center align-items-center">
+                    <span class="heading-txt-3"><img src="./assets/images/cursor-finger.svg" alt="chevron-left"
+                            class="mr-1 img-align">Action</span>
+                </div>
+            </div>
+            <div class="patient-box p-2 row m-0 my-2" *ngFor="let patient of patients">
+                <div class="col-2 p-0 row m-0 justify-content-start align-items-center px-1 side-border">
+                    <div>
+                        <img class="img-circle"
+                            [src]="patient.patient.profileImage ? patient.patient.profileImage : getAvatarURL(patient.patient)"
+                            alt="p-p" width="48" height="48">
+                    </div>
+                    <div class="pl-2">
+                        <div class="col p-0">
+                            <span class="patient-name text-capitalize">{{patient.patient.firstName}}</span>
+                        </div>
+                        <div class="col p-0">
+                            <span class="patient-date-sex">{{getDOBAndGender(patient?.patient)}}</span>
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center" *ngIf="patient?.patient.isVip">
+                            <img src="./assets/images/vip-tag.svg" alt="vip-tag">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-1 p-0 px-1 side-border d-flex flex-column justify-content-center align-items-center">
+                    <!-- <div class="d-flex flex-d justify-content-start align-items-center"> -->
+                    <!-- <div class="row m-0 justify-content-start">
+                            <img src="./assets/images/calendar-today.svg" alt="calendar-today">
+                        </div> -->
+                    <div class="d-flex flex-column justify-xl-content-center align-items-center pb-1">
+                        <div class="row m-0 justify-content-center align-items-center">
+                            <span class="patient-visit-date">{{ (patient.appointmentTime) | date : 'dd MMM,
+                                yyyy'}}</span>
+                        </div>
+                        <div class="row m-0 justify-xl-content-center align-items-center w-100">
+                            <span class="patient-visit-time">{{ (patient.appointmentTime) | date : 'h:mm
+                                a'}}</span>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column justify-cotent-center align-items-center p-1"
+                        [ngClass]="{'clinic-box': patient.upCommingVisit.mode === 'clinic', 'virtual-box': patient.upCommingVisit.mode === 'virtual'}"
+                        *ngIf="patient.upCommingVisit">
+                        <div class="row m-0">
+                            <span class="my-p-txt-3">Upcoming Visit on {{patient.upCommingVisit.appointmentTime |
+                                date: 'dd MMM, \'at\' h:mma'}}&nbsp;<img class="h-15 pl-1"
+                                    [src]="patient.upCommingVisit.mode === 'clinic' ? './assets/images/clinic-outlined-blue.svg' : './assets/images/virtual-outlined-blue.svg'"
+                                    alt="checkbox"></span>
+                        </div>
+                    </div>
+                    <!-- </div> -->
+                </div>
+                <div class="col-2 p-0 align-self-center px-1 side-border">
+                    <div class="row m-0 justify-content-start align-items-center pl-2 pl-xl-5 pb-1">
+                        <span class="my-p-txt-1">Last Visit: <span class="my-p-txt-2">{{ patient.lastVisit !== null &&
+                                patient.lastVisit !== undefined && patient.lastVisit !== 0 ? patient.lastVisit : 'N/A'
+                                }}</span></span>
+                    </div>
+                    <div class="row m-0 justify-content-start align-items-center pl-2 pl-xl-5 pb-1">
+                        <span class="my-p-txt-1">Total Visits: <span class="my-p-txt-2">{{ patient.totalVisit !== null
+                                && patient.totalVisit !== undefined && patient.totalVisit !== 0 ? patient.totalVisit :
+                                'N/A' }}</span></span>
+                    </div>
+                    <div class="row m-0 justify-content-start align-items-center pl-2 pl-xl-5 pb-1">
+                        <span class="my-p-txt-1">Clinic Visits: <span class="my-p-txt-2">{{ patient.totalClinicVisit !==
+                                null && patient.totalClinicVisit !== undefined && patient.totalClinicVisit !== 0 ?
+                                patient.totalClinicVisit : 'N/A' }}</span></span>
+                    </div>
+                    <div class="row m-0 justify-content-start align-items-center pl-2 pl-xl-5 pb-1">
+                        <span class="my-p-txt-1">Virtual Visits: <span class="my-p-txt-2">{{ patient.totalVirtualVisit
+                                !== null && patient.totalVirtualVisit !== undefined && patient.totalVirtualVisit !== 0 ?
+                                patient.totalVirtualVisit : 'N/A' }}</span></span>
+                    </div>
+                    <!-- <div class="row m-0 justify-content-center align-items-center">
+                        <img [src]="patient?.appointmentMode === 'clinic' ? './assets/images/clinic-2.svg' : './assets/images/camera-color.svg'"
+                            alt="virtual-clinic">
+                    </div>
+                    <div class="row m-0 justify-content-center align-items-center pl-1">
+                        <span class="patient-visit-date text-capitalize">{{patient?.appointmentMode}} Visit</span>
+                    </div> -->
+                </div>
+                <div class="col-2 p-0 d-flex flex-column justify-xl-content-center align-items-center px-1 side-border">
+                    <div class="d-flex justify-content-center align-items-center status-box w-80"
+                        [ngClass]="colorMap[patient?.appointmentStatus?.toLowerCase()]">
+                        <span class="secondary-text"
+                            [ngClass]="textColorMap[patient?.appointmentStatus?.toLowerCase()]">{{appointmentStatus[patient?.appointmentStatus]
+                            || '-'}}</span>
+                    </div>
+                    <div *ngIf="patient?.appointmentStatus != 'FULFILLED' && patient?.appointmentStatus != 'NOSHOW'"
+                        class="row m-0 justify-content-xl-center align-items-center">
+                        <div class="row m-0 py-2">
+                            <div class="row m-0 justify-content-center align-items-center"
+                                (click)="markAppointmentComplete(patient?.appointmentId)">
+                                <img src="./assets/images/box-un-check.svg" alt="checkbox">
+                            </div>
+                            <div class="row m-0 justify-content-center align-items-center ml-1">
+                                <span class="txt-base-medium">Fulfilled</span>
+                            </div>
+                        </div>
+                        <div class="row m-0 py-2">
+                            <div class="row m-0 justify-content-center align-items-center"
+                                (click)="changeAppointmentStatus(patient?.appointmentId, 'NOSHOW')">
+                                <img src="./assets/images/box-un-check.svg" alt="checkbox">
+                            </div>
+                            <div class="row m-0 justify-content-center align-items-center ml-1">
+                                <span class="txt-base-medium">No Show</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2 p-0 row m-0 justify-content-center align-items-center px-1 side-border">
+                    <div>
+                        <div *ngIf="!patient?.triageCategory">
+                            -
+                        </div>
+                        <div *ngIf="patient?.triageCategory"
+                            class="justify-content-center align-items-center triage-box" [ngClass]="getClass(patient)">
+                            <span class="pfd-triage-add-btn-txt text-white">{{getTriageCategory(patient)}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1 p-0 row m-0 justify-content-center align-items-center px-1 side-border">
+                    <div>
+                        <div *ngIf="!patient?.billingStatus">
+                            -
+                        </div>
+                        <div *ngIf="patient?.billingStatus" class="justify-content-center align-items-center bill-box"
+                            [ngClass]="getBillingClass(patient)">
+                            <span class="pfd-triage-add-btn-txt text-white d-flex text-center">{{(patient?.billingStatus
+                                === 'PARTIAL_PAID'
+                                ? 'PARTIAL PAID' : patient?.billingStatus) || 'Partially
+                                Paid'}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1 p-0 row m-0 justify-content-center align-items-center px-1 side-border">
+                    <span class="patient-visit-date line-break">{{patient?.paymentModes?.join() || '-'}}</span>
+                </div>
+                <div
+                    class="col-1 p-0 row m-0 justify-content-center align-items-center cursor-pointer px-1 side-border">
+                    <span class="patient-avl-txt d-flex flex-column flex-xl-row gp-10"><img class=""
+                            (click)="viewFile(patient)" src="./assets/images/file-plus-1.svg"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row m-0 justify-content-between" *ngIf="patients.length > 0">
+            <div class="row m-0 justify-content-center align-items-center">
+                <div class="row m-0">
+                    <span class="poppins-Regular my-p-txt">Show</span>
+                </div>
+                <div class="px-2 wi-100">
+                    <div class="text-box col p-1 row m-0" id="rowField" (click)="openRowList()">
+                        <div class="material-textfield w-65">
+                            <input class="input-box-txt" id="rowInputField" type="text" placeholder=" "
+                                [(ngModel)]="rowValue" readonly>
+                            <label class="label-txt">Row</label>
+                        </div>
+                        <img (click)="openRowList()" src="./assets/images/chevron-down.svg" alt="chevron-down">
+                    </div>
+                    <div *ngIf="showRowList">
+                        <app-hi-select-box [type]="'single'" [searchEnable]="false" [dataList]="rowDataList"
+                            (setItemInComponent)="setRow($event)" [showTyped]="false"
+                            [width]="rowFieldWidth"></app-hi-select-box>
+                    </div>
+                </div>
+                <div class="row m-0 justify-content-center align-items-center">
+                    <span class="poppins-Regular my-p-txt">rows per page</span>
+                </div>
+            </div>
+            <div class="row m-0 justify-content-center align-items-center">
+                <div class="row m-0 justify-content-center align-items-center">
+                    <span class="pagination-txt">{{leftValue}} - {{rightValue}} of
+                        {{totalPatient}}</span>
+                </div>
+                <div class="row m-0">
+                    <div class="row m-0 justify-content-center align-items-center cursor-pointer px-2"
+                        (click)="backPage()">
+                        <img src="./assets/images/chevron-left.svg" alt="chevron-left">
+                    </div>
+                    <div class="row m-0 justify-content-center align-items-center" *ngIf="numberOfPages.length < 6">
+                        <div *ngFor="let item of numberOfPages; let i=index;"
+                            class="row m-0 justify-content-center align-items-center p-2 cursor-pointer"
+                            [ngClass]="{'pagination-box-s' : selectedPage === i+1}" (click)="selectPage(i+1)">
+                            <span class="pagination-txt"
+                                [ngClass]="{'brand-color' : selectedPage === i+1}">{{i+1}}</span>
+                        </div>
+                    </div>
+                    <div class="row m-0 justify-content-center align-items-center" *ngIf="numberOfPages.length >= 6">
+                        <div *ngFor="let item of [0, 0, 0, 0, 0]; let i=index;"
+                            class="row m-0 justify-content-center align-items-center p-2 cursor-pointer"
+                            [ngClass]="{'pagination-box-s' : selectedPage === i+1}" (click)="selectPage(i+1)">
+                            <span class="pagination-txt"
+                                [ngClass]="{'brand-color' : selectedPage === i+1}">{{i+1}}</span>
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center p-2 cursor-pointer">
+                            <span class="pagination-txt">...</span>
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center p-2 cursor-pointer"
+                            [ngClass]="{'pagination-box-s' : selectedPage === numberOfPages.length + 1}"
+                            (click)="selectPage(numberOfPages.length + 1)">
+                            <span class="pagination-txt"
+                                [ngClass]="{'brand-color' : selectedPage === numberOfPages.length + 1}">{{numberOfPages.length
+                                + 1}}</span>
+                        </div>
+                    </div>
+                    <div class="row m-0 justify-content-center align-items-center cursor-pointer px-2"
+                        (click)="forwardPage()">
+                        <img src="./assets/images/chevron-right.svg" alt="chevron-right">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

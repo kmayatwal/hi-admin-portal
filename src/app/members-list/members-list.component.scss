@@ -1,0 +1,563 @@
+.members-list {
+    .text-box-30 {
+        max-width: 31.5%;
+        flex: 0 0 31.5%;
+    }
+
+    .w-89 {
+        width: 89% !important;
+    }
+
+    .w-11 {
+        width: 11% !important;
+    }
+
+    .dropdown-arrow {
+        width: 7%;
+        align-self: center;
+        height: 25px;
+    }
+
+    .heading-txt {
+        font-family: Poppins;
+        font-style: normal;
+        line-height: 100%;
+        color: #2a2d32;
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    .heading-txt-2 {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 100%;
+        color: #2a2d32;
+    }
+
+    .alphabet-box {
+        box-sizing: border-box;
+        border-radius: 2px;
+        border: 0.5px solid #2a2d32 !important;
+        height: 40px;
+        width: 36px;
+    }
+
+    .alphabet-box-s {
+        background: #f4faec !important;
+        border: 0.5px solid #008c99 !important;
+    }
+
+    .alphabet-txt {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        color: #2a2d32;
+    }
+
+    .alphabet-txt-s {
+        color: #008c99 !important;
+    }
+
+    .heading-txt-3 {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 100%;
+        color: #4f4f4f;
+    }
+
+    .patient-box {
+        // background: #ffffff;
+        // border: 1px solid #efefef;
+        // box-sizing: border-box;
+        // border-radius: 8px;
+        background: #ffffff;
+        border: 1px solid #000000;
+        border-radius: 8px;
+    }
+
+    .patient-name {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 100%;
+        color: #4f4f4f;
+    }
+
+    .patient-date-sex {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 100%;
+        color: #828282;
+    }
+
+    .patient-visit-date {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 100%;
+        color: #4f4f4f;
+    }
+
+    .patient-visit-time {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 100%;
+        color: #828282;
+    }
+
+    .patient-active-box {
+        background: #e0f2ed;
+        border-radius: 32px;
+    }
+
+    .patient-active-txt {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        // line-height: 100%;
+        color: #4fb389;
+    }
+
+    .patient-deceased {
+        background: #fee7e8;
+        border-radius: 32px;
+    }
+
+    .patient-deceased-txt {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 100%;
+        color: #f44336;
+    }
+
+    .patient-avl-txt {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 100%;
+        text-decoration-line: underline;
+        color: #057cc3;
+    }
+
+    .img-circle {
+        border-radius: 48px;
+        height: 48px;
+    }
+
+    .text-box-75 {
+        flex: 0 0 75.333333%;
+        max-width: 75.333333%;
+    }
+
+    .text-box-93 {
+        flex: 0 0 93.333333%;
+        max-width: 93.333333%;
+    }
+
+    .completed-appointment-box {
+        background: rgba(42, 178, 164, 0.1);
+        border-radius: 3px;
+    }
+
+    .completed-appointment-text {
+        color: #34c38f !important;
+    }
+
+    .upcoming-appointment-box {
+        background: rgba(108, 93, 211, 0.1);
+        border-radius: 3px;
+    }
+
+    .upcoming-appointment-text {
+        color: #6c5dd3 !important;
+    }
+
+    .checkedIn-appointment-box {
+        background: rgba(255, 190, 157, 0.22);
+        border-radius: 3px;
+    }
+
+    .checkedIn-appointment-text {
+        color: #fca600 !important;
+    }
+
+    .canelled-appointment-box {
+        background: #ffebf0;
+        border-radius: 3px;
+    }
+
+    .canelled-appointment-text {
+        color: #f46a6a !important;
+    }
+
+    .w-82 {
+        width: 82% !important;
+    }
+
+    .height-480 {
+        height: 480px;
+    }
+
+    .filter-box {
+        background: #ffffff;
+        box-shadow: 0px 20px 40px rgba(162, 176, 189, 0.25);
+        border-radius: 6px;
+
+        position: absolute;
+        z-index: 1000;
+        min-width: 325px;
+
+        right: 15px;
+        top: 125px;
+    }
+
+    .filter-heading-brd-btm {
+        border-bottom: 0.5px solid #e5e5e5;
+    }
+
+    .filter-heading-txt {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        color: #282a36;
+    }
+
+    .filter-heading-txt-2 {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 22px;
+        color: #323a46;
+    }
+
+    .filter-item-txt {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 22px;
+        color: #767c84;
+    }
+
+    .filter-item-selected {
+        font-weight: 500 !important;
+        color: #008c99 !important;
+    }
+
+    .save-btn {
+        background: #008c99;
+        border-radius: 3px;
+    }
+
+    .save-btn-txt {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        color: #ffffff;
+    }
+
+    .cancel-txt {
+        color: #66676b;
+    }
+
+    .cancel-btn {
+        background: #ffffff;
+        border: 2px solid #008c99;
+        box-sizing: border-box;
+        border-radius: 3px;
+    }
+
+    .my-p-txt {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 100%;
+        color: #66676b;
+    }
+
+    .w-65 {
+        width: 65% !important;
+    }
+
+    .wi-100 {
+        width: 100px;
+    }
+
+    .pagination-box-s {
+        background: #f4faec;
+        border: 0.4px solid #008c99;
+        border-radius: 4px;
+    }
+
+    .pagination-txt {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 100%;
+        color: #66676b;
+    }
+
+    .border-box {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-top: 1px solid #dadada;
+        border-bottom: 1px solid #dadada;
+    }
+
+    .no-data-heading-text {
+        font-weight: 500;
+        font-size: 20px;
+        color: #2a2d32;
+    }
+
+    .no-data-text {
+        width: 800px;
+        margin: auto;
+        text-align: center;
+    }
+
+    .m-10-minus {
+        margin-top: -10px;
+    }
+
+    .triage-box {
+        height: 30px;
+        width: 120px;
+        display: flex;
+        border-radius: 3px;
+    }
+
+    .pfd-triage-add-btn-txt {
+        font-weight: 600;
+        font-size: 12px;
+    }
+
+    .bill-box {
+        height: 30px;
+        width: 90px;
+        display: flex;
+        border-radius: 3px;
+    }
+
+    .header-box {
+        background: rgba(141, 198, 63, 0.2);
+        border-radius: 3px;
+        padding-top: 13px;
+        padding-bottom: 13px;
+    }
+
+    .img-align {
+        vertical-align: sub;
+    }
+
+    .status-box {
+        height: 30px;
+        border-radius: 3px;
+    }
+
+    .line-break {
+        line-break: anywhere;
+    }
+
+    .side-border {
+        border-right: 2px solid #c4c4c4;
+    }
+
+    .my-p-txt-1 {
+        color: #66676b;
+        font-family: Poppins-Regular;
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%;
+        /* 10px */
+        text-transform: capitalize;
+    }
+
+    .my-p-txt-2 {
+        color: #2a2d32;
+    }
+
+    .my-p-txt-3 {
+        color: #2a2d32;
+        font-family: Poppins-Light;
+        font-size: 8px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 12px;
+        /* 150% */
+    }
+
+    .h-15 {
+        height: 15px;
+    }
+
+    .clinic-box {
+        border-radius: 3px;
+        background: rgba(45, 177, 164, 0.15);
+    }
+
+    .virtual-box {
+        border-radius: 3px;
+        background: rgba(0, 146, 252, 0.15);
+    }
+
+    .pfd-triage-add-btn-txt {
+        font-family: "Poppins-SemiBold";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 10px;
+        line-height: 15px;
+        color: #ffffff;
+    }
+}
+
+.patient-merge {
+    cursor: pointer;
+    background-color: #194866;
+    border-radius: 5px;
+    padding: 3px;
+
+    button {
+        color: #fff;
+        border: none;
+        background-color: transparent;
+    }
+
+    img {
+        border-radius: 3px;
+        background-color: #fff;
+        width: 25px;
+        height: 25px;
+        padding: 5px;
+    }
+}
+
+.patient-add {
+    cursor: pointer;
+    background-color: #057cc3;
+    border-radius: 5px;
+    padding: 3px;
+
+    button {
+        color: #fff;
+        border: none;
+        background-color: transparent;
+    }
+
+    img {
+        border-radius: 3px;
+        background-color: #fff;
+        width: 25px;
+        height: 25px;
+        padding: 5px;
+    }
+}
+
+::ng-deep .send-message-width .modal-dialog {
+    max-width: 700px;
+}
+
+.gp-10 {
+    gap: 10px;
+}
+
+.col5 {
+    flex: 0 0 18%;
+    max-width: 18%;
+}
+
+.mlxl-3 {
+    margin-left: 0.25rem;
+}
+
+$mobile: "(min-width: 320px) and (max-width: 767px)";
+$tablet: "(min-width: 768px) and (max-width: 991px)";
+$desktop: "(min-width: 992px) and (max-width: 1200px)";
+$miniDesk: "(min-width: 1201px) and (max-width: 1399px)";
+
+@media #{$mobile} {
+    .patients {
+        .alphabet-box {
+            width: 35px;
+        }
+    }
+
+    .col5 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+@media #{$tablet} {
+    .patients {
+        .alphabet-box {
+            width: 24px;
+        }
+
+        .txt-base-medium {
+            font-size: 12px;
+        }
+
+        .triage-box {
+            width: 5.5em;
+        }
+
+        .bill-box {
+            width: 2.5em;
+        }
+    }
+}
+
+@media #{$desktop} {
+    .patients {
+        .bill-box {
+            width: 3.65em;
+        }
+    }
+}
+
+@media #{$tablet, $desktop} {
+    .patients {
+        .pfd-triage-add-btn-txt {
+            font-size: 8px;
+        }
+
+        .heading-txt-3 {
+            font-size: 11px;
+        }
+    }
+}
+
+@media #{$tablet, $desktop, $miniDesk} {
+    .col5 {
+        flex: 0 0 40%;
+        max-width: 40%;
+    }
+
+    .mlxl-3 {
+        margin-left: 1rem !important;
+    }
+}
