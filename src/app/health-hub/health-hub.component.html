@@ -12,6 +12,6 @@
         <app-article-list (readMore)="setReadMore($event)"></app-article-list>
     </div>
     <div *ngIf="showPreviewArticle" class="row m-0">
-        <app-preview-article (readMore)="setReadMore($event)"></app-preview-article>
+        <app-preview-article [blogId]="blogId" (goBack)="goBack($event)"></app-preview-article>
     </div>
 </div>

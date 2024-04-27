@@ -1,0 +1,269 @@
+.preview-article {
+    .blog {
+        font-family: "Manrope";
+        margin-top: 4rem;
+    }
+
+    .typography1 {
+        font-size: 58px;
+        color: var(--Dark, #181a1e);
+        font-family: "Manrope";
+        text-align: center;
+        font-weight: 800;
+        line-height: 70px;
+    }
+    .typography2 {
+        font-size: 18px;
+        color: var(--Grey, #4e545f);
+        font-family: "Manrope";
+        text-align: center;
+        font-weight: 400;
+        line-height: 30px;
+    }
+    .typography3 {
+        color: var(--Grey, #4e545f);
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+    }
+
+    .card {
+        border: none;
+        border-color: white;
+        width: 1200px;
+    }
+    .card-items:hover {
+        box-shadow: 0px 20px 70px 0px rgb(0 0 0 / 9%);
+    }
+    .author-detail {
+        margin-bottom: 2.5rem;
+    }
+    .p-img {
+        margin-right: -45px;
+    }
+    .card-img {
+        margin: 2px;
+        height: 300px;
+        width: 300px;
+        border-radius: 12px;
+    }
+    .profile-img {
+        height: 54px;
+        width: 54px;
+        border-radius: 50px;
+        margin-right: 10px;
+    }
+
+    .featured {
+        padding: 0px 16vw;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .featured-item {
+        flex-grow: 1;
+        flex-basis: 200;
+    }
+    .show-more-btn {
+        background: #0067ff;
+        border-radius: 30px;
+        color: white;
+        border: 1px solid;
+        padding: 10px 25px;
+    }
+    .show-more-btn:hover {
+        background: #3537a0;
+    }
+
+    .username {
+        color: black !important;
+        font-weight: 600;
+    }
+    .arrow-icon-container :hover {
+        cursor: pointer;
+    }
+    .arrow-icon {
+        height: 40px;
+        width: 40px;
+        color: black;
+        border: 1px solid black;
+        border-radius: 50px;
+    }
+    .arrow-icon:hover {
+        border-color: #fff;
+        background-color: #0067ff;
+        color: #fff;
+    }
+
+    .subscribe-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 12px;
+        background: var(--Green, #01b5c5);
+        height: 375px;
+        width: 100%;
+        margin-top: 75px;
+        margin-bottom: 75px;
+        .row {
+            gap: 0px;
+        }
+        .vector-style {
+            fill: #00bdce;
+        }
+    }
+    .subscribe-title {
+        font-size: 44px;
+        line-height: 54px;
+        span {
+            width: 575px;
+        }
+    }
+    .subscribe-subtitle {
+        span {
+            width: 575px;
+        }
+    }
+    .subscribe-form {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: "Manrope";
+        .btn-dark {
+            display: inline-flex;
+            padding: 5px 20px;
+            align-items: flex-start;
+            gap: 10px;
+            border-radius: 30px;
+            background: var(--Dark, #181a1e);
+        }
+        input {
+            font-family: "Manrope";
+            width: 393px;
+            height: 35px;
+            border: 2px solid #fff;
+            border-radius: 30px;
+            background: var(--White, #fff);
+            padding: 2px 20px;
+        }
+    }
+
+    .share-options {
+        gap: 12px;
+    }
+    .share-title {
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 20px;
+    }
+    .share-icons {
+        gap: 10px;
+    }
+    .share-icons svg {
+        border: 1px solid black;
+        border-radius: 25px;
+        padding: 6px 0px;
+    }
+    .share-icons svg:hover {
+        cursor: pointer;
+        border: 1px solid;
+        border-radius: 25px;
+        border-color: #fff;
+        background-color: #0067ff;
+        path {
+            fill: #fff;
+        }
+    }
+
+    $mobile: "(min-width: 320px) and (max-width: 767px)";
+    $tablet: "(min-width: 768px) and (max-width: 1023px)";
+    $desktop: "(min-width: 1024px) and (max-width: 1279px)";
+    $desktop1: "(min-width: 1280px) and (max-width: 1519px)";
+    $desktop2: "(min-width: 1520px) and (max-width: 1920px)";
+
+    @media #{$desktop, $desktop1, $desktop2} {
+        .card {
+            width: 650px;
+        }
+
+        .featured {
+            padding: 0px 75px;
+        }
+    }
+
+    @media #{$mobile, $tablet} {
+        .typography1 {
+            font-size: 35px;
+            color: var(--Dark, #181a1e);
+            text-align: center;
+            font-weight: 600;
+            line-height: 50px;
+        }
+        .typography3 {
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 18px;
+        }
+
+        .card {
+            width: 475px;
+        }
+        .card-body {
+            padding: 2.25rem;
+        }
+        .p-img {
+            margin-right: -15px;
+        }
+        .card-img {
+            margin: 2px;
+            height: 250px;
+            width: 250px;
+            border-radius: 12px;
+        }
+        .profile-img {
+            height: 50px;
+            width: 50px;
+            border-radius: 54px;
+            margin-right: 6px;
+        }
+
+        .featured {
+            padding: 0px 25px;
+        }
+        .show-more-btn {
+            padding: 5px 20px;
+        }
+
+        .arrow-icon {
+            height: 35px;
+            width: 35px;
+        }
+
+        .subscribe-container {
+            height: 445px;
+        }
+        .subscribe-title {
+            font-size: 30px;
+            span {
+                width: 375px;
+            }
+        }
+        .subscribe-subtitle {
+            span {
+                width: 375px;
+            }
+        }
+        .subscribe-form {
+            width: 230px;
+        }
+    }
+
+    @media #{$mobile} {
+        .vector-style {
+            display: none;
+        }
+    }
+}

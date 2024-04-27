@@ -9,6 +9,7 @@ export class HealthHubComponent implements OnInit {
 
   showArticleList: boolean = true;
   showPreviewArticle: boolean = false;
+  blogId: string = '';
 
   constructor() { }
 
@@ -18,8 +19,13 @@ export class HealthHubComponent implements OnInit {
 
   setReadMore($event) {
     console.log('this is $event', $event);
+    this.blogId = $event;
     this.showPreviewArticle = true;
     this.showArticleList = false;
   }
 
+  goBack() {
+    this.showPreviewArticle = false;
+    this.showArticleList = true;
+  }
 }
