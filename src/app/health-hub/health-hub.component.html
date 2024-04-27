@@ -1,1 +1,17 @@
-<p>health-hub works!</p>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-newton-cradle">
+    <p class="txt-h2"> Loading... </p>
+</ngx-spinner>
+<app-header></app-header>
+<div class="health-hub p-3">
+    <div class="row m-0 justify-content-end aling-items-center py-2">
+        <div class="row m-0 hh-box-1 p-2 px-3">
+            <span class="hh-txt-1"><img class="pr-1" src="./assets/images/upload.svg" alt="upload">Upload Article</span>
+        </div>
+    </div>
+    <div *ngIf="showArticleList" class="row m-0">
+        <app-article-list (readMore)="setReadMore($event)"></app-article-list>
+    </div>
+    <div *ngIf="showPreviewArticle" class="row m-0">
+        <app-preview-article (readMore)="setReadMore($event)"></app-preview-article>
+    </div>
+</div>

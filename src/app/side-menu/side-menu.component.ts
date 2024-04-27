@@ -15,6 +15,7 @@ export class SideMenuComponent implements OnInit, AfterViewInit {
   route_name = {
     '/': 'overview',
     '/members': 'members',
+    '/health-hub': 'health-hub',
   };
 
   constructor(

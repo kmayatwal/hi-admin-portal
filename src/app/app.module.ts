@@ -48,6 +48,10 @@ import { HeaderComponent } from './header/header.component';
 import { MembersListComponent } from './members-list/members-list.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { HealthHubComponent } from './health-hub/health-hub.component';
+import { ArticleListComponent } from './health-hub/article-list/article-list.component';
+import { CreateArticleComponent } from './health-hub/create-article/create-article.component';
+import { PreviewArticleComponent } from './health-hub/preview-article/preview-article.component';
 // import * as cornerstoneWADOImageLoader from 'cornerstone-wado-image-loader';
 // import * as cornerstone from 'cornerstone-core';
 
@@ -67,7 +71,11 @@ export function createApollo(httpLink: HttpLink) {
     DashboardComponent,
     HeaderComponent,
     MembersListComponent,
-    SideMenuComponent
+    SideMenuComponent,
+    HealthHubComponent,
+    ArticleListComponent,
+    CreateArticleComponent,
+    PreviewArticleComponent
   ],
   imports: [
     ApolloModule,

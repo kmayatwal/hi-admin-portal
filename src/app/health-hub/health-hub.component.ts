@@ -1,12 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-health-hub',
-  standalone: true,
-  imports: [],
   templateUrl: './health-hub.component.html',
   styleUrl: './health-hub.component.scss'
 })
-export class HealthHubComponent {
+export class HealthHubComponent implements OnInit {
+
+  showArticleList: boolean = true;
+  showPreviewArticle: boolean = false;
+
+  constructor() { }
+
+  ngOnInit(): void {
+
+  }
+
+  setReadMore($event) {
+    console.log('this is $event', $event);
+    this.showPreviewArticle = true;
+    this.showArticleList = false;
+  }
 
 }

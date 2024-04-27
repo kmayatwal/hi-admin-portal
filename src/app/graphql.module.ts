@@ -6796,17 +6796,22 @@ export const UPDATE_USER_TWO_FA = gql`mutation updateUserTwoFA ($userId: ID!, $s
 
 
 export const GET_BLOGS = gql`
-  query getBlogs($page: PaginationInput) {
-    getFeeds(page: $page) {
+  query getBlogs($searchTerm: String, $page: PaginationInput) {
+    getFeeds(searchTerm: $searchTerm, page: $page) {
       totalCount
       response {
-        id
-        title
-        images
-        username
-        createdAt
-        description
-        categories
+            id
+              title
+              images
+              description
+              videoUrls
+              categories
+              referenceUrls
+              username
+              status
+              isBookmark
+              updatedAt
+              createdAt
       }
     }
   }

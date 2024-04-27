@@ -1,0 +1,45 @@
+<div class="article-list">
+    <div class="row m-0 pt-2">
+        <span class="al-txt-5">Health Hub</span>
+    </div>
+    <div class="pt-4">
+        <div class="mmsb-box-1 col-3 p-0 row m-0">
+            <!-- <div class="row m-0 col-1 p-0">
+                <img class="padding-horizontal-3 btn-cursor" src="./assets/images/profile/search-message.svg">
+            </div> -->
+            <div class="col-2 p-0 row m-0 justify-content-start align-items-center pl-2">
+                <img src="./assets/images/searchicon.svg" alt="searchicon">
+            </div>
+            <div class="col-10 p-0">
+                <div class="material-textfield">
+                    <input class="input-box-txt input-search-txt" type="text" placeholder=" "
+                        (ngModelChange)="serachCommunity($event)" [(ngModel)]="searchText">
+                    <label class="label-txt">Search</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row m-0 pt-3">
+        <div *ngFor="let blog of blogLists" class="col-3 p-0 pr-4 pb-4">
+            <div class="row m-0 justify-content-center align-items-center cursor-pointer">
+                <img [src]="blog?.images" alt="image" height="200" width="260">
+            </div>
+            <div class="p-2">
+                <div class="row m-0">
+                    <span class="al-txt-1">Published • {{blog?.createdAt | date : 'd MMM, y' }}</span>
+                </div>
+                <div class="row m-0 pt-2">
+                    <span class="al-txt-2">{{blog?.title || ''}}</span>
+                </div>
+                <div class="row m-0 justify-content-between align-items-center">
+                    <div class="row m-0 pt-2 cursor-pointer" (click)="setReadMore(blog)">
+                        <span class="al-txt-3">Read More ></span>
+                    </div>
+                    <div class="row m-0 al-box-1 p-2 px-3">
+                        <span class="al-txt-4">{{blog?.categories || ''}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

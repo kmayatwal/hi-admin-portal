@@ -7,6 +7,7 @@ import { AuthGuard } from './_guards';
 import { LoginComponent } from './login/login.component';
 import { MembersListComponent } from './members-list/members-list.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { HealthHubComponent } from './health-hub/health-hub.component';
 // import { CreateProfileComponent } from './profile/create-profile/create-profile.component';
 // import { PatientViewFileComponent } from './profile/patient-view-file/patient-view-file.component';
 // import { EhrDashboardComponent } from './profile/ehr-dashboard/ehr-dashboard.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
   // { path: '', loadChildren: () => import('./main-web/main-web.module').then(m => m.MainModule) },
   { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'members', component: MembersListComponent, canActivate: [AuthGuard] },
+  { path: 'health-hub', component: HealthHubComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   // { path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule), canActivate: [AuthGuard] },
   // { path: 'join-now', component: JoinNowComponent, canActivate: [AuthGuard] },
