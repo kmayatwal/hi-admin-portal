@@ -6834,6 +6834,12 @@ export const GET_BLOG = gql`
   }
 `;
 
+export const CREATE_BLOG = gql`mutation createArticle($content: feedInput!) {
+      createArticle(content: $content) {
+        id
+      }
+}`
+
 export const GET_REPORT_SUMMARIES = gql`
   query getReportSummariesByAppoinmtmentId(
     $appointmentId: ID!

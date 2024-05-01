@@ -30,6 +30,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 // } from './_services/custome-date-formate.service';
 import { NgChartsModule } from 'ng2-charts';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 // import {
 //   NgxMatDatetimePickerModule,
 //   NgxMatNativeDateModule,
@@ -52,6 +53,8 @@ import { HealthHubComponent } from './health-hub/health-hub.component';
 import { ArticleListComponent } from './health-hub/article-list/article-list.component';
 import { CreateArticleComponent } from './health-hub/create-article/create-article.component';
 import { PreviewArticleComponent } from './health-hub/preview-article/preview-article.component';
+import { ArticleDescriptionComponent } from './health-hub/create-article/article-description/article-description.component';
+import { HiSelectBoxComponent } from './hi-select-box/hi-select-box.component';
 // import * as cornerstoneWADOImageLoader from 'cornerstone-wado-image-loader';
 // import * as cornerstone from 'cornerstone-core';
 
@@ -75,7 +78,9 @@ export function createApollo(httpLink: HttpLink) {
     HealthHubComponent,
     ArticleListComponent,
     CreateArticleComponent,
-    PreviewArticleComponent
+    PreviewArticleComponent,
+    ArticleDescriptionComponent,
+    HiSelectBoxComponent
   ],
   imports: [
     ApolloModule,
@@ -98,6 +103,7 @@ export function createApollo(httpLink: HttpLink) {
     provideMessaging(() => getMessaging()),
     MatSliderModule,
     NgbCarouselModule,
+    AngularEditorModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [

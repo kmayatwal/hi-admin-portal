@@ -1,1 +1,179 @@
-<p>create-article works!</p>
+<div class="create-article">
+    <div *ngIf="showPreviewArticle" class="row m-0 justify-content-center align-items-center">
+        <app-preview-article [showDraftPreview]="showDraftPreview" [previewArticleData]="previewArticleData"
+            (goBack)="goBack($event)"></app-preview-article>
+    </div>
+    <div *ngIf="!showPreviewArticle">
+        <div class="row m-0 justify-content-end aling-items-center py-2">
+            <div class="row m-0 hh-box-1 p-2 px-3 cursor-pointer" (click)="preview()">
+                <span class="hh-txt-1 text-white">Preview Article</span>
+            </div>
+        </div>
+        <form [formGroup]="createArticleForm">
+            <div class="py-2">
+                <div class="row m-0 justify-content-start align-items-center">
+                    <span class="ca-txt-1">Blog Title</span>
+                </div>
+                <div class="py-1">
+                    <div class="row m-0 text-box col-12 p-1"
+                        [ngClass]="{'error-class' : checkBlogTitleStyleError(caf.blogTitle)}">
+                        <input class="input-box-txt"
+                            [ngClass]="{'error-class-lable' : checkBlogTitleStyleError(caf.blogTitle)}" type="text"
+                            placeholder=" " formControlName="blogTitle">
+                        <!-- <label class="label-txt"
+                            [ngClass]="{'error-class-lable' : checkBlogTitleStyleError(caf.blogTitle)}">Occupation</label> -->
+                    </div>
+                    <mat-error class="error-txt-class" *ngIf="checkBlogTitleError(caf.blogTitle)">
+                        {{blogTitleError}}
+                    </mat-error>
+                </div>
+            </div>
+            <div class="py-2">
+                <div class="row m-0 justify-content-start align-items-center">
+                    <span class="ca-txt-1">Upload Featured Image</span>
+                </div>
+
+                <div class="py-2" [ngClass]="{'pe-none': tempFeaturedURL}">
+                    <div class="col-12 p-0" (click)="featuredImagesUpload.click()" appDnd
+                        (fileDropped)="uploadImageFileDND($event, 'onSelectFeaturedImagesFile')">
+                        <div style="display: none">
+                            <input type='file' size="60" id="imageUpload" accept=".png, .jpg, .jpeg"
+                                #featuredImagesUpload multiple (change)="onSelectFeaturedImagesFile($event)" />
+                        </div>
+                        <div class="pi-box-1 p-4">
+                            <div class="row m-0 justify-content-center align-content-center">
+                                <div class="row m-0 justify-content-center align-items-center">
+                                    <img src="./assets/images/patient-instructions-attachment.svg"
+                                        alt="patient-instructions-attachment">
+                                </div>
+                                <span class="pi-txt-2">Drop yor file here, or <span
+                                        class="brand-color">Browse</span></span>
+                            </div>
+                            <div class="row m-0 justify-content-center align-items-center">
+                                <span class="pi-txt-3">Max size 10MB</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="py-2" *ngIf="tempFeaturedURL">
+                <div class="ca-box-3 row m-0 justify-content-between aling-items-center p-2">
+                    <div class="row m-0 justify-content-start align-items-center">
+                        <div class="row m-0 justify-content-center align-items-center">
+                            <img src="./assets/images/image-upload.svg" alt="image-upload">
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center">
+                            <span class="pi-txt-4">{{featuredImageName || ''}}</span>
+                        </div>
+                    </div>
+                    <div class="row m-0 justify-content-center align-items-center">
+                        <img src="./assets/images/check-icon.svg" alt="check-icon">
+                    </div>
+                </div>
+            </div>
+            <div class="py-2">
+                <div class="row m-0 justify-content-start align-items-center pb-2">
+                    <span class="ca-txt-1">Description</span>
+                </div>
+                <app-article-description></app-article-description>
+            </div>
+            <div class="py-2">
+                <div class="row m-0 justify-content-start align-items-center">
+                    <span class="ca-txt-1">Video URL (Optional)</span>
+                </div>
+                <div class="py-1">
+                    <div class="row m-0 text-box col-12 p-1"
+                        [ngClass]="{'error-class' : checkVideoURLStyleError(caf.videoURL)}">
+                        <input class="input-box-txt"
+                            [ngClass]="{'error-class-lable' : checkVideoURLStyleError(caf.videoURL)}" type="text"
+                            placeholder=" " formControlName="videoURL">
+                        <!-- <label class="label-txt"
+                            [ngClass]="{'error-class-lable' : checkVideoURLStyleError(caf.videoURL)}">Occupation</label> -->
+                    </div>
+                    <mat-error class="error-txt-class" *ngIf="checkVideoURLError(caf.videoURL)">
+                        {{videoURLError}}
+                    </mat-error>
+                </div>
+            </div>
+            <div class="py-2">
+                <div class="row m-0 justify-content-start align-items-center">
+                    <span class="ca-txt-1">Blog Category</span>
+                </div>
+                <div class="col-12 p-0">
+                    <div class="text-box col-12 p-1 row m-0" id="blogCategoryField"
+                        [ngClass]="{'error-class' : (caf.blogCategory.hasError('required') && caf.blogCategory.touched)}"
+                        (click)="openBlogCategoryList()">
+                        <div class="material-textfield w-95">
+                            <input class="input-box-txt" id="blogCategoryInputField"
+                                [ngClass]="{'error-class-lable' : (caf.blogCategory.hasError('required') && caf.blogCategory.touched)}"
+                                type="text" placeholder=" " formControlName="blogCategory" readonly>
+                            <!-- <label class="label-txt"
+                                [ngClass]="{'error-class-lable' : (caf.blogCategory.hasError('required') && caf.blogCategory.touched)}">Blog
+                                Category</label> -->
+                        </div>
+                        <img (click)="openBlogCategoryList()" class="dropdown-arrow"
+                            src="./assets/images/chevron-down.svg" alt="chevron-down">
+                    </div>
+                    <div *ngIf="showBlogCategoryList">
+                        <app-hi-select-box [type]="'single'" [searchEnable]="false" [dataList]="blogCategoryDataList"
+                            (setItemInComponent)="setBlogCategory($event)" [showTyped]="false"
+                            [width]="blogCategoryFieldWidth"></app-hi-select-box>
+                    </div>
+                    <mat-error class="error-txt-class"
+                        *ngIf="(caf.blogCategory.hasError('required') && caf.blogCategory.touched)">
+                        This field is required.
+                    </mat-error>
+                </div>
+            </div>
+            <div class="py-2">
+                <div class="row m-0 justify-content-start align-items-center">
+                    <span class="ca-txt-1">Referance URL</span>
+                </div>
+                <div class="py-1">
+                    <div class="row m-0 text-box col-12 p-1"
+                        [ngClass]="{'error-class' : checkReferenceURLStyleError(caf.referenceURL)}">
+                        <input class="input-box-txt"
+                            [ngClass]="{'error-class-lable' : checkReferenceURLStyleError(caf.referenceURL)}"
+                            type="text" placeholder=" " formControlName="referenceURL">
+                        <!-- <label class="label-txt"
+                            [ngClass]="{'error-class-lable' : checkReferenceURLStyleError(caf.referenceURL)}">Occupation</label> -->
+                    </div>
+                    <mat-error class="error-txt-class" *ngIf="checkReferenceURLError(caf.referenceURL)">
+                        {{referenceURLError}}
+                    </mat-error>
+                </div>
+            </div>
+            <div class="py-2">
+                <div class="row m-0 justify-content-start align-items-center">
+                    <span class="ca-txt-1">Posted By</span>
+                </div>
+                <div class="py-1">
+                    <div class="row m-0 text-box col-12 p-1"
+                        [ngClass]="{'error-class' : checkPostedByStyleError(caf.postedBy)}">
+                        <input class="input-box-txt"
+                            [ngClass]="{'error-class-lable' : checkPostedByStyleError(caf.postedBy)}" type="text"
+                            placeholder=" " formControlName="postedBy">
+                        <!-- <label class="label-txt"
+                            [ngClass]="{'error-class-lable' : checkPostedByStyleError(caf.postedBy)}">Occupation</label> -->
+                    </div>
+                    <mat-error class="error-txt-class" *ngIf="checkPostedByError(caf.postedBy)">
+                        {{postedByError}}
+                    </mat-error>
+                </div>
+            </div>
+            <div class="py-4">
+                <div class="row m-0 justify-content-end align-items-center">
+                    <div class="row m-0 ca-box-2 p-2 px-3 cursor-pointer mr-2" (click)="cancel()">
+                        <span class="hh-txt-1 pi-txt-color">Cancel</span>
+                    </div>
+                    <!-- <div class="row m-0 ca-box-2 p-2 px-3 cursor-pointer mr-2" (click)="publish()">
+                        <span class="hh-txt-1 pi-txt-color">Save as Draft</span>
+                    </div> -->
+                    <div class="row m-0 hh-box-1 p-2 px-3 cursor-pointer" (click)="publish()">
+                        <span class="hh-txt-1 text-white">Publish</span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

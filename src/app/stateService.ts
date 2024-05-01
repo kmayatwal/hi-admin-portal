@@ -48,6 +48,9 @@ export class StateService {
 
   public hiCommunity: any;
   public hiCommunityUser: any;
+
+  public articleDescription$: any;
+
   constructor() { }
 
   sendData(data: any) {

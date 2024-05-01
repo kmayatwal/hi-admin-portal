@@ -4,14 +4,17 @@
 <app-header></app-header>
 <div class="health-hub p-3">
     <div class="row m-0 justify-content-end aling-items-center py-2">
-        <div class="row m-0 hh-box-1 p-2 px-3">
+        <div *ngIf="showArticleList" class="row m-0 hh-box-1 p-2 px-3 cursor-pointer" (click)="setCreateArticle()">
             <span class="hh-txt-1"><img class="pr-1" src="./assets/images/upload.svg" alt="upload">Upload Article</span>
         </div>
     </div>
     <div *ngIf="showArticleList" class="row m-0">
         <app-article-list (readMore)="setReadMore($event)"></app-article-list>
     </div>
-    <div *ngIf="showPreviewArticle" class="row m-0">
+    <div *ngIf="showPreviewArticle" class="row m-0 justify-content-center align-items-center">
         <app-preview-article [blogId]="blogId" (goBack)="goBack($event)"></app-preview-article>
+    </div>
+    <div *ngIf="showCreateArticle">
+        <app-create-article (back)="goBack($event)"></app-create-article>
     </div>
 </div>

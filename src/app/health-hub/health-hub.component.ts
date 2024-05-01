@@ -9,6 +9,7 @@ export class HealthHubComponent implements OnInit {
 
   showArticleList: boolean = true;
   showPreviewArticle: boolean = false;
+  showCreateArticle: boolean = false;
   blogId: string = '';
 
   constructor() { }
@@ -26,6 +27,14 @@ export class HealthHubComponent implements OnInit {
 
   goBack() {
     this.showPreviewArticle = false;
+    this.showCreateArticle = false;
     this.showArticleList = true;
   }
+
+  setCreateArticle() {
+    this.showPreviewArticle = false;
+    this.showArticleList = false;
+    this.showCreateArticle = true;
+  }
+
 }

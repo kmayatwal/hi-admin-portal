@@ -12,6 +12,8 @@ export class PreviewArticleComponent implements OnInit {
 
   @Output('goBack') goBack: EventEmitter<any> = new EventEmitter();
   @Input() blogId: any;
+  @Input() showDraftPreview: boolean;
+  @Input() previewArticleData: any;
 
   blogData: any = [];
   featuredBlog: any = [];
@@ -24,7 +26,13 @@ export class PreviewArticleComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getBlog(this.blogId);
+    console.log('this is showDraftPreview', this.showDraftPreview);
+    console.log('this is previewArticleData', this.previewArticleData);
+    if (this.showDraftPreview) {
+      this.blogData = this.previewArticleData.blogData;
+      this.safeHtml = this.previewArticleData.safeHtml;
+    } else
+      this.getBlog(this.blogId);
   }
 
   async getBlog(id: any) {
