@@ -2,14 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   NgbModule,
-  NgbDateAdapter,
-  NgbDateParserFormatter,
   NgbActiveModal,
 } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { MaterialModuleModule } from './material-module/material-module.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
@@ -27,19 +24,9 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-// import {
-//   CustomAdapter,
-//   CustomDateParserFormatter,
-// } from './_services/custome-date-formate.service';
 import { NgChartsModule } from 'ng2-charts';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { AngularEditorModule } from '@kolkov/angular-editor';
-// import {
-//   NgxMatDatetimePickerModule,
-//   NgxMatNativeDateModule,
-//   NgxMatTimepickerModule,
-// } from '@angular-material-components/datetime-picker';
-// import { NgOtpInputModule } from 'ng-otp-input';
 import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 import { InMemoryCache } from '@apollo/client/core';
@@ -59,8 +46,6 @@ import { PreviewArticleComponent } from './health-hub/preview-article/preview-ar
 import { ArticleDescriptionComponent } from './health-hub/create-article/article-description/article-description.component';
 import { HiSelectBoxComponent } from './hi-select-box/hi-select-box.component';
 import { DashboardDateComponent } from './dashboard/dashboard-date/dashboard-date.component';
-// import * as cornerstoneWADOImageLoader from 'cornerstone-wado-image-loader';
-// import * as cornerstone from 'cornerstone-core';
 
 export function createApollo(httpLink: HttpLink) {
   return {
@@ -99,10 +84,6 @@ export function createApollo(httpLink: HttpLink) {
     NgbModule,
     ToastrModule.forRoot(),
     NgChartsModule,
-    // NgxMatDatetimePickerModule,
-    // NgxMatTimepickerModule,
-    // NgxMatNativeDateModule,
-    // NgOtpInputModule,
     NgxSpinnerModule,
     provideFirebaseApp(() => initializeApp(environment.FIREBASE)),
     provideMessaging(() => getMessaging()),
@@ -121,8 +102,6 @@ export function createApollo(httpLink: HttpLink) {
     provideNativeDateAdapter(),
     AuthGuard,
     AuthenticationService,
-    // { provide: NgbDateAdapter, useClass: CustomAdapter },
-    // { provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter },
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
     NgbActiveModal,
     {
@@ -133,8 +112,4 @@ export function createApollo(httpLink: HttpLink) {
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-  constructor() {
-    // cornerstoneWADOImageLoader.external.cornerstone = cornerstone;
-  }
-}
+export class AppModule { }

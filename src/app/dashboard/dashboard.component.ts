@@ -4,48 +4,18 @@ import { Chart } from "chart.js";
 import { StateService } from "src/app/stateService";
 import { GraphqlService } from "src/app/graphql-service/GraphqlService";
 import {
-  // ageDistributionChartConfig,
-  // appointmentChartConfig,
   audienceByGenderChartConfig,
-  // dailyVisitChartConfig,
-  // demographicAudienceChartConfig,
-  // feedbackChartConfig,
-  // genderBasedDiagnosisChartConfig,
   healthMetricChartConfig,
-  // inOutTrendChartConfig,
-  // inOutTrendDoughnutChartConfig,
   medicalComplianceChartConfig,
-  // patientGenderChartConfig,
-  // revenueChartConfig,
   vitalRecordingChartConfig,
 } from "./summaryCharts.config";
 import {
   getAllMedicinesByDoctors,
   getAllPatients,
-  // getAppointmentStaticsAnalytics,
-  // getAppointmentsList,
   getAudienceByGender,
-  // getConfidenceInTreatment,
-  // getCountriesData,
-  // getDailyVisitInsightAnalytics,
-  // getDemographicAudienceData,
-  // getFeedbackPercentage,
   getFrequencyOfVitalRecording,
-  // getGenderBasedDiagnosis,
-  // getGenderBasedPatient,
   getHealthMetric,
-  // getInOutPatientAnalytics,
   getMedicalCompliance,
-  // getNewPatientList,
-  // getPatientAgeDistribution,
-  // getPatientReferralAnalytics,
-  // getPatientWaitingTimeAnalytics,
-  // getPrescribedMedicineAnalytics,
-  // getProgramCompletion,
-  // getRemoteActivePatientAnalytics,
-  // getRemoteRevenueAnalytics,
-  // getRemoteTotalPatientAnalytics,
-  // getRevenueAnalytics,
 } from "./chart.apis";
 import { formatDate } from "src/app/_helpers/utils.helpers";
 import { GET_CLINIC } from "src/app/graphql.module";
@@ -84,8 +54,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private graphqlService: GraphqlService,
-    private stateService: StateService,
-    private toastr: ToastrService
+    private stateService: StateService
   ) { }
 
   getClinicData = async () => {
