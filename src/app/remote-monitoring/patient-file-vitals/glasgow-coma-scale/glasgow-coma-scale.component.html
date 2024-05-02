@@ -1,0 +1,217 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-newton-cradle">
+    <p class="txt-h2"> Loading... </p>
+</ngx-spinner>
+<div class="glasgow-coma-scale row m-0">
+    <div class="col-12 p-0 p-4">
+        <div class="row m-0 justify-content-between">
+            <div class="row m-0 pb-2">
+                <span class="heading">Glasgow Coma Scale</span>
+            </div>
+            <div class="my-1 py-1 px-4 row m-0 justify-content-center align-items-center"
+                [ngClass]="{ 'box-mild': getColorStyle === 'box-mild', 'box-Moderate': getColorStyle === 'box-Moderate', 'box-severe': getColorStyle === 'box-severe' }">
+                <span class="txt-h5 text-white f-14">GCS Total : <span
+                        class="txt-h5 pl-2 text-white">{{glasgowCommaScale}}</span></span>
+            </div>
+        </div>
+        <div class="box-border p-3 row m-0 my-3">
+            <div class="row m-0 col-1 p-0 justify-content-center align-items-center">
+                <img src="./assets/images/witness.svg" alt="witness">
+            </div>
+            <div class="px-2 col-11 p-0">
+                <div class="row m-0">
+                    <span class="txt-h5">Eye Opening</span>
+                </div>
+                <div class="row m-0">
+                    <div class="row m-0 pr-3 pt-2" *ngFor="let item of eyeOpenging">
+                        <div class="row m-0 justify-content-center align-items-center" (click)="setEyeOpening(item)">
+                            <img [src]="selectedEyeOpening?.description === item.description ? './assets/images/box-check.svg' : './assets/images/box-un-check.svg'"
+                                alt="box-check">
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center pl-1">
+                            <span class="glasgow-txt-1">{{item.name || '-'}}</span>
+                        </div>
+                    </div>
+                    <!-- <div class="row m-0 col-3 p-0">
+                        <div class="row m-0 justify-content-center align-items-center">
+                            <img src="./assets/images/box-un-check.svg" alt="box-un-check">
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center pl-1">
+                            <span class="glasgow-txt-1">2 to Pressure</span>
+                        </div>
+                    </div>
+                    <div class="row m-0 col-3 p-0">
+                        <div class="row m-0 justify-content-center align-items-center">
+                            <img src="./assets/images/box-un-check.svg" alt="box-un-check">
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center pl-1">
+                            <span class="glasgow-txt-1">3 to Sound</span>
+                        </div>
+                    </div>
+                    <div class="row m-0 col-3 p-0">
+                        <div class="row m-0 justify-content-center align-items-center">
+                            <img src="./assets/images/box-un-check.svg" alt="box-un-check">
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center pl-1">
+                            <span class="glasgow-txt-1">1 None</span>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="box-border p-3 row m-0 mb-3">
+            <div class="row m-0 col-1 p-0 justify-content-center align-items-center">
+                <img src="./assets/images/voice.svg" alt="voice">
+            </div>
+            <div class="px-2 col-11 p-0">
+                <div class="row m-0">
+                    <span class="txt-h5">Verbal Response</span>
+                </div>
+                <div class="row m-0">
+                    <div class="row m-0 pr-3 pt-2" *ngFor="let item of verbalResponse">
+                        <div class="row m-0 justify-content-center align-items-center"
+                            (click)="setVerbalResponse(item)">
+                            <img [src]="selectedVerbalResponse?.description === item.description ? './assets/images/box-check.svg' : './assets/images/box-un-check.svg'"
+                                src="./assets/images/box-check.svg" alt="box-check">
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center pl-1">
+                            <span class="glasgow-txt-1">{{item.name || '-'}}</span>
+                        </div>
+                    </div>
+                    <!-- <div class="row m-0 box-20">
+                        <div class="row m-0 justify-content-center align-items-center">
+                            <img src="./assets/images/box-un-check.svg" alt="box-un-check">
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center pl-1">
+                            <span class="glasgow-txt-1">4 Confused</span>
+                        </div>
+                    </div>
+                    <div class="row m-0 box-20">
+                        <div class="row m-0 justify-content-center align-items-center">
+                            <img src="./assets/images/box-un-check.svg" alt="box-un-check">
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center pl-1">
+                            <span class="glasgow-txt-1">3 Words</span>
+                        </div>
+                    </div>
+                    <div class="row m-0 box-20">
+                        <div class="row m-0 justify-content-center align-items-center">
+                            <img src="./assets/images/box-un-check.svg" alt="box-un-check">
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center pl-1">
+                            <span class="glasgow-txt-1">2 Sound</span>
+                        </div>
+                    </div>
+                    <div class="row m-0 box-20">
+                        <div class="row m-0 justify-content-center align-items-center">
+                            <img src="./assets/images/box-un-check.svg" alt="box-un-check">
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center pl-1">
+                            <span class="glasgow-txt-1">1 None</span>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="box-border p-3 row m-0 mb-4">
+            <div class="row m-0 col-1 p-0 justify-content-center align-items-center">
+                <img src="./assets/images/walk.svg" alt="walk">
+            </div>
+            <div class="px-2 col-11 p-0">
+                <div class="row m-0">
+                    <span class="txt-h5">Motor Response</span>
+                </div>
+                <div class="row m-0">
+                    <div class="row m-0 pr-3 pt-2" *ngFor="let item of motorResponse">
+                        <div class="row m-0 justify-content-center align-items-center" (click)="setMotorResponse(item)">
+                            <img [src]="selectedMotorResponse?.description === item.description ? './assets/images/box-check.svg' : './assets/images/box-un-check.svg'"
+                                alt="box-check">
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center pl-1">
+                            <span class="glasgow-txt-1">{{item.name || '-'}}</span>
+                        </div>
+                    </div>
+                    <!-- <div class="row m-0 col-3 p-0">
+                        <div class="row m-0 justify-content-center align-items-center">
+                            <img src="./assets/images/box-un-check.svg" alt="box-un-check">
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center pl-1">
+                            <span class="glasgow-txt-1">5 Localizing</span>
+                        </div>
+                    </div>
+                    <div class="row m-0 col-3 p-0">
+                        <div class="row m-0 justify-content-center align-items-center">
+                            <img src="./assets/images/box-un-check.svg" alt="box-un-check">
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center pl-1">
+                            <span class="glasgow-txt-1">4 Normal Flexion</span>
+                        </div>
+                    </div>
+                    <div class="row m-0 col-3 p-0">
+                        <div class="row m-0 justify-content-center align-items-center">
+                            <img src="./assets/images/box-un-check.svg" alt="box-un-check">
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center pl-1">
+                            <span class="glasgow-txt-1">3 Abnormla Flexion</span>
+                        </div>
+                    </div> -->
+                </div>
+                <!-- <div class="row m-0 py-2">
+                    <div class="row m-0 col-3 p-0">
+                        <div class="row m-0 justify-content-center align-items-center">
+                            <img src="./assets/images/box-check.svg" alt="box-check">
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center pl-1">
+                            <span class="glasgow-txt-1">2 Extension</span>
+                        </div>
+                    </div>
+                    <div class="row m-0 col-3 p-0">
+                        <div class="row m-0 justify-content-center align-items-center">
+                            <img src="./assets/images/box-un-check.svg" alt="box-un-check">
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center pl-1">
+                            <span class="glasgow-txt-1">1 None</span>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <div class="row m-0">
+            <div class="row m-0 justify-content-start align-items-center">
+                <div class="row m-0 box-scale box-mild">
+                </div>
+                <div class="row m-0 pl-2">
+                    <span class="glasgow-txt-2">15-13 (Mild)</span>
+                </div>
+            </div>
+            <div class="row m-0 justify-content-start align-items-center pl-3">
+                <div class="row m-0 box-scale box-Moderate">
+                </div>
+                <div class="row m-0 pl-2">
+                    <span class="glasgow-txt-2">12-9 (Moderate)</span>
+                </div>
+            </div>
+            <div class="row m-0 justify-content-start align-items-center pl-3">
+                <div class="row m-0 box-scale box-severe">
+                </div>
+                <div class="row m-0 pl-2">
+                    <span class="glasgow-txt-2">8-3 (Severe)</span>
+                </div>
+            </div>
+        </div>
+        <div class="row m-0 justify-content-between">
+            <div class="row m-0 align-items-center">
+                <span class="snomed-txt">Integrated with Snomed CT</span>
+            </div>
+            <div class="row m-0">
+                <div class="save-btn cancel-btn my-1 py-1 px-5 row m-0 justify-content-center align-items-center cursor-pointer"
+                    (click)="close()">
+                    <span class="save-btn-txt cancel-txt">Cancel</span>
+                </div>
+                <div class="save-btn my-1 ml-3 py-1 px-5 row m-0 justify-content-center align-items-center cursor-pointer"
+                    (click)="saveGlasgowScale()">
+                    <span class="save-btn-txt">Save</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

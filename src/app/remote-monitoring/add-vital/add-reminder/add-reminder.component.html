@@ -1,0 +1,78 @@
+<div class="add-reminder p-4">
+    <div class="row m-0 pb-4">
+        <span class="txt-h3">Add Reminder</span>
+    </div>
+    <form [formGroup]="reminderForm">
+        <div class="pb-4">
+            <div class="text-box row m-0 col-12 p-1"
+                [ngClass]="{'error-class' : (rf.reminder.hasError('required') && rf.reminder.touched)}">
+                <select formControlName="reminder" class="input-box-txt">
+                    <option value="" disabled>Select reminder</option>
+                    <option value="Temperature">Temperature</option>
+                    <option value="Pulse">Pulse</option>
+                    <option value="Blood Pressure">Blood Pressure</option>
+                    <option value="Blood Oxygen">Blood Oxygen</option>
+                    <option value="Respiratory Rate">Respiratory Rate</option>
+                    <option value="Blood Sugar">Blood Sugar</option>
+                    <option value="Head Circumference">Head Circumference</option>
+                    <option value="Bone Mass">Bone Mass</option>
+                    <option value="Hydration">Hydration</option>
+                    <option value="Blood Group">Blood Group</option>
+                    <option value="Height">Height</option>
+                    <option value="Weight">Weight</option>
+                </select>
+            </div>
+            <mat-error class="error-txt-class" *ngIf="(rf.reminder.hasError('required') && rf.reminder.touched)">
+                This field is required.
+            </mat-error>
+        </div>
+        <div class="row m-0 justify-content-between">
+            <div class="text-box-49">
+                <div class="row m-0 text-box col-12 p-1"
+                    [ngClass]="{'error-class' : checkReadingDateStyleError(rf.reading_date)}">
+                    <div class="material-textfield w-84">
+                        <input matInput [matDatepicker]="Reading_datePicker" class="input-box-txt" [min]="maxDate"
+                            [ngClass]="{'error-class-lable' : checkReadingDateStyleError(rf.reading_date)}" type="text"
+                            placeholder=" " formControlName="reading_date">
+                        <label class="label-txt"
+                            [ngClass]="{'error-class-lable' : checkReadingDateStyleError(rf.reading_date)}">Date</label>
+                        <mat-datepicker #Reading_datePicker touchUi></mat-datepicker>
+                    </div>
+                    <img (click)="Reading_datePicker.open()" class="align-self-center"
+                        src="./assets/images/calendar.svg" alt="calendar">
+                </div>
+                <mat-error class="error-txt-class" *ngIf="checkReadingDateError(rf.reading_date)">
+                    {{readingDateError}}
+                </mat-error>
+            </div>
+            <div class="text-box-49">
+                <!-- <div class="row m-0 text-box col-12 p-1"
+                    [ngClass]="{'error-class' : checkReadingTimeStyleError(rf.reading_time)}">
+                    <div class="material-textfield w-84">
+                        <input matInput [ngxTimepicker]="Reading_timePicker" class="input-box-txt"
+                            [ngClass]="{'error-class-lable' : checkReadingTimeStyleError(rf.reading_time)}" type="text"
+                            placeholder=" " formControlName="reading_time" [format]="24">
+                        <label class="label-txt"
+                            [ngClass]="{'error-class-lable' : checkReadingTimeStyleError(rf.reading_time)}">Time</label>
+                        <ngx-material-timepicker #Reading_timePicker></ngx-material-timepicker>
+                    </div>
+                    <img (click)="Reading_timePicker.open()" class="align-self-center"
+                        src="./assets/images/time.svg" alt="time">
+                </div>
+                <mat-error class="error-txt-class" *ngIf="checkReadingTimeError(rf.reading_time)">
+                    {{readingTimeError}}
+                </mat-error> -->
+            </div>
+        </div>
+    </form>
+    <div class="row m-0 justify-content-end pt-3">
+        <div class="save-btn cancel-btn my-1 py-1 px-5 row m-0 justify-content-center align-items-center cursor-pointer"
+            (click)="close()">
+            <span class="save-btn-txt cancel-txt">Cancel</span>
+        </div>
+        <div class="save-btn my-1 ml-3 py-1 px-5 row m-0 justify-content-center align-items-center cursor-pointer"
+            (click)="saveReminder()">
+            <span class="save-btn-txt">Save</span>
+        </div>
+    </div>
+</div>

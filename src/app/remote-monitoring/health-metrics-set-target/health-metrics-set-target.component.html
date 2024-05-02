@@ -1,0 +1,223 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-newton-cradle">
+    <p class="txt-h2"> Loading... </p>
+</ngx-spinner>
+<div class="health-metrics-set-target p-3">
+    <div class="row m-0 justify-content-between">
+        <div class="row m-0 justify-content-start align-items-center">
+            <span class="hmst-txt-1">Set Target</span>
+        </div>
+        <div class="row m-0 justify-content-start align-items-center cursor-pointer" (click)="close()">
+            <img src="./assets/images/hi-community/cc-close.svg" alt="cc-close">
+        </div>
+    </div>
+    <form [formGroup]="hmst">
+        <div class="row m-0 my-3 justify-content-between">
+            <div class="text-box-30">
+                <div class="row m-0 text-box col-12 p-1"
+                    [ngClass]="{'error-class' : checkWeightTargetStyleError(hmstf.weightTarget)}">
+                    <div class="row m-0 w-100">
+                        <div class="material-textfield w-80">
+                            <input class="input-box-txt"
+                                [ngClass]="{'error-class-lable' : checkWeightTargetStyleError(hmstf.weightTarget)}"
+                                type="text" placeholder=" " formControlName="weightTarget">
+                            <label class="label-txt"
+                                [ngClass]="{'error-class-lable' : checkWeightTargetStyleError(hmstf.weightTarget)}">Weight
+                                Target</label>
+                        </div>
+                        <div class="row m-0 w-20 justify-content-end">
+                            <select formControlName="weightTargetUnit"
+                                class="input-box-txt txt-base-regular brand-color">
+                                <option value="kg">kg</option>
+                                <option value="lbs">lbs</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <mat-error class="error-txt-class" *ngIf="checkWeightTargetError(hmstf.weightTarget)">
+                    {{weightTargetError}}
+                </mat-error>
+            </div>
+            <div class="text-box-30">
+                <div class="row m-0 text-box col-12 p-1"
+                    [ngClass]="{'error-class' : checkStepsStyleError(hmstf.stepTarget)}">
+                    <div class="row m-0 w-100">
+                        <div class="material-textfield w-80">
+                            <input class="input-box-txt"
+                                [ngClass]="{'error-class-lable' : checkStepsStyleError(hmstf.stepTarget)}" type="text"
+                                placeholder=" " formControlName="stepTarget">
+                            <label class="label-txt"
+                                [ngClass]="{'error-class-lable' : checkStepsStyleError(hmstf.stepTarget)}">Steps</label>
+                        </div>
+                        <div class="row m-0 justify-content-end align-items-center w-20 pr-1">
+                            <span class="txt-base-regular brand-color">Per Day</span>
+                        </div>
+                    </div>
+                </div>
+                <mat-error class="error-txt-class" *ngIf="checkStepsError(hmstf.stepTarget)">
+                    {{stepsError}}
+                </mat-error>
+            </div>
+            <div class="text-box-30">
+                <div class="row m-0 text-box col-12 p-1"
+                    [ngClass]="{'error-class' : checkBicycleTargetStyleError(hmstf.bicycleTarget)}">
+                    <div class="row m-0 w-100">
+                        <div class="material-textfield w-75">
+                            <input class="input-box-txt"
+                                [ngClass]="{'error-class-lable' : checkBicycleTargetStyleError(hmstf.bicycleTarget)}"
+                                type="text" placeholder=" " formControlName="bicycleTarget">
+                            <label class="label-txt"
+                                [ngClass]="{'error-class-lable' : checkBicycleTargetStyleError(hmstf.bicycleTarget)}">Bicycle</label>
+                        </div>
+                        <div class="row m-0 w-25 justify-content-end">
+                            <select formControlName="bicycleTargetUnit"
+                                class="input-box-txt txt-base-regular brand-color">
+                                <option value="mins">mins</option>
+                                <option value="hrs">hrs</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <mat-error class="error-txt-class" *ngIf="checkBicycleTargetError(hmstf.bicycleTarget)">
+                    {{bicycleTargetError}}
+                </mat-error>
+            </div>
+        </div>
+        <div class="row m-0 my-3 justify-content-between">
+            <div class="text-box-30">
+                <div class="row m-0 text-box col-12 p-1"
+                    [ngClass]="{'error-class' : checkExerciseTargetStyleError(hmstf.exerciseTarget)}">
+                    <div class="row m-0 w-100">
+                        <div class="material-textfield w-75">
+                            <input class="input-box-txt"
+                                [ngClass]="{'error-class-lable' : checkExerciseTargetStyleError(hmstf.exerciseTarget)}"
+                                type="text" placeholder=" " formControlName="exerciseTarget">
+                            <label class="label-txt"
+                                [ngClass]="{'error-class-lable' : checkExerciseTargetStyleError(hmstf.exerciseTarget)}">Exercise
+                                Target</label>
+                        </div>
+                        <div class="row m-0 w-25 justify-content-end">
+                            <select formControlName="exerciseTargetUnit"
+                                class="input-box-txt txt-base-regular brand-color">
+                                <option value="mins">mins</option>
+                                <option value="hrs">hrs</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <mat-error class="error-txt-class" *ngIf="checkExerciseTargetError(hmstf.exerciseTarget)">
+                    {{exerciseTargetError}}
+                </mat-error>
+            </div>
+            <div class="text-box-30">
+                <div class="row m-0 text-box col-12 p-1"
+                    [ngClass]="{'error-class' : checkSwimmingTargetStyleError(hmstf.swimmingTarget)}">
+                    <div class="row m-0 w-100">
+                        <div class="material-textfield w-75">
+                            <input class="input-box-txt"
+                                [ngClass]="{'error-class-lable' : checkSwimmingTargetStyleError(hmstf.swimmingTarget)}"
+                                type="text" placeholder=" " formControlName="swimmingTarget">
+                            <label class="label-txt"
+                                [ngClass]="{'error-class-lable' : checkSwimmingTargetStyleError(hmstf.swimmingTarget)}">Swimming
+                                Target</label>
+                        </div>
+                        <div class="row m-0 w-25 justify-content-end">
+                            <select formControlName="swimmingTargetUnit"
+                                class="input-box-txt txt-base-regular brand-color">
+                                <option value="mins">mins</option>
+                                <option value="hrs">hrs</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <mat-error class="error-txt-class" *ngIf="checkSwimmingTargetError(hmstf.swimmingTarget)">
+                    {{swimmingTargetError}}
+                </mat-error>
+            </div>
+            <div class="text-box-30">
+                <div class="row m-0 text-box col-12 p-1"
+                    [ngClass]="{'error-class' : checkWaterIntakeTargetStyleError(hmstf.waterIntakeTarget)}">
+                    <div class="row m-0 w-100">
+                        <div class="material-textfield w-80">
+                            <input class="input-box-txt"
+                                [ngClass]="{'error-class-lable' : checkWaterIntakeTargetStyleError(hmstf.waterIntakeTarget)}"
+                                type="text" placeholder=" " formControlName="waterIntakeTarget">
+                            <label class="label-txt"
+                                [ngClass]="{'error-class-lable' : checkWaterIntakeTargetStyleError(hmstf.waterIntakeTarget)}">Water
+                                Intake Target</label>
+                        </div>
+                        <div class="row m-0 justify-content-end align-items-center w-20 pr-1">
+                            <span class="txt-base-regular brand-color">glass/day</span>
+                        </div>
+                    </div>
+                </div>
+                <mat-error class="error-txt-class" *ngIf="checkWaterIntakeTargetError(hmstf.waterIntakeTarget)">
+                    {{waterIntakeTargetError}}
+                </mat-error>
+            </div>
+        </div>
+        <div class="row m-0 my-3 justify-content-between">
+            <div class="text-box-30">
+                <div class="row m-0 text-box col-12 p-1"
+                    [ngClass]="{'error-class' : checkCalorieIntakeTargetStyleError(hmstf.calorieIntakeTarget)}">
+                    <div class="row m-0 w-100">
+                        <div class="material-textfield">
+                            <input class="input-box-txt"
+                                [ngClass]="{'error-class-lable' : checkCalorieIntakeTargetStyleError(hmstf.calorieIntakeTarget)}"
+                                type="text" placeholder=" " formControlName="calorieIntakeTarget">
+                            <label class="label-txt"
+                                [ngClass]="{'error-class-lable' : checkCalorieIntakeTargetStyleError(hmstf.calorieIntakeTarget)}">Calorie
+                                Intake Target</label>
+                        </div>
+                    </div>
+                </div>
+                <mat-error class="error-txt-class" *ngIf="checkCalorieIntakeTargetError(hmstf.calorieIntakeTarget)">
+                    {{calorieIntakeTargetError}}
+                </mat-error>
+            </div>
+            <div class="text-box-30">
+                <div class="row m-0 text-box col-12 p-1"
+                    [ngClass]="{'error-class' : checkCalorieBurnTargetStyleError(hmstf.calorieBurnTarget)}">
+                    <div class="material-textfield">
+                        <input class="input-box-txt"
+                            [ngClass]="{'error-class-lable' : checkCalorieBurnTargetStyleError(hmstf.calorieBurnTarget)}"
+                            type="text" placeholder=" " formControlName="calorieBurnTarget">
+                        <label class="label-txt"
+                            [ngClass]="{'error-class-lable' : checkCalorieBurnTargetStyleError(hmstf.calorieBurnTarget)}">Calorie
+                            Burn Target</label>
+                    </div>
+                </div>
+                <mat-error class="error-txt-class" *ngIf="checkCalorieBurnTargetError(hmstf.calorieBurnTarget)">
+                    {{calorieBurnTargetError}}
+                </mat-error>
+            </div>
+            <div class="text-box-30">
+                <div class="row m-0 text-box col-12 p-1"
+                    [ngClass]="{'error-class' : checkSleepHourTargetStyleError(hmstf.sleepHourTarget)}">
+                    <div class="row m-0 w-100">
+                        <div class="material-textfield w-80">
+                            <input class="input-box-txt"
+                                [ngClass]="{'error-class-lable' : checkSleepHourTargetStyleError(hmstf.sleepHourTarget)}"
+                                type="text" placeholder=" " formControlName="sleepHourTarget">
+                            <label class="label-txt"
+                                [ngClass]="{'error-class-lable' : checkSleepHourTargetStyleError(hmstf.sleepHourTarget)}">Sleep
+                                Hours Target</label>
+                        </div>
+                        <div class="row m-0 justify-content-end align-items-center w-20 pr-1">
+                            <span class="txt-base-regular brand-color">hour/day</span>
+                        </div>
+                    </div>
+                </div>
+                <mat-error class="error-txt-class" *ngIf="checkSleepHourTargetError(hmstf.sleepHourTarget)">
+                    {{sleepHourTargetError}}
+                </mat-error>
+            </div>
+        </div>
+
+        <div class="row m-0 justify-content-start align-items-center">
+            <div class="set-btn py-2 px-3 row m-0 justify-content-center align-items-center cursor-pointer"
+                (click)="callSaveTarget()">
+                <span class="save-btn-txt">Save Targets</span>
+            </div>
+        </div>
+    </form>
+</div>

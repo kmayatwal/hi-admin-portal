@@ -1,0 +1,87 @@
+.patient-view-file-side-menu {
+    .icon-img {
+        width: 72px;
+        height: 72px;
+    }
+    .name {
+        font-size: 16px;
+        color: #1d1d1f;
+        font-weight: 500;
+        text-transform: capitalize;
+    }
+    .p-f-txt-1 {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 120%;
+        color: #ffffff;
+    }
+    .p-f-txt-2 {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 100%;
+        color: rgba(255, 255, 255, 0.7);
+    }
+    .p-f-txt-3 {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 100%;
+    }
+    .txt-2 {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 15px;
+        color: #000000;
+    }
+    .p-f-txt-4 {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 18px;
+        letter-spacing: 0.12em;
+        color: #00ffe6;
+    }
+    .p-f-txt-5 {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 100%;
+        color: #ffffff;
+    }
+    .p-f-txt-6 {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 18px;
+        color: #efefef;
+        opacity: 0.7;
+    }
+    .Poppins-Regular {
+        font-family: Poppins-Regular !important;
+        // color: #a9cce2 !important;
+    }
+    .border-pvf {
+        border: 0.2px solid #ffffff;
+    }
+    .p-v-f-btn-1 {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
+    }
+    .w-b {
+        word-break: break-word;
+    }
+    .unpaid {
+        color: #F46A6A;
+        background: white;
+    }
+}

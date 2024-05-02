@@ -1,0 +1,65 @@
+.health-metrics {
+    .text-box-30 {
+        max-width: 31.5%;
+        flex: 0 0 31.5%;
+    }
+    .text-box-21 {
+        max-width: 21.5%;
+        flex: 0 0 21.5%;
+    }
+    .hm-txt-1 {
+        color: #2a2d32;
+        // font-family: Poppins;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 15px; /* 83.333% */
+        letter-spacing: -0.36px;
+        text-transform: capitalize;
+    }
+    .bicycle-box {
+        background: rgba(255, 124, 82, 0.1);
+        position: relative;
+    }
+    .middle-image {
+        bottom: 85px;
+        position: absolute;
+        left: 85px;
+    }
+    .remaining-days {
+        border-radius: 60px;
+        background: #ffc3d8;
+    }
+    .hm-txt-2 {
+        color: #c74975;
+        // font-family: Poppins;
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+    .hm-txt-3 {
+        color: #000;
+        font-family: Poppins-SemiBold;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 20px; /* 111.111% */
+    }
+    .hm-txt-4 {
+        color: #909090;
+        font-family: Poppins-Regular;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 18px; /* 150% */
+    }
+    .hm-txt-5 {
+        color: #000;
+        // font-family: Poppins;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+}

@@ -46,6 +46,21 @@ import { PreviewArticleComponent } from './health-hub/preview-article/preview-ar
 import { ArticleDescriptionComponent } from './health-hub/create-article/article-description/article-description.component';
 import { HiSelectBoxComponent } from './hi-select-box/hi-select-box.component';
 import { DashboardDateComponent } from './dashboard/dashboard-date/dashboard-date.component';
+import { PatientViewFileSideMenuComponent } from './remote-monitoring/patient-view-file-side-menu/patient-view-file-side-menu.component';
+import { PatientFileVitalsComponent } from './remote-monitoring/patient-file-vitals/patient-file-vitals.component';
+import { ChartsComponent } from './chart/chart.component';
+import { AddReminderComponent } from './remote-monitoring/add-vital/add-reminder/add-reminder.component';
+import { AddVitalComponent } from './remote-monitoring/add-vital/add-vital.component';
+import { HealthMetricsComponent } from './remote-monitoring/health-metrics/health-metrics.component';
+import { HealthMetricsSetTargetComponent } from './remote-monitoring/health-metrics-set-target/health-metrics-set-target.component';
+import { HealthTrackersComponent } from './remote-monitoring/health-trackers/health-trackers.component';
+import { MedicationComplianceComponent } from './remote-monitoring/medication-compliance/medication-compliance.component';
+import { GlasgowComaScaleComponent } from './remote-monitoring/patient-file-vitals/glasgow-coma-scale/glasgow-coma-scale.component';
+import { RemoteMonitoringAddNotesComponent } from './remote-monitoring/remote-monitoring-add-notes/remote-monitoring-add-notes.component';
+import { RemoteMonitoringAllergyComponent } from './remote-monitoring/remote-monitoring-allergy/remote-monitoring-allergy.component';
+import { RemoteMonitoringFamilyMedicalHistoryComponent } from './remote-monitoring/remote-monitoring-family-medical-history/remote-monitoring-family-medical-history.component';
+import { MonitoringPlanComponent } from './remote-monitoring/remote-monitoring-subscription-plan/remote-monitoring-subscription-plan.component';
+import { VitalGraphComponent } from './remote-monitoring/vital-graph/vital-graph.component';
 
 export function createApollo(httpLink: HttpLink) {
   return {
@@ -70,7 +85,22 @@ export function createApollo(httpLink: HttpLink) {
     PreviewArticleComponent,
     ArticleDescriptionComponent,
     HiSelectBoxComponent,
-    DashboardDateComponent
+    DashboardDateComponent,
+    PatientViewFileSideMenuComponent,
+    PatientFileVitalsComponent,
+    ChartsComponent,
+    AddReminderComponent,
+    AddVitalComponent,
+    HealthMetricsComponent,
+    HealthMetricsSetTargetComponent,
+    HealthTrackersComponent,
+    MedicationComplianceComponent,
+    GlasgowComaScaleComponent,
+    RemoteMonitoringAddNotesComponent,
+    RemoteMonitoringAllergyComponent,
+    RemoteMonitoringFamilyMedicalHistoryComponent,
+    MonitoringPlanComponent,
+    VitalGraphComponent
   ],
   imports: [
     ApolloModule,

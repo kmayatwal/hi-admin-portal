@@ -1,0 +1,88 @@
+.glasgow-coma-scale {
+    .heading {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 30px;
+        color: #000000;
+    }
+    .snomed-txt {
+        font-family: Poppins;
+        font-style: italic;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 21px;
+        color: #858585;
+    }
+    .save-btn {
+        background: #057cc3;
+        border-radius: 3px;
+    }
+    .save-btn-txt {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        color: #ffffff;
+    }
+    .cancel-txt {
+        color: #66676b;
+    }
+    .cancel-btn {
+        background: #ffffff;
+        border: 2px solid #dadada;
+        box-sizing: border-box;
+        border-radius: 3px;
+    }
+    .gcs-btn {
+        background: #34c38f;
+        border-radius: 3px;
+    }
+    .box-border {
+        background: #ffffff;
+        border: 1px solid #dadada;
+        box-sizing: border-box;
+        border-radius: 4px;
+    }
+    .glasgow-txt-1 {
+        font-family: Poppins-Regular;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 21px;
+        color: #2a2d32;
+    }
+    .box-20 {
+        max-width: 20%;
+        flex: 0 0 20%;
+    }
+    .box-scale {
+        height: 24px;
+        width: 24px;
+        border-radius: 3px;
+    }
+    .box-mild {
+        background: #34c38f;
+    }
+    .box-Moderate {
+        background: #fca600;
+    }
+    .box-severe {
+        background: #f46a6a;
+    }
+    .glasgow-txt-2 {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        display: flex;
+        align-items: center;
+        color: #2a2d32;
+    }
+    .f-14 {
+        font-size: 14px;
+    }
+}

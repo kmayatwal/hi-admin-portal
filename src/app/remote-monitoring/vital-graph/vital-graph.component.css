@@ -1,0 +1,394 @@
+.hover-cursor:hover {
+    cursor: pointer
+}
+
+.jc-se {
+    justify-content: space-between;
+}
+
+.vital-graph .vital-heading-text {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    color: #328DCC;
+}
+
+.vital-graph .vital-time {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+    color: #919191;
+}
+
+.vital-graph .record-button-graph {
+    width: 123px;
+    height: 34px;
+    background: #328DCC;
+    border-radius: 3px;
+}
+
+.vital-graph .record-button-text {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.vital-graph .jc-ai-c {
+    justify-content: center;
+    align-items: center;
+}
+
+.vital-graph .border-bottom-vital-type {
+    padding-inline: 5px;
+}
+
+.vital-graph .border-bottom-vital-type-s {
+    border-bottom: 3px solid #328DCC;
+}
+
+.vital-graph .vital-time-text {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: #919191;
+}
+
+.vital-graph .vital-time-type-s {
+    color: #328DCC;
+}
+
+.vital-graph .vital-status {
+    background: #F2F6FB;
+    border-radius: 3px;
+    min-width: 108px;
+}
+
+.vital-graph .vital-text {
+    font-family: Avenir;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #333232;
+}
+
+.vital-graph .vital-val {
+    font-family: Avenir;
+    font-style: normal;
+    font-weight: 850;
+    font-size: 25px;
+    line-height: 39px;
+    color: #FF0000;
+}
+
+.vital-graph .vital-avg {
+    color: #EEB300;
+}
+
+.vital-graph .vital-max {
+    color: #51BE98;
+}
+
+.vital-graph .systolic-selected {
+    border: 1px solid #51BE98;
+}
+
+.vital-graph .diastolic-selected {
+    border: 1px solid #057CC3;
+}
+
+.vital-graph .normal-color {
+    color: #51BE98;
+}
+
+.vital-graph .risk-color {
+    color: #EEB300;
+}
+
+.vital-graph .emergency-color {
+    color: #FF0000;
+}
+
+.vital-graph .fs-16 {
+    font-size: 16px;
+}
+
+.vital-graph .fs-14 {
+    font-size: 14px;
+}
+
+.vital-graph .img-size {
+    height: 15px;
+}
+
+.vital-graph .mx-w-12 {
+    max-width: 12%;
+}
+
+.vital-graph .mx-w-88 {
+    max-width: 88%;
+}
+
+.vital-graph .min-h-180 {
+    min-height: 180px;
+}
+
+.vital-graph .jc-fe {
+    justify-content: flex-end;
+}
+
+.vital-graph .mx-w-49 {
+    max-width: 49%;
+    min-width: 49%;
+    background: #FFFFFF;
+    border: 1px solid #E9EDF2;
+    box-sizing: border-box;
+    border-radius: 3px;
+}
+
+.vital-graph .recent-readings {
+    font-family: Avenir;
+    font-style: normal;
+    font-weight: 850;
+    font-size: 16px;
+    line-height: 25px;
+    color: #333232;
+}
+
+.vital-graph .view-all {
+    font-family: Avenir;
+    font-style: normal;
+    font-weight: 850;
+    font-size: 14px;
+    line-height: 22px;
+    color: #328DCC;
+}
+
+.vital-graph .tags {
+    justify-content: center;
+    align-items: center;
+    height: 23px;
+    background: #E0EEF7;
+    border-radius: 16.5px;
+    margin-right: 5px;
+}
+
+.vital-graph .tag-text {
+    font-family: Avenir;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 15px;
+    color: #328DCC;
+    padding-inline: 10px;
+}
+
+.vital-graph .attach-text {
+    font-family: Avenir;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px;
+    text-decoration-line: underline;
+    color: #328DCC;
+}
+
+.vital-graph .jc-sb {
+    justify-content: space-between;
+}
+
+.vital-graph .mi-w-88 {
+    min-width: 88%;
+}
+
+.vital-graph .vital-text-blank {
+    font-family: Avenir;
+    font-style: normal;
+    font-weight: 850;
+    font-size: 25px;
+    line-height: 39px;
+    color: #919191;
+}
+
+.vital-graph .vital-recent-readings-blank {
+    height: 150px;
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #E9EDF2;
+    box-sizing: border-box;
+    border-radius: 3px;
+}
+
+.vital-graph .vital-recent-readings-text-blank {
+    font-family: Avenir;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 28px;
+    text-align: center;
+    color: #919191;
+    opacity: 0.64;
+}
+
+.vital-graph .jc-ai-c {
+    justify-content: center;
+    align-items: center;
+}
+
+.vital-graph .blankGraph-img {
+    width: 100%;
+    height: 250px;
+}
+
+.vital-graph .systolic {
+    background: #e5f5f1;
+    border-radius: 3px;
+    padding-inline: 10px;
+    cursor: pointer;
+}
+
+.vital-graph .diastolic {
+    background: #e0eef7;
+    border-radius: 3px;
+    padding-inline: 10px;
+    cursor: pointer;
+}
+
+.vital-graph .blood-pressure {
+    gap: 12px;
+}
+
+.vital-graph .blood-pressure-text {
+    font-family: Avenir;
+    font-style: normal;
+    font-weight: 850;
+    font-size: 12px;
+    line-height: 19px;
+}
+
+.vital-graph .blood-pressure-text-s {
+    color: #51BE98;
+}
+
+.vital-graph .blood-pressure-text-d {
+    color: #328DCC;
+}
+
+.vital-graph .jc-sb {
+    justify-content: space-between;
+}
+
+.vital-graph .tabs {
+    padding: 10px;
+    border: 2px solid #E9EDF2;
+    border-radius: 3px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.vital-graph .single-tab {
+    padding-inline: 10px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+    color: #919191;
+}
+
+
+.vital-graph .vital-range-text {
+    font-family: Poppins;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 21px;
+    color: #333232;
+}
+
+.vital-graph .single-tab-bb {
+    border-bottom: 3px solid #328DCC;
+    margin-bottom: -5px;
+}
+
+.vital-graph .single-tab-s {
+    font-weight: 600 !important;
+    color: #328DCC !important;
+}
+
+.vital-graph .vital-style-text {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    color: #000000;
+}
+
+.vital-graph .vital-sidebar-heading-text {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #1D1D1F;
+}
+
+.vital-graph .selected-vital {
+    background: #E0EEF7;
+}
+
+.vital-graph .selected-vital-text {
+    color: #328DCC;
+}
+
+.vital-area {
+    flex-wrap: unset;
+    gap: 20px;
+}
+
+.vital-area .app-chart {
+    width: 100%;
+    height: 100%;
+}
+
+.vital-area .app-chart app-chart {
+    width: 100%;
+}
+
+.vital-area .vital-records {
+    display: flex;
+    flex-direction: column;
+}
+
+.vital-graph .recent-readings .date {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+.vital-graph .recent-readings .note {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 21px;
+}
+
+::ng-deep .add-vital-width .modal-dialog {
+    max-width: 1300px;
+}

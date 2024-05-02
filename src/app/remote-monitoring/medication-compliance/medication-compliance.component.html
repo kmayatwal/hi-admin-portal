@@ -1,0 +1,69 @@
+<div>
+    <div class="item-heading-border">
+        <div class="row m-0 px-3 pt-2">
+            <span class="font-heading5-bold"><img class="mr-2" src="./assets/images/medical-compliance.svg">Medication Compliance</span>
+        </div>
+        <div class="row ml-3 mr-3 justify-content-between align-items-center my-2">
+            <div class="col-6 p-0 p-1 justify-content-end">
+                <div class="col-12 row m-0 border-all-grey" id="medicineField" (click)="openMedicineList()">
+                    <div class="material-textfield w-80">
+                        <input class="input-box-txt cursor-pointer" id="medicineInputField" type="text" placeholder=" "
+                            [(ngModel)]="medicine" readonly>
+                    </div>
+                    <img class="w-12" src="./assets/images/chevron-down.svg"
+                        alt="chevron-down">
+                </div>
+                <div *ngIf="showMedicineList">
+                    <app-hi-select-box [type]="'single'" [searchEnable]="false" [dataList]="medicineList"
+                        (setItemInComponent)="setMedicine($event)" [showTyped]="false" [typedValue]="true"
+                        [width]="medicineFieldWidth"></app-hi-select-box>
+                </div>
+            </div>
+            <div class="col-5 p-0 p-1 justify-content-end">
+                <div class="col-12 row m-0 border-all-grey" id="durationField" (click)="openDurationList()">
+                    <div class="material-textfield w-80">
+                        <input class="input-box-txt cursor-pointer" id="durationInputField" type="text" placeholder=" "
+                            [(ngModel)]="duration" readonly>
+                    </div>
+                    <img (click)="openDurationList()" class="w-12" src="./assets/images/chevron-down.svg"
+                        alt="chevron-down">
+                </div>
+                <div *ngIf="showDurationList">
+                    <app-hi-select-box [type]="'single'" [searchEnable]="false" [dataList]="durationDataList"
+                        (setItemInComponent)="setDuration($event)" [showTyped]="false" [typedValue]="true"
+                        [width]="durationFieldWidth"></app-hi-select-box>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex light-grey-background justify-content-between">
+        <div class="grid px-3">
+            <span class="font-body-bold margin-auto">Weekly pill use</span>
+            <span class="font-heading3">{{dateRange}}</span>
+        </div>
+        <app-circular-progress [progress]="totalTakenPercentage"></app-circular-progress>
+    </div>
+    <div class="revenue px-2 pt-2">
+        <div *ngIf="loading">Loading...</div>
+        <div *ngIf="revenueList">
+            <div class="chart-component">
+                <div readonly='true'>
+                    <div class="myChart show">
+                        <canvas #myCanvas baseChart height="275" [chartType]="barChartType"
+                            [datasets]="barChartData?.datasets" [labels]="chartLabels" [options]="barChartOptions">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pt-4 pb-4" *ngIf="revenueList?.length === 0 && !loading">
+            <div class="pt-4 pb-2 d-flex justify-content-center align-items-center">
+                <img src="./assets/images/no-data.svg" alt="no-data">
+            </div>
+            <div class="pt-2 d-flex justify-content-center align-items-center">
+                <span class="img-bottom-txt">No data</span>
+            </div>
+        </div>
+    </div>
+</div>

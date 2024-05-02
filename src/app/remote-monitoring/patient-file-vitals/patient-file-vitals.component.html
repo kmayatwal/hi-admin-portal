@@ -1,0 +1,604 @@
+<div class="vitals py-3">
+    <div class="row m-0">
+        <div class="col-6 p-0">
+            <div class="row m-0">
+                <span class="txt-h3"><img src="./assets/images/heart-rate.svg" alt="attachment-2"
+                        class="mr-2">Vitals</span>
+            </div>
+            <div class="row m-0 py-2" *ngIf="lastUpdatedDate">
+                <div class="row m-0">
+                    <span class="secondary-text color-mid-grey">Last recorded on {{lastUpdatedDate | date : 'dd MMM,
+                        yyyy h:mm a'}}</span>
+                </div>
+                <div class="row m-0 day-box ml-1 px-2">
+                    <span class="secondary-text brand-color">{{getLastUpdatedDay(lastUpdatedDate)}} days ago</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 p-0">
+            <div class="pb-2 row m-0 justify-content-end">
+                <div class="row m-0 justify-content-center align-items-center cursor-pointer"
+                    (click)="openGraph('temperature')">
+                    <img src="./assets/images/vitals-graph.svg" alt="vitals-graph">
+                </div>
+                <div class="row m-0 justify-content-center align-items-center pl-3">
+                    <div class="dot-green"></div>
+                    <div class="row m-0 pl-1">
+                        <span class="secondary-text">Mild</span>
+                    </div>
+                </div>
+                <div class="row m-0 justify-content-center align-items-center pl-3">
+                    <div class="dot-green moderate"></div>
+                    <div class="row m-0 pl-1">
+                        <span class="secondary-text">Moderate</span>
+                    </div>
+                </div>
+                <div class="row m-0 justify-content-center align-items-center pl-3">
+                    <div class="dot-green severe"></div>
+                    <div class="row m-0 pl-1">
+                        <span class="secondary-text">Severe</span>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="pb-2 row m-0 justify-content-end">
+                <div class="save-btn p-2 px-3 row m-0 justify-content-center align-items-center cursor-pointer"
+                    (click)="recordVital()" [ngClass]="{'disabled': (isAppointmentCancelled || isCompleted)}">
+                    <span class="save-btn-txt">Record Vital Signs</span>
+                </div>
+            </div>-->
+        </div>
+    </div>
+    <div class="py-3">
+        <div class="row m-0 justify-content-between pb-1">
+            <div class="vital-box p-2">
+                <div class="row m-0 justify-content-between pb-2 pt-1">
+                    <div class="row m-0">
+                        <span class="vital-name">Blood Group</span>
+                    </div>
+                    <!-- <div class="row m-0 justify-content-center align-items-center pl-1" *ngIf="bloodGroup?.value">
+                        <img src="./assets/images/chevron-right.svg" alt="chevron-right">
+                    </div> -->
+                </div>
+                <div class="row m-0 justify-content-between pb-2 pb-1">
+                    <div *ngIf="bloodGroup?.value">
+                        <div class="row m-0">
+                            <span class="vital-value">{{bloodGroup?.value}}<span
+                                    class="vital-unit">{{bloodGroup?.uom}}</span></span>
+                        </div>
+                        <div class="row m-0">
+                            <span class="vital-time">{{ (bloodGroup?.updatedAt) | date : 'MMM d, h:mm a'}}</span>
+                        </div>
+                    </div>
+                    <!--<div *ngIf="!bloodGroup?.value && !isAppointmentCompleted"
+                        class="save-btn p-2 px-3 row m-0 justify-content-center align-items-center cursor-pointer"
+                        (click)="recordVital()" [ngClass]="{'disabled': (isAppointmentCancelled || isCompleted)}">
+                        <span class="save-btn-txt">Record</span>
+                    </div>-->
+                    <div class="row m-0 justify-content-center align-items-center pl-1">
+                        <img src="./assets/images/blood-drop.svg" alt="blood-drop">
+                    </div>
+                </div>
+            </div>
+            <div class="vital-box p-2">
+                <div class="row m-0 justify-content-between pb-2 pt-1">
+                    <div class="row m-0">
+                        <span class="vital-name">Height</span>
+                    </div>
+                    <!-- <div class="row m-0 justify-content-center align-items-center pl-1" *ngIf="height?.value">
+                        <img src="./assets/images/chevron-right.svg" alt="chevron-right">
+                    </div> -->
+                </div>
+                <div class="row m-0 justify-content-between pb-2 pb-1">
+                    <div *ngIf="height?.value">
+                        <div class="row m-0">
+                            <span class="vital-value">{{height?.value}}<span
+                                    class="vital-unit">{{height?.uom}}</span></span>
+                        </div>
+                        <div class="row m-0">
+                            <span class="vital-time">{{ (height?.updatedAt) | date : 'MMM d, h:mm a'}}</span>
+                        </div>
+                    </div>
+                    <div *ngIf="!height?.value && isAppointmentCompleted">
+                        <div class="row m-0">
+                            <span class="vital-value">{{'--'}}</span>
+                        </div>
+                    </div>
+                    <!--<div *ngIf="!height?.value && !isAppointmentCompleted"
+                        class="save-btn p-2 px-3 row m-0 justify-content-center align-items-center cursor-pointer"
+                        (click)="recordVital()" [ngClass]="{'disabled': (isAppointmentCancelled || isCompleted)}">
+                        <span class="save-btn-txt">Record</span>
+                    </div>-->
+                    <div class="row m-0 justify-content-center align-items-center pl-1">
+                        <img src="./assets/images/height.svg" alt="height">
+                    </div>
+                </div>
+            </div>
+            <div class="vital-box p-2">
+                <div class="row m-0 justify-content-between pb-2 pt-1">
+                    <div class="row m-0">
+                        <span class="vital-name">Weight</span>
+                    </div>
+                    <!-- <div class="row m-0 justify-content-center align-items-center pl-1" *ngIf="weight?.value">
+                        <img src="./assets/images/chevron-right.svg" alt="chevron-right">
+                    </div> -->
+                </div>
+                <div class="row m-0 justify-content-between pb-2 pb-1">
+                    <div *ngIf="weight?.value">
+                        <div class="row m-0">
+                            <span class="vital-value">{{weight?.value}}<span
+                                    class="vital-unit">{{weight?.uom}}</span></span>
+                        </div>
+                        <div class="row m-0">
+                            <span class="vital-time">{{ (weight?.updatedAt) | date : 'MMM d, h:mm a'}}</span>
+                        </div>
+                    </div>
+                    <div *ngIf="!weight?.value && isAppointmentCompleted">
+                        <div class="row m-0">
+                            <span class="vital-value">{{'--'}}</span>
+                        </div>
+                    </div>
+                    <!--<div *ngIf="!weight?.value && !isAppointmentCompleted"
+                        class="save-btn p-2 px-3 row m-0 justify-content-center align-items-center cursor-pointer"
+                        (click)="recordVital()" [ngClass]="{'disabled': (isAppointmentCancelled || isCompleted)}">
+                        <span class="save-btn-txt">Record</span>
+                    </div>-->
+                    <div class="row m-0 justify-content-center align-items-center pl-1">
+                        <img src="./assets/images/weighing-scale.svg" alt="weighing-scale">
+                    </div>
+                </div>
+            </div>
+            <div class="vital-box p-2" [ngClass]="bmiBgColor"> <!--border-left-moderate-->
+                <div class="row m-0 justify-content-between pb-2 pt-1">
+                    <div class="row m-0">
+                        <span class="vital-name">Body Mass Index</span>
+                    </div>
+                    <!-- <div class="row m-0 justify-content-center align-items-center pl-1">
+                        <img src="./assets/images/chevron-right.svg" alt="chevron-right">
+                    </div> -->
+                </div>
+                <div class="row m-0 justify-content-between pb-2 pb-1">
+                    <div class="">
+                        <div class="row m-0">
+                            <span class="vital-value" [ngClass]="bmiTxtColor">{{bmi || '-'}}&nbsp;<span
+                                    class="pfv-txt-bmi" *ngIf="bmi">({{bmiCategory ||
+                                    ''}})</span></span>
+                        </div>
+                        <div class="row m-0" *ngIf="bmi">
+                            <span class="vital-time">{{ (todayDate) | date : 'MMM d, h:mm a'}}</span>
+                        </div>
+                    </div>
+                    <div class="row m-0 justify-content-center align-items-center pl-1">
+                        <img src="./assets/images/bmi.svg" alt="bmi">
+                    </div>
+                </div>
+            </div>
+            <div class="vital-box p-2 border-left-solid" [ngStyle]="{'border-left-color': pulse_data?.color }">
+                <div class="row m-0 justify-content-between pb-2 pt-1">
+                    <div class="row m-0">
+                        <span class="vital-name">Pulse</span>
+                    </div>
+                    <div class="row m-0 justify-content-center align-items-center pl-1 cursor-pointer"
+                        (click)="openGraph('pulse')" *ngIf="pulse_data?.value">
+                        <img src="./assets/images/chevron-right.svg" alt="chevron-right">
+                    </div>
+                </div>
+                <div class="row m-0 justify-content-between pb-2 pb-1">
+                    <div *ngIf="pulse_data?.value">
+                        <div class="row m-0">
+                            <span class="vital-value" [ngStyle]="{'color': pulse_data?.color }">{{pulse_data?.value |
+                                number :
+                                '3.0-0'}}<span class="vital-unit">{{pulse_data?.uom}}</span></span>
+                        </div>
+                        <div class="row m-0">
+                            <span class="vital-time">{{ (pulse_data?.readingDate ) | date : 'MMM d, h:mm a'}}</span>
+                        </div>
+                    </div>
+                    <div *ngIf="!pulse_data?.value && isAppointmentCompleted">
+                        <div class="row m-0">
+                            <span class="vital-value">{{'--'}}</span>
+                        </div>
+                    </div>
+                    <!--<div *ngIf="!pulse_data?.value && !isAppointmentCompleted"
+                        class="save-btn p-2 px-3 row m-0 justify-content-center align-items-center cursor-pointer"
+                        (click)="recordVital()" [ngClass]="{'disabled': (isAppointmentCancelled || isCompleted)}">
+                        <span class="save-btn-txt">Record</span>
+                    </div>-->
+                    <div class="row m-0 justify-content-center align-items-center pl-1">
+                        <img src="./assets/images/pulse.svg" alt="pulse">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row m-0 justify-content-between py-1">
+            <div class="vital-box p-2 border-left-solid" [ngStyle]="{'border-left-color': blood_pressure_data?.color }">
+                <div class="row m-0 justify-content-between pb-2 pt-1">
+                    <div class="row m-0">
+                        <span class="vital-name">Blood Pressure</span>
+                    </div>
+                    <div class="row m-0 justify-content-center align-items-center pl-1 cursor-pointer"
+                        (click)="openGraph('bloodPressure')" *ngIf="blood_pressure_data?.value">
+                        <img src="./assets/images/chevron-right.svg" alt="chevron-right">
+                    </div>
+                </div>
+                <div class="row m-0 justify-content-between pb-2 pb-1">
+                    <div *ngIf="blood_pressure_data?.value" class="col-9 p-0 text-truncate">
+                        <div class="row m-0">
+                            <span class="vital-value"
+                                [ngStyle]="{'color': blood_pressure_data?.color }">{{blood_pressure_data?.value}}<span
+                                    class="vital-unit">{{blood_pressure_data?.uom}}</span></span>
+                        </div>
+                        <div class="row m-0">
+                            <span class="vital-time ">{{ (blood_pressure_data?.readingDate) | date : 'MMM d, h:mm
+                                a'}}</span>
+                        </div>
+                    </div>
+                    <div *ngIf="!blood_pressure_data?.value && isAppointmentCompleted">
+                        <div class="row m-0">
+                            <span class="vital-value">{{'--'}}</span>
+                        </div>
+                    </div>
+                    <!--<div *ngIf="!blood_pressure_data?.value && !isAppointmentCompleted"
+                        class="save-btn p-2 px-3 row m-0 justify-content-center align-items-center cursor-pointer"
+                        (click)="recordVital()" [ngClass]="{'disabled': (isAppointmentCancelled || isCompleted)}">
+                        <span class="save-btn-txt">Record</span>
+                    </div>-->
+                    <div class="row m-0 justify-content-center align-items-center pl-1">
+                        <img src="./assets/images/blood-pressure.svg" alt="blood-pressure">
+                    </div>
+                </div>
+            </div>
+            <div class="vital-box p-2 border-left-solid" [ngStyle]="{'border-left-color': blood_oxygen_data?.color }">
+                <div class="row m-0 justify-content-between pb-2 pt-1">
+                    <div class="row m-0">
+                        <span class="vital-name">Blood Oxygen</span>
+                    </div>
+                    <div class="row m-0 justify-content-center align-items-center pl-1 cursor-pointer"
+                        (click)="openGraph('bloodOxygen')" *ngIf="blood_oxygen_data?.value">
+                        <img src="./assets/images/chevron-right.svg" alt="chevron-right">
+                    </div>
+                </div>
+                <div class="row m-0 justify-content-between pb-2 pb-1">
+                    <div *ngIf="blood_oxygen_data?.value">
+                        <div class="row m-0">
+                            <span class="vital-value"
+                                [ngStyle]="{'color': blood_oxygen_data?.color }">{{blood_oxygen_data?.value}}<span
+                                    class="vital-unit">{{blood_oxygen_data?.uom}}</span></span>
+                        </div>
+                        <div class="row m-0">
+                            <span class="vital-time">{{ (blood_oxygen_data?.readingDate) | date : 'MMM d, h:mm
+                                a'}}</span>
+                        </div>
+                    </div>
+                    <div *ngIf="!blood_oxygen_data?.value && isAppointmentCompleted">
+                        <div class="row m-0">
+                            <span class="vital-value">{{'--'}}</span>
+                        </div>
+                    </div>
+                    <!--<div *ngIf="!blood_oxygen_data?.value && !isAppointmentCompleted"
+                        class="save-btn p-2 px-3 row m-0 justify-content-center align-items-center cursor-pointer"
+                        (click)="recordVital()" [ngClass]="{'disabled': (isAppointmentCancelled || isCompleted)}">
+                        <span class="save-btn-txt">Record</span>
+                    </div>-->
+                    <div class="row m-0 justify-content-center align-items-center pl-1">
+                        <img src="./assets/images/blood_oxygen.svg" alt="blood_oxygen">
+                    </div>
+                </div>
+            </div>
+            <div class="vital-box p-2 border-left-solid" [ngStyle]="{'border-left-color': blood_glucose_data?.color }">
+                <div class="row m-0 justify-content-between pb-2 pt-1">
+                    <div class="row m-0">
+                        <span class="vital-name">Blood Glucose</span>
+                    </div>
+                    <div class="row m-0 justify-content-center align-items-center pl-1 cursor-pointer"
+                        (click)="openGraph('bloodSugar')" *ngIf="blood_glucose_data?.value">
+                        <img src="./assets/images/chevron-right.svg" alt="chevron-right">
+                    </div>
+                </div>
+                <div class="row m-0 justify-content-between pb-2 pb-1">
+                    <div *ngIf="blood_glucose_data?.value">
+                        <div class="row m-0">
+                            <span class="vital-value"
+                                [ngStyle]="{'color': blood_glucose_data?.color }">{{blood_glucose_data?.value}}<span
+                                    class="vital-unit">{{blood_glucose_data?.uom}}</span></span>
+                        </div>
+                        <div class="row m-0">
+                            <span class="vital-time">{{(blood_glucose_data?.readingDate) | date : 'MMM d, h:mm
+                                a'}}</span>
+                        </div>
+                    </div>
+                    <div *ngIf="!blood_glucose_data?.value && isAppointmentCompleted">
+                        <div class="row m-0">
+                            <span class="vital-value">{{'--'}}</span>
+                        </div>
+                    </div>
+                    <!--<div *ngIf="!blood_glucose_data?.value && !isAppointmentCompleted"
+                        class="save-btn p-2 px-3 row m-0 justify-content-center align-items-center cursor-pointer"
+                        (click)="recordVital()" [ngClass]="{'disabled': (isAppointmentCancelled || isCompleted)}">
+                        <span class="save-btn-txt">Record</span>
+                    </div>-->
+                    <div class="row m-0 justify-content-center align-items-center pl-1">
+                        <img src="./assets/images/blood_sugar.svg" alt="blood_sugar">
+                    </div>
+                </div>
+            </div>
+            <div class="vital-box p-2 border-left-solid" [ngStyle]="{'border-left-color': temperature_data?.color }">
+                <div class="row m-0 justify-content-between pb-2 pt-1">
+                    <div class="row m-0">
+                        <span class="vital-name">Temperature</span>
+                    </div>
+                    <div class="row m-0 justify-content-center align-items-center pl-1 cursor-pointer"
+                        (click)="openGraph('temperature')" *ngIf="temperature_data?.value">
+                        <img src="./assets/images/chevron-right.svg" alt="chevron-right">
+                    </div>
+                </div>
+                <div class="row m-0 justify-content-between pb-2 pb-1">
+                    <div *ngIf="temperature_data?.value">
+                        <div class="row m-0">
+                            <span class="vital-value"
+                                [ngStyle]="{'color': temperature_data?.color }">{{temperature_data?.value}}<span
+                                    class="vital-unit">{{temperature_data?.uom}}</span></span>
+                        </div>
+                        <div class="row m-0">
+                            <span class="vital-time">{{ (temperature_data?.readingDate) | date : 'MMM d, h:mm
+                                a'}}</span>
+                        </div>
+                    </div>
+                    <div *ngIf="!temperature_data?.value && isAppointmentCompleted">
+                        <div class="row m-0">
+                            <span class="vital-value">{{'--'}}</span>
+                        </div>
+                    </div>
+                    <!--<div *ngIf="!temperature_data?.value && !isAppointmentCompleted"
+                        class="save-btn p-2 px-3 row m-0 justify-content-center align-items-center cursor-pointer"
+                        (click)="recordVital()" [ngClass]="{'disabled': (isAppointmentCancelled || isCompleted)}">
+                        <span class="save-btn-txt">Record</span>
+                    </div>-->
+                    <div class="row m-0 justify-content-center align-items-center pl-1">
+                        <img src="./assets/images/thermometer.svg" alt="thermometer">
+                    </div>
+                </div>
+            </div>
+            <div class="vital-box p-2 border-left-solid"
+                [ngStyle]="{'border-left-color': respiratory_rate_data?.color }">
+                <div class="row m-0 justify-content-between pb-2 pt-1">
+                    <div class="row m-0">
+                        <span class="vital-name">Respiratory Rate</span>
+                    </div>
+                    <div class="row m-0 justify-content-center align-items-center pl-1 cursor-pointer"
+                        (click)="openGraph('respiratoryRate')" *ngIf="respiratory_rate_data?.value">
+                        <img src="./assets/images/chevron-right.svg" alt="chevron-right">
+                    </div>
+                </div>
+                <div class="row m-0 justify-content-between pb-2 pb-1">
+                    <div *ngIf="respiratory_rate_data?.value">
+                        <div class="row m-0">
+                            <span class="vital-value"
+                                [ngStyle]="{'color': respiratory_rate_data?.color }">{{respiratory_rate_data?.value
+                                | number : '2.0-0'}}<span
+                                    class="vital-unit">{{respiratory_rate_data?.uom}}</span></span>
+                        </div>
+                        <div class="row m-0">
+                            <span class="vital-time">{{ (respiratory_rate_data?.readingDate) | date : 'MMM d, h:mm
+                                a'}}</span>
+                        </div>
+                    </div>
+                    <div *ngIf="!respiratory_rate_data?.value && isAppointmentCompleted">
+                        <div class="row m-0">
+                            <span class="vital-value">{{'--'}}</span>
+                        </div>
+                    </div>
+                    <!--<div *ngIf="!respiratory_rate_data?.value && !isAppointmentCompleted"
+                        class="save-btn p-2 px-3 row m-0 justify-content-center align-items-center cursor-pointer"
+                        (click)="recordVital()" [ngClass]="{'disabled': (isAppointmentCancelled || isCompleted)}">
+                        <span class="save-btn-txt">Record</span>
+                    </div>-->
+                    <div class="row m-0 justify-content-center align-items-center pl-1">
+                        <img src="./assets/images/respiratory_rate.svg" alt="respiratory_rate">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row m-0 justify-content-between py-1">
+            <div class="vital-box p-2" [ngStyle]="{'border-left-color': respiratory_rate_data?.value }">
+                <div class="row m-0 justify-content-between pb-2 pt-1">
+                    <div class="row m-0 col-10 p-0 text-truncate">
+                        <span class="vital-name">Head Circumference</span>
+                    </div>
+                    <!-- <div class="row m-0 justify-content-center align-items-center pl-1"
+                        *ngIf="headCircumference?.value">
+                        <img src="./assets/images/chevron-right.svg" alt="chevron-right">
+                    </div> -->
+                </div>
+                <div class="row m-0 justify-content-between pb-2 pb-1">
+                    <div *ngIf="headCircumference?.value">
+                        <div class="row m-0">
+                            <span class="vital-value">{{headCircumference?.value || '-'}}<span
+                                    class="vital-unit">{{headCircumference?.uom}}</span></span>
+                        </div>
+                        <div class="row m-0">
+                            <span class="vital-time">{{ (headCircumference?.updatedAt) | date : 'MMM d, h:mm
+                                a'}}</span>
+                        </div>
+                    </div>
+                    <div *ngIf="!headCircumference?.value && isAppointmentCompleted">
+                        <div class="row m-0">
+                            <span class="vital-value">{{'--'}}</span>
+                        </div>
+                    </div>
+                    <!--<div *ngIf="!headCircumference?.value && !isAppointmentCompleted"
+                        class="save-btn p-2 px-3 row m-0 justify-content-center align-items-center cursor-pointer"
+                        (click)="recordVital()" [ngClass]="{'disabled': (isAppointmentCancelled || isCompleted)}">
+                        <span class="save-btn-txt">Record</span>
+                    </div>-->
+                    <div class="row m-0 justify-content-center align-items-center pl-1">
+                        <img src="./assets/images/head_circumference.svg" alt="head_circumference">
+                    </div>
+                </div>
+            </div>
+            <div class="vital-box p-2" [ngStyle]="{'border-left-color': respiratory_rate_data?.value }">
+                <div class="row m-0 justify-content-between pb-2 pt-1">
+                    <div class="row m-0">
+                        <span class="vital-name">Bone Mass</span>
+                    </div>
+                    <!-- <div class="row m-0 justify-content-center align-items-center pl-1" *ngIf="boneMass?.value">
+                        <img src="./assets/images/chevron-right.svg" alt="chevron-right">
+                    </div> -->
+                </div>
+                <div class="row m-0 justify-content-between pb-2 pb-1">
+                    <div *ngIf="boneMass?.value">
+                        <div class="row m-0">
+                            <span class="vital-value">{{boneMass?.value || '-'}}<span
+                                    class="vital-unit">{{boneMass?.uom}}</span></span>
+                        </div>
+                        <div class="row m-0">
+                            <span class="vital-time">{{ (boneMass?.updatedAt) | date : 'MMM d, h:mm
+                                a'}}</span>
+                        </div>
+                    </div>
+                    <div *ngIf="!boneMass?.value && isAppointmentCompleted">
+                        <div class="row m-0">
+                            <span class="vital-value">{{'--'}}</span>
+                        </div>
+                    </div>
+                    <!--<div *ngIf="!boneMass?.value && !isAppointmentCompleted"
+                        class="save-btn p-2 px-3 row m-0 justify-content-center align-items-center cursor-pointer"
+                        (click)="recordVital()" [ngClass]="{'disabled': (isAppointmentCancelled || isCompleted)}">
+                        <span class="save-btn-txt">Record</span>
+                    </div>-->
+                    <div class="row m-0 justify-content-center align-items-center pl-1">
+                        <img src="./assets/images/bone_mass.svg" alt="bone_mass">
+                    </div>
+                </div>
+            </div>
+            <div class="vital-box p-2" [ngStyle]="{'border-left-color': respiratory_rate_data?.value }">
+                <div class="row m-0 justify-content-between pb-2 pt-1">
+                    <div class="row m-0">
+                        <span class="vital-name">Hydration</span>
+                    </div>
+                    <!-- <div class="row m-0 justify-content-center align-items-center pl-1" *ngIf="hydration?.value">
+                        <img src="./assets/images/chevron-right.svg" alt="chevron-right">
+                    </div> -->
+                </div>
+                <div class="row m-0 justify-content-between pb-2 pb-1">
+                    <div *ngIf="hydration?.value">
+                        <div class="row m-0">
+                            <span class="vital-value">{{hydration?.value || '-'}}<span
+                                    class="vital-unit">{{hydration?.uom}}</span></span>
+                        </div>
+                        <div class="row m-0">
+                            <span class="vital-time">{{ (hydration?.updatedAt) | date : 'MMM d, h:mm
+                                a'}}</span>
+                        </div>
+                    </div>
+                    <div *ngIf="!hydration?.value && isAppointmentCompleted">
+                        <div class="row m-0">
+                            <span class="vital-value">{{'--'}}</span>
+                        </div>
+                    </div>
+                    <!--<div *ngIf="!hydration?.value && !isAppointmentCompleted"
+                        class="save-btn p-2 px-3 row m-0 justify-content-center align-items-center cursor-pointer"
+                        (click)="recordVital()" [ngClass]="{'disabled': (isAppointmentCancelled || isCompleted)}">
+                        <span class="save-btn-txt">Record</span>
+                    </div>-->
+                    <div class="row m-0 justify-content-center align-items-center pl-1">
+                        <img src="./assets/images/hydration.svg" alt="hydration">
+                    </div>
+                </div>
+            </div>
+            <div class="vital-box p-2 border-left-solid" [ngStyle]="{'border-left-color': getGalsgowCommaScaleColor }">
+                <div class="row m-0 justify-content-between pb-2 pt-1">
+                    <div class="row m-0 col-10 p-0 text-truncate">
+                        <span class="vital-name">Glasgow Coma Scale</span>
+                    </div>
+                    <!-- <div *ngIf="glasgowCommaScale?.gcsTotalScore"
+                        class="row m-0 justify-content-center align-items-center pl-1" (click)="addGlasgowComaScale()">
+                        <img src="./assets/images/chevron-right.svg" alt="chevron-right">
+                    </div> -->
+                </div>
+                <div class="row m-0 justify-content-between pb-2 pb-1">
+                    <div *ngIf="glasgowCommaScale?.gcsTotalScore">
+                        <div class="row m-0">
+                            <span class="vital-value"
+                                [ngStyle]="{'color': getGalsgowCommaScaleColor }">{{glasgowCommaScale.gcsTotalScore
+                                || '-'}}</span>
+                        </div>
+                        <div class="row m-0">
+                            <span class="vital-time">{{ (glasgowCommaScale?.createdAt) | date : 'MMM d, h:mm
+                                a'}}</span>
+                        </div>
+                    </div>
+                    <!--<div *ngIf="!glasgowCommaScale && !isAppointmentCompleted"
+                        class="save-btn p-2 px-3 row m-0 justify-content-center align-items-center cursor-pointer"
+                        (click)="addGlasgowComaScale()"
+                        [ngClass]="{'disabled': (isAppointmentCancelled || isCompleted)}">
+                        <span class="save-btn-txt">Record</span>
+                    </div>-->
+                    <div class="row m-0 justify-content-center align-items-center pl-1">
+                        <img src="./assets/images/glasgow_coma_scale.svg" alt="glasgow_coma_scale">
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="vital-box-dummy"></div> -->
+            <!-- <div class="vital-box-dummy"></div> -->
+            <div class="vital-box-dummy"></div>
+        </div>
+        <!-- <div class="row m-0 justify-content-between py-1">
+            <div class="vital-box p-2">
+                <div class="row m-0 justify-content-between pb-2 pt-1">
+                    <div class="row m-0">
+                        <span class="vital-name">Respiratory Rate</span>
+                    </div>
+                    <div class="row m-0 justify-content-center align-items-center pl-1">
+                        <img src="./assets/images/chevron-right.svg" alt="chevron-right">
+                    </div>
+                </div>
+                <div class="row m-0 justify-content-between pb-2 pb-1">
+                    <div class="">
+                        <div class="row m-0">
+                            <span class="vital-value">90<span class="vital-unit">bpm</span></span>
+                        </div>
+                        <div class="row m-0">
+                            <span class="vital-time">Today, 9:32 am</span>
+                        </div>
+                    </div>
+                    <div class="row m-0 justify-content-center align-items-center pl-1">
+                        <img src="./assets/images/respiratory_rate.svg" alt="respiratory_rate">
+                    </div>
+                </div>
+            </div>
+            <div class="vital-box p-2 border-left-mild">
+                <div class="row m-0 justify-content-between pb-2 pt-1">
+                    <div class="row m-0 col-10 p-0 text-truncate">
+                        <span class="vital-name">Glasgow Coma Scale</span>
+                    </div>
+                    <div class="row m-0 justify-content-center align-items-center pl-1">
+                        <img src="./assets/images/chevron-right.svg" alt="chevron-right">
+                    </div>
+                </div>
+                <div class="row m-0 justify-content-between pb-2 pb-1">
+                    <div class="">
+                        <div class="row m-0" (click)="addGlasgowComaScale()">
+                            <span class="vital-value value-color-mild">15</span>
+                        </div>
+                        <div class="row m-0">
+                            <span class="vital-time">Today, 9:32 am</span>
+                        </div>
+                    </div>
+                    <div class="row m-0 justify-content-center align-items-center pl-1">
+                        <img src="./assets/images/glasgow_coma_scale.svg" alt="glasgow_coma_scale">
+                    </div>
+                </div>
+            </div>
+            <div class="vital-box brand-color-light-bg p-2 row m-0 justify-content-center align-items-center">
+                <div class="row m-0 justify-content-center">
+                    <div class="row m-0 justify-content-center align-items-center pl-1">
+                        <img src="./assets/images/add-outline.svg" alt="add-outline">
+                    </div>
+                    <div class="row m-0 pl-1">
+                        <span class="txt-1">Show more</span>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>

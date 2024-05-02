@@ -1,0 +1,75 @@
+<div class="health-trackers">
+    <div class="grid mt-2 mb-5">
+        <span class="font-heading2">Health Trackers</span>
+        <span class="font-body">Select the vital signs you want to monitor remotely. By monitoring these vital signs at regular intervals, you can proactively identify any potential health issues and provide timely interventions.</span>
+    </div>
+    <form [formGroup]="healthTrackersFormGroup">
+        <div formArrayName="healthTrackersFormArray">
+            <div *ngFor="let item of trackerFormControl?.controls; let i = index;">
+                <div class="row m-0 mt-3 mb-3 mr-3 justify-content-between" [formGroup]="item">
+                    <div class="col-7">
+                        <div class="text-box col-12 p-1 row m-0" [id]="'vitalField_'+i"
+                            (click)="openVitalist(i)">
+                            <div class="material-textfield w-90">
+                                <input class="input-box-txt" id="vitalInputField"
+                                    type="text" placeholder=" " formControlName="vitalName" readonly>
+                                <label class="label-txt">Select vital</label>
+                            </div>
+                            <img class="w-8" src="./assets/images/chevron-down.svg"
+                                alt="chevron-down">
+                        </div>
+                        <div *ngIf="showVitalList === i">
+                            <app-hi-select-box [type]="'single'" [searchEnable]="false" [dataList]="vitalDataList"
+                                (setItemInComponent)="setVital($event, i)" [showTyped]="false" [typedValue]="true"
+                                [width]="vitalFielddWidth"></app-hi-select-box>
+                        </div>
+                        <mat-error class="error-txt-class" *ngIf="(item.controls?.vitalName?.hasError('required') && item.controls?.vitalName.touched)">
+                            Please select at least one vital sign to monitor.
+                        </mat-error>
+                    </div>
+                    <div class="col-4">
+                        <div class="row m-0 text-box col-12 p-1"
+                            [ngClass]="{'error-class' : checkOnSetDateStyleError(item.controls?.vitalTime)}">
+                            <div class="material-textfield w-90">
+                                <input matInput [ngxTimepicker]="recordTime" placeholder=" " class="input-box-txt d-none"
+                                    type="text">
+                                <input placeholder=" " class="input-box-txt disabled"
+                                    type="text" formControlName="vitalTime">
+                                <label class="label-txt">Select Time</label>
+                                <ngx-material-timepicker #recordTime (timeSet)="selectTime($event, i)"></ngx-material-timepicker>
+                            </div>
+                            <img (click)="recordTime.open()" class="align-self-center"
+                                src="./assets/images/time.svg" alt="datetime">
+                        </div>
+                        <mat-error class="error-txt-class"
+                            *ngIf="(item.controls?.vitalTime.hasError('required') && item.controls?.vitalTime.touched)">
+                            Please set up monitoring time for all selected vital signs.
+                        </mat-error>
+                    </div>
+                    <div class="box-5 cursor-pointer col-1">
+                        <img (click)="deleteExisitingMedicalHistoryItem(i, item)"
+                            src="./assets/images/deleteitem.png" alt="deleteitem">
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0 mt-3 mb-3 mr-3 justify-content-end">
+                <div class="row m-0 cursor-pointer" (click)="addExisitngMedicalHistoryItem()"
+                    [ngClass]="{'disabled' : !isVitalSelected}"
+                >
+                    <img src="./assets/images/add.svg" alt="add">
+                    <span class="add-txt pl-2">Add</span>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="d-flex justify-content-end mt-5">
+        <div class="back-btn py-2 px-5 ml-3 row m-0 justify-content-center align-items-center cursor-pointer" (click)="goBack()">
+            <span class="back-btn-txt">Back</span>
+        </div>
+        <div class="save-btn py-2 px-5 ml-3 row m-0 justify-content-center align-items-center cursor-pointer" (click)="goToNext()"
+            [ngClass]="{'disabled' : !isVitalSelected}"
+        >
+            <span class="save-btn-txt">Next</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,125 @@
+.chartWrapper {
+  position: relative;
+  margin-top: 2%;
+  margin-left: 1%;
+}
+
+.chartWrapper > canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+}
+
+.chartAreaWrapper {
+  width: auto;
+  height: 100% !important;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+.myChartmainDiv > canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+}
+.myChart {
+  &.hide {
+    visibility: hidden;
+    position: absolute;
+  }
+  &.show {
+    visibility: visible;
+    position: relative;
+  }
+}
+.no-chart-data {
+  display: flex;
+  height: 271px;
+  align-items: flex-end;
+}
+.chartjs-tooltip {
+  opacity: 1;
+  position: absolute;
+  // background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border-radius: 3px;
+  -webkit-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+  pointer-events: none;
+  -webkit-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+  padding: 4px;
+}
+.tool-tip-box {
+  border-radius: 20px;
+  background: var(--White, #fff);
+
+  /* Light */
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.12);
+}
+.vital-g-name {
+  color: var(--Text-color, #171725);
+  text-align: center;
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
+  font-family: Poppins-SemiBold;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.vital-g-ideal-value {
+  color: var(--Text-color, #171725);
+  text-align: center;
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
+  font-family: Poppins-Regular;
+  font-size: 8px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.dot-green {
+  height: 12px;
+  width: 12px;
+  background: green;
+  border-radius: 50%;
+}
+.moderate {
+  background: #fca600 !important;
+}
+.severe {
+  background: #f46a6a !important;
+}
+.vital-value-txt {
+  /* 14px (Base size) */
+  font-family: Poppins-Regular;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.vital-value-mild {
+  color: var(--Success, #34c38f);
+}
+.vital-value-mild {
+  color: var(--Alert, #fca600);
+}
+.vital-value-mild {
+  color: var(--Fail, #f46a6a);
+}
+.vital-time-txt {
+  color: var(--Text-color, #171725);
+  text-align: center;
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
+  font-family: Poppins-Regular;
+  font-size: 7px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

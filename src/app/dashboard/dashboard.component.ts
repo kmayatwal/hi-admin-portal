@@ -8,6 +8,7 @@ import {
   healthMetricChartConfig,
   medicalComplianceChartConfig,
   vitalRecordingChartConfig,
+  ageDistributionChartConfig
 } from "./summaryCharts.config";
 import {
   getAllMedicinesByDoctors,
@@ -16,6 +17,7 @@ import {
   getFrequencyOfVitalRecording,
   getHealthMetric,
   getMedicalCompliance,
+  getPatientAgeDistribution,
 } from "./chart.apis";
 import { formatDate } from "src/app/_helpers/utils.helpers";
 import { GET_CLINIC } from "src/app/graphql.module";
@@ -36,6 +38,8 @@ export class DashboardComponent implements OnInit {
   defaultStartDate: any;
   defaultEndDate: any;
 
+  ageDistributionData: any = [];
+  myOldAgeDistributionChart: any;
   vitalRecordingData: any = [];
   myOldVitalRecordingChart: any;
   audienceByGenderData: any = [];
@@ -170,6 +174,15 @@ export class DashboardComponent implements OnInit {
         this.initiateHealthMetricChart();
       }
     );
+
+    getPatientAgeDistribution(
+      this.graphqlService,
+      this.stateService,
+      filterInput
+    ).then((res) => {
+      this.ageDistributionData = res;
+      this.initiateAgeDistributionChart();
+    });
   }
 
   showNoData(
@@ -444,6 +457,55 @@ export class DashboardComponent implements OnInit {
         "noDataHealthMetricDiv",
         "healthMetricChart",
         "healthMetricChartWrapper"
+      );
+    }
+  }
+
+  initiateAgeDistributionChart() {
+    const ctx: any = document.getElementById("ageDistributionChart");
+    const data = ageDistributionChartConfig(this.ageDistributionData);
+    const consistsData = (element) => element.totalMale || element.totalFemale;
+    const check = this.ageDistributionData.some(consistsData);
+
+    if (check) {
+      this.showNoData(
+        false,
+        "noShowAgeDistributionDiv",
+        "ageDistributionChart",
+        "ageDistributionWrapper"
+      );
+
+      if (this.myOldAgeDistributionChart) {
+        this.myOldAgeDistributionChart.data = data;
+        this.myOldAgeDistributionChart.update();
+      } else {
+        this.myOldAgeDistributionChart = new Chart(ctx, {
+          type: "bar",
+          data: data,
+          options: {
+            plugins: {
+              legend: {
+                display: false
+              },
+            },
+            responsive: true,
+            scales: {
+              x: {
+                grid: {
+                  display: false,
+                },
+              },
+            },
+          },
+        });
+      }
+    } else {
+      this.ageDistributionData = [];
+      this.showNoData(
+        true,
+        "noShowAgeDistributionDiv",
+        "ageDistributionChart",
+        "ageDistributionWrapper"
       );
     }
   }

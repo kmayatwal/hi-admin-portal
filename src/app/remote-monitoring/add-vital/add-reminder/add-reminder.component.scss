@@ -1,0 +1,167 @@
+.add-reminder {
+    .text-box {
+        border: 2px solid #e9edf2;
+        box-sizing: border-box;
+        border-radius: 3px;
+    }
+    .input-box-txt {
+        padding: 5px;
+        border: none;
+        width: 100%;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        color: #2a2d32;
+    }
+    input:focus {
+        outline: none;
+        /* border: transparent;
+		border-color: inherit;
+		-webkit-box-shadow: none;
+		box-shadow: none; */
+    }
+    select {
+        // appearance: none;
+        // -moz-appearance: none;
+        // -webkit-appearance: none;
+        // padding-right: 5px;
+        // background-image: url("../../../assets/images/droparrow.png");
+        // background-repeat: none;
+        // background-position: calc(100% -3px) center;
+        // background-size: 10px;
+        // background-color:#1F99CD;
+        background-image: url("/assets/images/chevron-down.svg");
+        background-position: right 5px center;
+        background-repeat: no-repeat;
+        background-size: auto 75%;
+        border-radius: 2px;
+        border: none;
+        color: #ffffff;
+        // padding: 10px 30px 10px 10px;
+        // disable default appearance
+        outline: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+        &::-ms-expand {
+            display: none;
+        }
+        padding: 10 30px 0 10px !important;
+        -webkit-padding-end: 30px !important;
+        -webkit-padding-start: 10px !important;
+    }
+    select:focus {
+        outline: none;
+        /* border: transparent;
+		border-color: inherit;
+		-webkit-box-shadow: none;
+		box-shadow: none; */
+    }
+    .label-txt {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 21px;
+        color: #919191;
+    }
+
+    label {
+        position: absolute;
+        font-size: 1rem;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: white;
+        color: gray;
+        padding: 0 0.3rem;
+        margin: 0 0.5rem;
+        transition: 0.1s ease-out;
+        transform-origin: left top;
+        pointer-events: none;
+    }
+    input {
+        font-size: 1rem;
+        outline: none;
+        border: 1px solid gray;
+        border-radius: 5px;
+        padding: 1rem 0.7rem;
+        color: gray;
+        transition: 0.1s ease-out;
+    }
+    input:focus + label {
+        top: 0;
+        transform: translateY(-50%) scale(0.9);
+        color: #328dcc;
+    }
+    input:not(:placeholder-shown) + label {
+        top: 0;
+        transform: translateY(-50%) scale(0.9);
+    }
+    input:not(:focus):not(:placeholder-shown) + label {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 18px;
+        color: #1d1d1f;
+    }
+    // label:focus {
+    // 	color: #328dcc;
+    // }
+    .text-box:focus-within {
+        border-color: #328dcc;
+    }
+    .error-class-lable {
+        color: #ff0000 !important;
+    }
+    .error-class {
+        border-color: #ff0000 !important;
+    }
+    textarea {
+        border: none;
+        overflow: auto;
+        outline: none;
+
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+
+        resize: none; /*remove the resize handle on the bottom right*/
+    }
+    .text-box-30 {
+        max-width: 31.5%;
+        flex: 0 0 31.5%;
+    }
+    .text-box-49 {
+        max-width: 49%;
+        flex: 0 0 49%;
+    }
+    .save-btn {
+        background: #057cc3;
+        border-radius: 3px;
+    }
+    .save-btn-txt {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        color: #ffffff;
+    }
+    .cancel-txt {
+        color: #66676b;
+    }
+    .cancel-btn {
+        background: #ffffff;
+        border: 2px solid #dadada;
+        box-sizing: border-box;
+        border-radius: 3px;
+    }
+    .w-84 {
+        width: 84%;
+    }
+}

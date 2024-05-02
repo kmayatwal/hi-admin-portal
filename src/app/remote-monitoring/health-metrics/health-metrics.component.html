@@ -1,0 +1,145 @@
+<div class="health-metrics">
+    <div class="row m-0 justify-content-between pb-5">
+        <div class="text-box-30">
+            <div class="row m-0 justify-content-start align-items-center pb-2">
+                <span class="hm-txt-1">Summary</span>
+            </div>
+            <div class="row m-0 justify-content-center align-items-center">
+                <img src="./assets/images/no-data.svg" alt="no-data">
+            </div>
+        </div>
+        <div class="text-box-30">
+            <div class="row m-0 justify-content-start align-items-center pb-2">
+                <span class="hm-txt-1">Sleep</span>
+            </div>
+            <div class="row m-0 justify-content-center align-items-center">
+                <img src="./assets/images/no-data.svg" alt="no-data">
+            </div>
+        </div>
+        <div class="text-box-30">
+            <div class="row m-0 justify-content-start align-items-center pb-2">
+                <span class="hm-txt-1">Weight Loss Goal</span>
+            </div>
+            <div class="row m-0 justify-content-center align-items-center">
+                <img src="./assets/images/no-data.svg" alt="no-data">
+            </div>
+        </div>
+    </div>
+
+    <div class="row m-0 justify-content-between align-items-center py-3">
+        <div class="text-box-21 bicycle-box p-2">
+            <div class="row m-0 justify-content-center align-items-center middle-image">
+                <img src="./assets/images/bicycle.svg" alt="bicycle">
+            </div>
+            <div class="row m-0 justify-content-end align-items-center">
+                <div class="remaining-days row m-0 justify-content-center aling-items-center p-2">
+                    <span class="hm-txt-2">{{remainingDays || '0'}} days left</span>
+                </div>
+            </div>
+            <div class="row m-0 justify-content-center aling-items-center p-2">
+                <span class="hm-txt-3">Bicycle</span>
+            </div>
+            <div class="row m-0 justify-content-center aling-items-center">
+                <span class="hm-txt-4">{{healthMetrics?.bicycleTarget || ''}}&nbsp;{{healthMetrics?.bicycleTargetUnit ||
+                    ''}}&nbsp;/
+                    Day</span>
+            </div>
+            <div class="row m-0 justify-content-between align-items-center pb-1">
+                <div class="row m-0 justify-content-center aling-items-center">
+                    <span class="hm-txt-5">Progress</span>
+                </div>
+                <div class="row m-0 justify-content-center aling-items-center">
+                    <span class="hm-txt-5">0%</span>
+                </div>
+            </div>
+            <div class="row m-0 justify-content-center align-items-center">
+                <progress class="w-100" id="file" value="0" max="100"></progress>
+            </div>
+        </div>
+        <div class="text-box-21 bicycle-box p-2">
+            <div class="row m-0 justify-content-center align-items-center middle-image">
+                <img src="./assets/images/exercise.svg" alt="exercise">
+            </div>
+            <div class="row m-0 justify-content-end align-items-center">
+                <div class="remaining-days row m-0 justify-content-center aling-items-center p-2">
+                    <span class="hm-txt-2">{{remainingDays || '0'}} days left</span>
+                </div>
+            </div>
+            <div class="row m-0 justify-content-center aling-items-center p-2">
+                <span class="hm-txt-3">Exercise</span>
+            </div>
+            <div class="row m-0 justify-content-center aling-items-center">
+                <span class="hm-txt-4">{{healthMetrics?.exerciseTarget || ''}}&nbsp;{{healthMetrics?.exerciseTargetUnit
+                    || ''}}&nbsp;/
+                    day</span>
+            </div>
+            <div class="row m-0 justify-content-between align-items-center pb-1">
+                <div class="row m-0 justify-content-center aling-items-center">
+                    <span class="hm-txt-5">Progress</span>
+                </div>
+                <div class="row m-0 justify-content-center aling-items-center">
+                    <span class="hm-txt-5">0%</span>
+                </div>
+            </div>
+            <div class="row m-0 justify-content-center align-items-center">
+                <progress class="w-100" id="file" value="0" max="100"></progress>
+            </div>
+        </div>
+        <div class="text-box-21 bicycle-box p-2">
+            <div class="row m-0 justify-content-center align-items-center middle-image">
+                <img src="./assets/images/water-intake.svg" alt="water-intake">
+            </div>
+            <div class="row m-0 justify-content-end align-items-center">
+                <div class="remaining-days row m-0 justify-content-center aling-items-center p-2">
+                    <span class="hm-txt-2">{{remainingDays || '0'}} days left</span>
+                </div>
+            </div>
+            <div class="row m-0 justify-content-center aling-items-center p-2">
+                <span class="hm-txt-3">Water Intake</span>
+            </div>
+            <div class="row m-0 justify-content-center aling-items-center">
+                <span class="hm-txt-4">{{healthMetrics?.waterIntakeTarget || ''}} Per Day</span>
+            </div>
+            <div class="row m-0 justify-content-between align-items-center pb-1">
+                <div class="row m-0 justify-content-center aling-items-center">
+                    <span class="hm-txt-5">Progress</span>
+                </div>
+                <div class="row m-0 justify-content-center aling-items-center">
+                    <span class="hm-txt-5">0%</span>
+                </div>
+            </div>
+            <div class="row m-0 justify-content-center align-items-center">
+                <progress class="w-100" id="file" value="0" max="100"></progress>
+            </div>
+        </div>
+        <div class="text-box-21 bicycle-box p-2">
+            <div class="row m-0 justify-content-center align-items-center middle-image">
+                <img src="./assets/images/swimming.svg" alt="swimming">
+            </div>
+            <div class="row m-0 justify-content-end align-items-center">
+                <div class="remaining-days row m-0 justify-content-center aling-items-center p-2">
+                    <span class="hm-txt-2">{{remainingDays || '0'}} days left</span>
+                </div>
+            </div>
+            <div class="row m-0 justify-content-center aling-items-center p-2">
+                <span class="hm-txt-3">Swimming</span>
+            </div>
+            <div class="row m-0 justify-content-center aling-items-center">
+                <span class="hm-txt-4">{{healthMetrics?.swimmingTarget || ''}}&nbsp;{{healthMetrics?.swimmingTargetUnit
+                    || ''}}&nbsp;/
+                    day</span>
+            </div>
+            <div class="row m-0 justify-content-between align-items-center pb-1">
+                <div class="row m-0 justify-content-center aling-items-center">
+                    <span class="hm-txt-5">Progress</span>
+                </div>
+                <div class="row m-0 justify-content-center aling-items-center">
+                    <span class="hm-txt-5">0%</span>
+                </div>
+            </div>
+            <div class="row m-0 justify-content-center align-items-center">
+                <progress class="w-100" id="file" value="0" max="100"></progress>
+            </div>
+        </div>
+    </div>
+</div>

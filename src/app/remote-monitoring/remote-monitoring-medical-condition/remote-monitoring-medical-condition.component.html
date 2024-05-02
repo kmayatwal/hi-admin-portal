@@ -1,0 +1,86 @@
+<div class="remote-monitoring-medical-condition">
+    <div class="row m-0 justify-content-start align-items-center border-color-design m-3">
+        <div class="row m-0 col-8 p-0 justify-content-start align-items-center pb-3">
+            <span class="pvf-cm-txt-1">Chronic Conditions</span>
+        </div>
+    </div>
+    <div class="py-5" *ngIf="patientMedicalConditionList?.length === 0">
+        <div class="justify-content-center align-items-center py-3">
+            <div class="row m-0 justify-content-center align-items-center">
+                <img src="./assets/images/chronic-conditions.svg" alt="chronic-conditions">
+            </div>
+            <div class="row m-0 justify-content-center align-items-center py-2">
+                <span class="no-data">No Medical Conditions Recorded</span>
+            </div>
+        </div>
+    </div>
+    <div class="py-1" [ngClass]="{'pr-1' : patientMedicalConditionList?.length > 3}">
+        <div class="h-376 px-3" *ngIf="patientMedicalConditionList?.length > 0">
+            <div class="item-box border-bottom pt-2 my-2" *ngFor="let item of patientMedicalConditionList;let i=index;">
+                <div class="row m-0 justify-content-between px-2">
+                    <div class="col-8 p-0">
+                        <div class="row m-0 flex-column justify-content-ceneter align-items-start">
+                            <div class="row m-0 justify-content-start align-items-center">
+                                <span class="pf-a-txt-2">{{item.condition || '-'}}</span>
+                            </div>
+                            <div class="row m-0 justify-content-start align-items-center pt-1">
+                                <span class="pf-a-txt-3" [ngClass]="{
+                                    'pf-a-mild':item.severity === 'Mild',
+                                    'pf-a-moderate':item.severity === 'Moderate',
+                                    'pf-a-severe':item.severity === 'Severe'}">{{item.severity}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 p-0 row m-0 justify-content-end">
+                        <div class="">
+                            <div class="row m-0 pf-box-1 justify-content-center align-items-center p-2" [ngClass]="{
+                                    'pf-box-mild':item.status === 'Active',
+                                    'pf-box-severe':item.status === 'In-active'}">
+                                <span class="pf-a-txt-4" [ngClass]="{
+                                        'pf-a-mild':item.status === 'Active',
+                                        'pf-a-severe':item.status === 'In-active'}">{{item.status || '-'}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0 justify-content-between px-2">
+                    <div class="row m-0 py-2">
+                        <span class="pf-a-txgt-5">Start: </span><span class="pf-a-txt-6">&nbsp;{{item.onsetDate
+                            || '-'}}</span>
+                    </div>
+                    <div class="row m-0 py-2" *ngIf="item.status === 'In-active'">
+                        <span class="pf-a-txgt-5">End: </span><span class="pf-a-txt-6">&nbsp;{{item.abatementDate
+                            || '-'}}</span>
+                    </div>
+                </div>
+                <div class="row m-0 col-12 p-0 justify-content-end pr-2">
+                    <div class="row m-0" *ngIf="item.confidential == 'true'">
+                        <div class="row m-0 justify-content-center align-items-center">
+                            <img src="./assets/images/lock.svg" alt="lock">
+                        </div>
+                        <div class="row m-0">
+                            <span class="rm-txt-6">Confidential</span>
+                        </div>
+                    </div>
+                    <div class="row m-0 pl-2">
+                        <div class="row m-0 justify-content-center align-items-center"
+                            *ngIf="item.verificationStatus === 'Confirmed'">
+                            <img src="./assets/images/verified.svg" alt="verified">
+                        </div>
+                        <div class="row m-0">
+                            <span
+                                [ngClass]="{
+                                    'rm-txt-8':item.verificationStatus === 'Unconfirmed' || item.verificationStatus === 'Entered-in-error',
+                                    'rm-txt-3':!(item.verificationStatus === 'Unconfirmed' || item.verificationStatus === 'Entered-in-error')}">{{item.verificationStatus}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="item.recordedUserDetail"
+                    class="row m-0 justify-content-end align-items-center border-top py-1 pr-2">
+                    <span class="recorded-by">Recorded by {{getName(item.recordedUserDetail)}} on
+                        {{item.createdAt | date: 'dd MMM y' }} at {{item.createdAt | date: 'hh.mm a'}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

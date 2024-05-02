@@ -1,0 +1,557 @@
+<div class="patient-view-file-side-menu">
+    <div class="brand-color-bg py-2">
+        <div class="border-btm">
+            <div class="row m-0 justify-content-between">
+                <div class="row m-0 justify-content-start ml-2 cursor-pointer">
+                    <img src="./assets/images/collapse-sidebar.svg" alt="collapse-sidebar"
+                        (click)="toggleMenu()">
+                </div>
+                <div class="row m-0 justify-content-end align-items-end mr-2">
+                    <div class="p-v-f-btn-1 row m-0 justify-content-end align-items-end">
+                        <span class="btn-txt-1 px-3 py-1"
+                            [ngClass]="{ 'unpaid': transactionStatus === 'Unpaid', 'text-white': transactionStatus !== 'Unpaid' }">{{transactionStatus}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0 justify-content-center align-items-center">
+                <img alt="logo" class="rounded-circle icon-img p-1" height="72" width="72"
+                    [src]="patientFile?.profileImage ? patientFile?.profileImage : getAvatarURL(patientFile)">
+            </div>
+            <div class="py-2">
+                <div class="row m-0 justify-content-center align-items-center pb-1">
+                    <span class="p-f-txt-1">{{patientFile?.title}} {{patientFile?.firstName || 'No
+                        Data'}}
+                        {{patientFile?.lastName}}</span>
+                </div>
+                <div class="row m-0 justify-content-center align-items-center">
+                    <div class="row m-0 justify-content-center align-items-center pb-3" *ngIf="sidebarMenuOpened">
+                        <span class="p-f-txt-2">{{patientFile?.gender || '-'}}</span>&middot;
+                    </div>
+                    <div class="row m-0 justify-content-center align-items-center pb-3" *ngIf="sidebarMenuOpened">
+                        <span class="p-f-txt-2">Returning Patient</span>
+                    </div>
+                </div>
+                <div class="row m-0 justify-content-center align-items-center pb-3" *ngIf="sidebarMenuOpened">
+                    <span class="p-f-txt-3 text-white">MY ID : {{patientFile?.id}}</span>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="px-2 py-3">
+            <div *ngIf="sidebarMenuOpened" class="row m-0 justify-content-between pb-3">
+                <div class="row m-0">
+                    <span class="txt-2">Profile Completion</span>
+                </div>
+                <div class="row m-0">
+                    <span class="txt-2">72%</span>
+                </div>
+            </div>
+            <div class="progress color-light-red h-6 border-r-5">
+                <div class="progress-bar bg-white" role="progressbar" style="width: 80%" aria-valuenow="80"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div> -->
+    </div>
+    <div class="border-pvf"></div>
+    <div class="brand-color-bg py-3">
+        <div class="px-2 pl-3">
+            <div class="row m-0 py-1">
+                <span class="p-f-txt-4 poppins-Regular">BASIC DETAILS</span>
+            </div>
+            <div class="row m-0 py-1 justify-content-center align-items-center">
+                <div class="col-10 p-0">
+                    <div class="row m-0 py-1">
+                        <span class="p-f-txt-6 Poppins-Regular">Gender</span>
+                    </div>
+                    <div class="row m-0">
+                        <span class="p-f-txt-5">{{patientFile?.gender || '-'}}</span>
+                    </div>
+                </div>
+                <div class="col-2 p-0">
+                    <div class="row m-0 justify-content-center align-items-center">
+                        <img src="./assets/images/gender.svg" alt="gender-male">
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0 py-1 justify-content-center align-items-center">
+                <div class="col-10 p-0">
+                    <div class="row m-0 py-1">
+                        <span class="p-f-txt-6 Poppins-Regular">Date of Birth</span>
+                    </div>
+                    <div class="row m-0">
+                        <span class="p-f-txt-5">{{patientFile?.dateOfBirth || '-'}}</span>
+                    </div>
+                </div>
+                <div class="col-2 p-0">
+                    <div class="row m-0 justify-content-center align-items-center">
+                        <img src="./assets/images/cake.svg" alt="cake">
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0 py-1 justify-content-center align-items-center">
+                <div class="col-10 p-0">
+                    <div class="row m-0 py-1">
+                        <span class="p-f-txt-6 Poppins-Regular">Marital Status</span>
+                    </div>
+                    <div class="row m-0">
+                        <span class="p-f-txt-5">{{patientFile?.maritalStatus || '-'}}</span>
+                    </div>
+                </div>
+                <div class="col-2 p-0">
+                    <div class="row m-0 justify-content-center align-items-center">
+                        <img src="./assets/images/marital.svg" alt="marital">
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0 py-1 justify-content-center align-items-center">
+                <div class="col-10 p-0">
+                    <div class="row m-0 py-1">
+                        <span class="p-f-txt-6 Poppins-Regular">Number of Kids</span>
+                    </div>
+                    <div class="row m-0">
+                        <span class="p-f-txt-5">{{patientFile?.noOfChildren || '-'}}</span>
+                    </div>
+                </div>
+                <div class="col-2 p-0">
+                    <div class="row m-0 justify-content-center align-items-center">
+                        <img src="./assets/images/child.svg" alt="child">
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0 py-1 justify-content-center align-items-center">
+                <div class="col-10 p-0">
+                    <div class="row m-0 py-1">
+                        <span class="p-f-txt-6 Poppins-Regular">Nationality</span>
+                    </div>
+                    <div class="row m-0">
+                        <span class="p-f-txt-5">{{patientFile?.nationality || '-'}}</span>
+                    </div>
+                </div>
+                <div class="col-2 p-0">
+                    <div class="row m-0 justify-content-center align-items-center">
+                        <img src="./assets/images/nationality.svg" alt="nationality">
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0 py-1 justify-content-center align-items-center">
+                <div class="col-10 p-0">
+                    <div class="row m-0 py-1">
+                        <span class="p-f-txt-6 Poppins-Regular">Place of Birth</span>
+                    </div>
+                    <div class="row m-0">
+                        <span class="p-f-txt-5">{{patientFile?.placeOfBirth || '-'}}</span>
+                    </div>
+                </div>
+                <div class="col-2 p-0">
+                    <div class="row m-0 justify-content-center align-items-center">
+                        <img src="./assets/images/place-of-birth.svg" alt="place-of-birth">
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0 py-1 justify-content-center align-items-center">
+                <div class="col-10 p-0">
+                    <div class="row m-0 py-1">
+                        <span class="p-f-txt-6 Poppins-Regular">Preferred Language</span>
+                    </div>
+                    <div class="row m-0 w-b">
+                        <span class="p-f-txt-5">{{patientFile?.languages || '-'}}</span>
+                    </div>
+                </div>
+                <div class="col-2 p-0">
+                    <div class="row m-0 justify-content-center align-items-center">
+                        <img src="./assets/images/preferred-language.svg" alt="preferred-language">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="border-pvf"></div>
+    <div class="brand-color-bg py-3">
+        <div class="px-2 pl-3">
+            <div class="row m-0 py-1">
+                <span class="p-f-txt-4 poppins-Regular">CONTACT DETAILS</span>
+            </div>
+            <div class="row m-0 py-1 justify-content-center align-items-center">
+                <div class="col-10 p-0">
+                    <div class="row m-0 py-1">
+                        <span class="p-f-txt-6 Poppins-Regular">Phone Number</span>
+                    </div>
+                    <div class="row m-0 py-1">
+                        <span class="p-f-txt-5">{{patientFile?.countryCode}}- {{patientFile?.mobileNumber}}</span>
+                    </div>
+                    <div class="row m-0 py-1">
+                        <span class="p-f-txt-5">-</span>
+                    </div>
+                </div>
+                <div class="col-2 p-0">
+                    <div class="row m-0 justify-content-center align-items-center">
+                        <img src="./assets/images/cellphone.svg" alt="cellphone">
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0 py-1 justify-content-center align-items-center">
+                <div class="col-12 p-0">
+                    <div class="row m-0 py-1">
+                        <span class="p-f-txt-6 Poppins-Regular">Email</span>
+                    </div>
+                    <div class="row m-0 py-1">
+                        <span class="p-f-txt-5">{{patientFile?.emailId || '-'}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="border-pvf"></div>
+    <div class="brand-color-bg py-3">
+        <div class="px-2 pl-3">
+            <div class="row m-0 py-1">
+                <span class="p-f-txt-4 poppins-Regular">ADDRESS</span>
+            </div>
+            <div class="row m-0 py-1 justify-content-center align-items-center">
+                <div class="col-10 p-0">
+                    <div class="row m-0 py-1">
+                        <span class="p-f-txt-6 Poppins-Regular">Home</span>
+                    </div>
+                    <div class="row m-0">
+                        <span
+                            class="p-f-txt-5">{{patientFile?.addresses[0]?.addressLine1}}&nbsp;{{patientFile?.addresses[0]?.addressLine2}},&nbsp;{{patientFile?.addresses[0]?.state}},&nbsp;{{patientFile?.addresses[0]?.country}}</span>
+                    </div>
+                </div>
+                <div class="col-2 p-0">
+                    <div class="row m-0 justify-content-center align-items-center">
+                        <img src="./assets/images/home-addresss.svg" alt="home-addresss">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="border-pvf"></div>
+    <div class="brand-color-bg py-3">
+        <div class="px-2 pl-3">
+            <div class="row m-0 py-1">
+                <span class="p-f-txt-4 poppins-Regular">OCCUPATION</span>
+            </div>
+            <div class="row m-0 py-1 justify-content-center align-items-center">
+                <div class="col-10 p-0">
+                    <div class="row m-0 py-1">
+                        <span class="p-f-txt-6 Poppins-Regular"></span>
+                    </div>
+                    <div class="row m-0">
+                        <span class="p-f-txt-5">{{patientFile?.lifeStyle?.occupation || '-'}}</span>
+                    </div>
+                </div>
+                <div class="col-2 p-0">
+                    <div class="row m-0 justify-content-center align-items-center">
+                        <img src="./assets/images/work.svg" alt="work">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="border-pvf"></div>
+    <div class="brand-color-bg py-3">
+        <div class="px-2 pl-3">
+            <div class="row m-0 py-1">
+                <span class="p-f-txt-4 poppins-Regular">EMERGENCY CONTACT</span>
+            </div>
+            <div *ngFor="let emergencyContact of patientFile?.emergencyContacts;let i=index;" class="border-bottom">
+                <div class="row m-0 py-1 justify-content-center align-items-center">
+                    <div class="col-10 p-0">
+                        <div class="row m-0 py-1">
+                            <span class="p-f-txt-6 Poppins-Regular">Name</span>
+                        </div>
+                        <div class="row m-0">
+                            <span class="p-f-txt-5">{{emergencyContact?.name || '-'}}</span>
+                        </div>
+                    </div>
+                    <div class="col-2 p-0">
+                        <div class="row m-0 justify-content-center align-items-center">
+                            <img src="./assets/images/account-outline-4.svg" alt="account-outline-4">
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0 py-1 justify-content-center align-items-center">
+                    <div class="col-10 p-0">
+                        <div class="row m-0 py-1">
+                            <span class="p-f-txt-6 Poppins-Regular">Relationship</span>
+                        </div>
+                        <div class="row m-0">
+                            <span class="p-f-txt-5">{{emergencyContact?.relation || '-'}}</span>
+                        </div>
+                    </div>
+                    <div class="col-2 p-0">
+                        <div class="row m-0 justify-content-center align-items-center">
+                            <img src="./assets/images/account-outline-4.svg" alt="account-outline-4">
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0 py-1 justify-content-center align-items-center">
+                    <div class="col-10 p-0">
+                        <div class="row m-0 py-1">
+                            <span class="p-f-txt-6 Poppins-Regular">Phone</span>
+                        </div>
+                        <div class="row m-0 py-1">
+                            <span class="p-f-txt-5">{{emergencyContact?.countryCode}}&nbsp;{{emergencyContact?.contact
+                                || '-'}}</span>
+                        </div>
+                    </div>
+                    <div class="col-2 p-0">
+                        <div class="row m-0 justify-content-center align-items-center">
+                            <img src="./assets/images/cellphone.svg" alt="cellphone">
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0 py-1 justify-content-center align-items-center">
+                    <div class="col-12 p-0">
+                        <div class="row m-0 py-1">
+                            <span class="p-f-txt-6 Poppins-Regular">Email</span>
+                        </div>
+                        <div class="row m-0">
+                            <span class="p-f-txt-5">{{emergencyContact?.email || '-'}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="border-pvf"></div>
+    <div class="brand-color-bg py-3">
+        <div class="px-2 pl-3">
+            <div class="row m-0 py-1">
+                <span class="p-f-txt-4 poppins-Regular">NEXT OF KINS</span>
+            </div>
+            <div *ngFor="let kin of patientFile?.kins;let i=index;" class="border-bottom">
+                <div class="row m-0 py-1 justify-content-center align-items-center">
+                    <div class="col-10 p-0">
+                        <div class="row m-0 py-1">
+                            <span class="p-f-txt-6 Poppins-Regular">Name</span>
+                        </div>
+                        <div class="row m-0">
+                            <span class="p-f-txt-5">{{kin?.firstName || '-'}}</span>
+                        </div>
+                    </div>
+                    <div class="col-2 p-0">
+                        <div class="row m-0 justify-content-center align-items-center">
+                            <img src="./assets/images/account-outline-4.svg" alt="account-outline-4">
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0 py-1 justify-content-center align-items-center">
+                    <div class="col-10 p-0">
+                        <div class="row m-0 py-1">
+                            <span class="p-f-txt-6 Poppins-Regular">Relationship</span>
+                        </div>
+                        <div class="row m-0">
+                            <span class="p-f-txt-5">{{kin?.relation || '-'}}</span>
+                        </div>
+                    </div>
+                    <div class="col-2 p-0">
+                        <div class="row m-0 justify-content-center align-items-center">
+                            <img src="./assets/images/account-outline-4.svg" alt="account-outline-4">
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0 py-1 justify-content-center align-items-center">
+                    <div class="col-10 p-0">
+                        <div class="row m-0 py-1">
+                            <span class="p-f-txt-6 Poppins-Regular">Phone</span>
+                        </div>
+                        <div class="row m-0 py-1">
+                            <span class="p-f-txt-5">{{kin?.contact || '-'}}</span>
+                        </div>
+                        <!-- <div class="row m-0 py-1">
+                            <span class="p-f-txt-5">+971- 567 800 87</span>
+                        </div> -->
+                    </div>
+                    <div class="col-2 p-0">
+                        <div class="row m-0 justify-content-center align-items-center">
+                            <img src="./assets/images/cellphone.svg" alt="cellphone">
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0 py-1 justify-content-center align-items-center">
+                    <div class="col-12 p-0">
+                        <div class="row m-0 py-1">
+                            <span class="p-f-txt-6 Poppins-Regular">Email</span>
+                        </div>
+                        <div class="row m-0">
+                            <span class="p-f-txt-5">{{kin?.email || '-'}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="border-pvf"></div>
+    <div class="brand-color-bg py-3">
+        <div class="px-2 pl-3">
+            <div class="row m-0 py-1">
+                <span class="p-f-txt-4 poppins-Regular">CONSENT FORM</span>
+            </div>
+            <div class="row m-0 py-1 justify-content-center align-items-center">
+                <div class="col-10 p-0">
+                    <div class="row m-0 py-1">
+                        <span class="p-f-txt-5 Poppins-Regular">{{ consentFormExist ? 'Consent form.pdf' : 'N/A'
+                            }}</span>
+                    </div>
+                </div>
+                <div class="col-2 p-0" *ngIf="consentFormExist" (click)="downloadConsentForm()">
+                    <div class="row m-0 justify-content-center align-items-center cursor-pointer">
+                        <img src="./assets/images/tray-arrow-down.svg" alt="tray-arrow-down">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="border-pvf"></div>
+    <div class="brand-color-bg py-3">
+        <div class="px-2 pl-3">
+            <div class="row m-0 py-1">
+                <span class="p-f-txt-4 poppins-Regular">ID PROOF</span>
+            </div>
+            <div *ngFor="let id of idProof;let i=index;" class="border-bottom">
+                <div class="row m-0 py-1 justify-content-center align-items-center">
+                    <div class="col-12 p-0">
+                        <div class="row m-0 py-1">
+                            <span class="p-f-txt-6 Poppins-Regular">ID Proof Type</span>
+                        </div>
+                        <div class="row m-0">
+                            <span class="p-f-txt-5">{{id?.documentType || '-'}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0 py-1 justify-content-center align-items-center">
+                    <div class="col-12 p-0">
+                        <div class="row m-0 py-1">
+                            <span class="p-f-txt-6 Poppins-Regular">ID Proof Number</span>
+                        </div>
+                        <div class="row m-0">
+                            <span class="p-f-txt-5">{{id?.documentIdNumber || '-'}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="idProof.length === 0" class="border-bottom">
+                <div class="row m-0 py-1 justify-content-center align-items-center">
+                    <div class="col-12 p-0">
+                        <div class="row m-0 py-1">
+                            <span class="p-f-txt-6 Poppins-Regular">ID Proof Type</span>
+                        </div>
+                        <div class="row m-0">
+                            <span class="p-f-txt-5">'-'</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0 py-1 justify-content-center align-items-center">
+                    <div class="col-12 p-0">
+                        <div class="row m-0 py-1">
+                            <span class="p-f-txt-6 Poppins-Regular">ID Proof Number</span>
+                        </div>
+                        <div class="row m-0">
+                            <span class="p-f-txt-5">'-'</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="row m-0 justify-content-end align-items-end">
+                <div class="p-v-f-btn-1 row m-0 justify-content-end align-items-end cursor-pointer" id="viewId"
+                    (click)="viewId()">
+                    <span class="btn-txt-1 text-white px-3 py-2">View ID</span>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <div class="border-pvf"></div>
+    <div class="brand-color-bg py-3">
+        <div class="px-2 pl-3">
+            <div class="row m-0 py-1">
+                <span class="p-f-txt-4 poppins-Regular">INSURANCE</span>
+            </div>
+            <div class="row m-0 py-1 justify-content-center align-items-center">
+                <div class="col-12 p-0">
+                    <div class="row m-0 py-1">
+                        <span class="p-f-txt-6 Poppins-Regular">Insurance Provider</span>
+                    </div>
+                    <div class="row m-0">
+                        <span class="p-f-txt-5">{{patientInsurance?.insuranceProvider || '-'}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0 py-1 justify-content-center align-items-center">
+                <div class="col-12 p-0">
+                    <div class="row m-0 py-1">
+                        <span class="p-f-txt-6 Poppins-Regular">Member ID</span>
+                    </div>
+                    <div class="row m-0">
+                        <span class="p-f-txt-5">{{patientInsurance?.memberId || '-'}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0 py-1 justify-content-center align-items-center">
+                <div class="col-12 p-0">
+                    <div class="row m-0 py-1">
+                        <span class="p-f-txt-6 Poppins-Regular">Plan</span>
+                    </div>
+                    <div class="row m-0">
+                        <span class="p-f-txt-5">{{patientInsurance?.plan || '-'}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0 py-1 justify-content-center align-items-center">
+                <div class="col-12 p-0">
+                    <div class="row m-0 py-1">
+                        <span class="p-f-txt-6 Poppins-Regular">TPA</span>
+                    </div>
+                    <div class="row m-0">
+                        <span class="p-f-txt-5">{{patientInsurance?.TPA || '-'}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0 py-1 justify-content-center align-items-center">
+                <div class="col-12 p-0">
+                    <div class="row m-0 py-1">
+                        <span class="p-f-txt-6 Poppins-Regular">Status</span>
+                    </div>
+                    <div class="row m-0">
+                        <span class="p-f-txt-5">{{patientInsurance?.status || '-'}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0 py-1 justify-content-center align-items-center">
+                <div class="col-12 p-0">
+                    <div class="row m-0 py-1">
+                        <span class="p-f-txt-6 Poppins-Regular">Issue Date</span>
+                    </div>
+                    <div class="row m-0">
+                        <span class="p-f-txt-5">{{patientInsurance?.validFrom || '-'}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0 py-1 justify-content-center align-items-center">
+                <div class="col-12 p-0">
+                    <div class="row m-0 py-1">
+                        <span class="p-f-txt-6 Poppins-Regular">End Date</span>
+                    </div>
+                    <div class="row m-0">
+                        <span class="p-f-txt-5">{{patientInsurance?.validTo || '-'}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0 py-1 justify-content-center align-items-center">
+                <div class="col-12 p-0">
+                    <div class="row m-0 py-1">
+                        <span class="p-f-txt-6 Poppins-Regular">RxBIN</span>
+                    </div>
+                    <div class="row m-0">
+                        <span class="p-f-txt-5">{{patientInsurance?.RxBIN || '-'}}</span>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="row m-0 justify-content-end align-items-end">
+                <div class="p-v-f-btn-1 row m-0 justify-content-end align-items-end cursor-pointer"
+                    (click)="viewInsurance()">
+                    <span class="btn-txt-1 text-white px-3 py-2">View</span>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>

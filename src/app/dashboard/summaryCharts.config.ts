@@ -140,3 +140,29 @@ export const healthMetricChartConfig = (data: any) => {
     ],
   };
 };
+
+export const ageDistributionChartConfig = (data: any) => {
+  return {
+    labels: data.map((elem) => elem.ageRange),
+    datasets: [
+      {
+        label: "Male",
+        data: data.map((elem) => elem.totalMale),
+        backgroundColor: "#057CC3",
+        borderColor: "#057CC3",
+        borderWidth: 1,
+        barThickness: 2,
+        borderRadius: 5,
+      },
+      {
+        label: "Female",
+        data: data.map((elem) => elem.totalFemale),
+        backgroundColor: "#F00",
+        borderColor: "#F00",
+        borderWidth: 1,
+        barThickness: 2,
+        borderRadius: 5,
+      },
+    ],
+  };
+};

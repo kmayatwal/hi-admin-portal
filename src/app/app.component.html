@@ -1,11 +1,14 @@
 <div class="dashboard">
-    <div class="row m-0">
+    <div class="row m-0" *ngIf="!hideSideMenu">
         <div class="col-2 p-0 py-3 border-right">
             <app-side-menu></app-side-menu>
         </div>
         <div class="col-10 p-0">
             <router-outlet class="html"></router-outlet>
         </div>
+    </div>
+    <div *ngIf="hideSideMenu">
+        <router-outlet class="html"></router-outlet>
     </div>
 </div>
 <!-- <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-newton-cradle">
@@ -15,17 +18,17 @@
 <!-- <div id="chatButton" (click)="openChatBox()" class="row m-0 justify-content-center align-items-center">
     <div class="row m-0 justify-content-end align-items-center cursor-pointer">
         <img [ngClass]="{'hi-25': !showChatBox}"
-            [src]="showChatBox ? './assets/images/profile/chatbot/virtual-nurse-close.svg' : './assets/images/profile/chatbot/virtual-nurse.svg'"
+            [src]="showChatBox ? './assets/images/chatbot/virtual-nurse-close.svg' : './assets/images/chatbot/virtual-nurse.svg'"
             alt="virtual-nurse">
     </div>
 </div>
 
 <div id="chatBoxTooltipBox" *ngIf="showChatBoxTooltip">
-    <img class="home-chat-box-img" src="./assets/images/profile/chatbot/virtual-nurse-2.svg" alt="virtual-nurse">
-    <img class="home-chat-box-close-img" src="./assets/images/profile/close.svg" alt="close"
+    <img class="home-chat-box-img" src="./assets/images/chatbot/virtual-nurse-2.svg" alt="virtual-nurse">
+    <img class="home-chat-box-close-img" src="./assets/images/close.svg" alt="close"
         (click)="closeChatBoxTooltip()">
     <div class="row m-0 justify-content-start align-items-center">
-        <span class="home-chat-box-1"><img src="./assets/images/profile/chatbot/waving-hand-emoji.svg"
+        <span class="home-chat-box-1"><img src="./assets/images/chatbot/waving-hand-emoji.svg"
                 alt="waving-hand-emoji"> Hi Doctor! I'm HiDoc, your personal virtual assistant. I
             am here to provide you with the assistance you need. How may I assist you today?</span>
     </div>
@@ -34,7 +37,7 @@
     <div class="home-chat-box-r-5">
         <div class="row m-0 justify-content-start align-items-center home-chat-box-2 py-2">
             <div class="row m-0 justify-content-end align-items-center cursor-pointer px-2">
-                <img src="./assets/images/profile/chatbot/virtual-nurse-3.svg" alt="virtual-nurse-3">
+                <img src="./assets/images/chatbot/virtual-nurse-3.svg" alt="virtual-nurse-3">
             </div>
             <div class="row m-0 justify-content-start align-items-center">
                 <span class="home-chat-box-txt-2">HI Doc</span>
@@ -47,7 +50,7 @@
                 <div class="row m-0 justify-content-center align-items-end">
                     <div class="home-box-15">
                         <div class="row m-0 justify-content-end align-items-center cursor-pointer px-2">
-                            <img src="./assets/images/profile/chatbot/virtual-nurse-2.svg" alt="virtual-nurse-2">
+                            <img src="./assets/images/chatbot/virtual-nurse-2.svg" alt="virtual-nurse-2">
                         </div>
                     </div>
                     <div class="home-box-75">
@@ -93,7 +96,7 @@
         <div *ngIf="showTyping" class="row m-0 justify-content-center align-items-end pb-2">
             <div class="home-box-15">
                 <div class="row m-0 justify-content-end align-items-center cursor-pointer px-2">
-                    <img src="./assets/images/profile/chatbot/virtual-nurse-2.svg" alt="virtual-nurse-2">
+                    <img src="./assets/images/chatbot/virtual-nurse-2.svg" alt="virtual-nurse-2">
                 </div>
             </div>
             <div class="home-box-75">
@@ -114,15 +117,15 @@
                 placeholder="Type your message">
         </div>
         <div class="row m-0 bg-white" (click)="sendMessage()">
-            <img class="padding-horizontal btn-cursor" src="./assets/images/profile/chatbot/chat-send.svg">
+            <img class="padding-horizontal btn-cursor" src="./assets/images/chatbot/chat-send.svg">
         </div>
     </div>
     <div class="grid text-center" *ngIf="!isHiDocEnabled">
-        <div class="mt-4"><img src="./assets/images/profile/chatbot/virtual-nurse-2.svg" alt="virtual-nurse-2"></div>
+        <div class="mt-4"><img src="./assets/images/chatbot/virtual-nurse-2.svg" alt="virtual-nurse-2"></div>
         <div class="m-3">Introducing HiDoc, your dedicated virtual assistant! Unlock a world of enhanced features by
             upgrading your plan to access HiDoc. Seamlessly manage appointments, patient data, and more with ease.
             Upgrade now to make the most of HiDoc's powerful capabilities and take your practice to new heights.</div>
-        <div><img src="./assets/images/profile/upgrade-button.svg" alt="upgrade" (click)="redirectToUpgrade()"
+        <div><img src="./assets/images/upgrade-button.svg" alt="upgrade" (click)="redirectToUpgrade()"
                 class="cursor-pointer"></div>
     </div>
 </div> -->
@@ -148,7 +151,7 @@
             <div class="jn-btn-2 row m-0 justify-content-center align-items-center p-2 ml-3 cursor-pointer"
                 (click)="callAction('accept')">
                 <div class="row m-0 justify-content-center align-items-center">
-                    <img src="./assets/images/profile/headphones.svg" alt="headphones">
+                    <img src="./assets/images/headphones.svg" alt="headphones">
                 </div>
                 <span class="txt-h5 brand-color pl-2">Join</span>
             </div>

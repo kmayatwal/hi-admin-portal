@@ -1,0 +1,271 @@
+.add-vital {
+    .text-box-30 {
+        max-width: 31.5%;
+        flex: 0 0 31.5%;
+    }
+    .text-box-49 {
+        max-width: 49%;
+        flex: 0 0 49%;
+    }
+    .text-box-67 {
+        max-width: 67.25%;
+        flex: 0 0 67.25%;
+    }
+    .txt-box-22 {
+        max-width: 22%;
+        flex: 0 0 22%;
+    }
+    .add-tag {
+        background: #f2f6fb;
+        border-radius: 16.5px;
+    }
+    .add-tag-txt {
+        font-family: "Avenir";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 15px;
+    }
+    .w-84 {
+        width: 84% !important;
+    }
+    .notes-audio-text {
+        color: #919191;
+    }
+    .notes-box {
+        background: #ffffff;
+        border: 2px solid #e9edf2;
+        box-sizing: border-box;
+        border-radius: 3px;
+    }
+    .attachment-add-box {
+        background: #ffffff;
+        border: 1px dashed #919191;
+        box-sizing: border-box;
+        border-radius: 3px;
+    }
+    .attachment-add {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        color: #328dcc;
+        padding-inline: 10px;
+    }
+    .attach-text {
+        font-family: Avenir;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 22px;
+        text-decoration-line: underline;
+        color: #328dcc;
+    }
+    .reading-button {
+        width: 100%;
+        background: #328dcc;
+        border-radius: 3px;
+    }
+
+    .reading-button-text {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: #ffffff;
+    }
+    .w-63 {
+        width: 63%;
+    }
+    .w-37 {
+        width: 37%;
+    }
+    .w-80 {
+        width: 80%;
+    }
+    .w-20 {
+        width: 20%;
+    }
+    .w-22 {
+        width: 22%;
+    }
+    .w-65 {
+        width: 65%;
+    }
+    .w-35 {
+        width: 35%;
+    }
+    .w-78 {
+        width: 78%;
+    }
+    .w-85 {
+        width: 85%;
+    }
+    .w-15 {
+        width: 15%;
+    }
+    .w-75 {
+        width: 75%;
+    }
+    .tags {
+        display: inline-block;
+        justify-content: center;
+        align-items: center;
+        background: #e0eef7;
+        border-radius: 16.5px;
+    }
+    .tag-text {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 15px;
+        color: #333232;
+    }
+    .tag-s {
+        background: var(--Light-blue-Doctor, #e0eef7) !important;
+        border-color: var(--Doctor-Primary, #057cc3) !important;
+    }
+    .tag-text-s {
+        color: var(--Doctor-Primary, #057cc3);
+    }
+
+    .h-150 {
+        height: 150px;
+        overflow-x: scroll;
+
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+    .h-150::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    /* Track */
+    .h-150::-webkit-scrollbar-track {
+        box-shadow: none;
+    }
+    /* Handle */
+    .h-150::-webkit-scrollbar-thumb {
+        background: #d4d5d6;
+        border-radius: 20px;
+        outline: none;
+    }
+
+    /* Handle on hover */
+    .h-150::-webkit-scrollbar-thumb:hover {
+        background: #9d9d9d;
+    }
+
+    .h-140 {
+        height: 140px;
+    }
+    .w-30 {
+        width: 30%;
+    }
+    .w-40 {
+        width: 40%;
+    }
+    .w-45 {
+        width: 45%;
+    }
+    .w-50 {
+        width: 50%;
+    }
+    .w-70 {
+        width: 70%;
+    }
+    .w-50 {
+        width: 50%;
+    }
+    .w-80 {
+        width: 80%;
+    }
+    .w-20 {
+        width: 20%;
+    }
+    .w-25 {
+        width: 25%;
+    }
+    .w-90 {
+        width: 90%;
+    }
+    .w-8 {
+        width: 8%;
+    }
+    .w-15 {
+        width: 15%;
+    }
+    .w-78 {
+        width: 78%;
+    }
+    .brd-right {
+        border-right: 2px solid #e9edf2;
+    }
+    .w-10 {
+        width: 10%;
+    }
+    .reminder-list-box {
+        background: #ffffff;
+        border: 1px solid #057cc3;
+        border-radius: 3px;
+    }
+    .reminder-time-txt {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 8px;
+        line-height: 12px;
+        color: #2a2d32;
+    }
+    .reminder-main-box {
+        border: 1px solid #000000;
+        border-radius: 3px;
+    }
+    .av-brd-btm {
+        border-bottom: 1px solid #dadada;
+    }
+    .av-box-1 {
+        background: #057cc3;
+        border-radius: 0px 20px 20px 0px;
+    }
+    .av-box-2 {
+        background: #ffffff;
+        border: 1px solid #858585;
+        border-radius: 4px;
+    }
+    .h-75 {
+        height: 75px;
+    }
+    .image-one {
+        position: relative;
+        margin-right: 10px;
+        height: 99px;
+        width: 99px;
+    }
+    .greecloseimage {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+    }
+    .image-one-img {
+        height: 99px;
+        width: 99px;
+    }
+    .f-11 {
+        font-size: 11px;
+    }
+}
+
+::ng-deep .timepicker-overlay {
+    z-index: 10000000 !important;
+}
+
+::ng-deep .timepicker-backdrop-overlay {
+    z-index: 10000000 !important;
+}

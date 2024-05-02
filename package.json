@@ -39,6 +39,7 @@
     "chart.js": "^4.4.2",
     "chartjs-adapter-moment": "^1.0.1",
     "chartjs-chart-geo": "^4.2.8",
+    "date-fns": "^3.3.1",
     "firebase": "^10.8.0",
     "font-awesome": "^4.7.0",
     "graphql": "^16.8.1",

@@ -1,0 +1,962 @@
+<div class="add-vital">
+    <div class="row m-0 justify-content-between px-4 pt-4">
+        <div class="row m-0">
+            <span class="txt-h3">Record Vitals</span>
+        </div>
+        <div class="row m-0 justify-content-center align-items-center cursor-pointer" (click)="close()">
+            <img src="./assets/images/close.svg" alt="close">
+        </div>
+    </div>
+    <form [formGroup]="addVitalForm">
+        <div class="row m-0 mt-3 mb-3 justify-content-between px-4">
+            <div class="text-box-30">
+                <div class="text-box row m-0 col-12 p-1"
+                    [ngClass]="{'error-class' : (avf.blood_group.hasError('required') && avf.blood_group.touched)}">
+                    <select formControlName="blood_group" class="input-box-txt">
+                        <option value="" disabled>Select Blood Group</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                    </select>
+                </div>
+                <mat-error class="error-txt-class"
+                    *ngIf="(avf.blood_group.hasError('required') && avf.blood_group.touched)">
+                    This field is required.
+                </mat-error>
+            </div>
+            <div class="text-box-30">
+                <div class="row m-0 text-box col-12 p-1"
+                    [ngClass]="{'error-class' : checkHeightStyleError(avf.height)}">
+                    <div class="row m-0 w-100">
+                        <div class="material-textfield row m-0 w-80">
+                            <div [ngClass]="{'row m-0 brd-right w-40' : avf.height_unit.value === 'feet'}">
+                                <div class="row m-0 justify-content-center align-items-center"
+                                    [ngClass]="{'w-80' : avf.height_unit.value === 'feet'}">
+                                    <input class="input-box-txt"
+                                        [ngClass]="{'error-class-lable' : checkHeightStyleError(avf.height)}"
+                                        type="text" placeholder=" " formControlName="height">
+                                    <label class="label-txt"
+                                        [ngClass]="{'error-class-lable' : checkHeightStyleError(avf.height)}">Height</label>
+                                </div>
+                                <div class="row m-0 justify-content-center align-items-center w-20"
+                                    *ngIf="avf.height_unit.value === 'feet'">
+                                    <span class="txt-base-medium color-dark-grey">ft</span>
+                                </div>
+                            </div>
+                            <div class="row m-0 w-40" *ngIf="avf.height_unit.value === 'feet'">
+                                <div class="row m-0 justify-content-center align-items-center w-80">
+                                    <input class="input-box-txt"
+                                        [ngClass]="{'error-class-lable' : checkHeightStyleError(avf.height_inch)}"
+                                        type="text" placeholder=" " formControlName="height_inch">
+                                </div>
+                                <div class="row m-0 justify-content-center align-items-center w-20">
+                                    <span class="txt-base-medium color-dark-grey">inch</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-0 w-20 justify-content-end">
+                            <select formControlName="height_unit" class="input-box-txt txt-base-regular brand-color">
+                                <option value="feet">feet</option>
+                                <option value="cm">cm</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <mat-error class="error-txt-class" *ngIf="checkHeightError(avf.height)">
+                    {{heightError}}
+                </mat-error>
+            </div>
+            <div class="text-box-30">
+                <div class="row m-0 text-box col-12 p-1"
+                    [ngClass]="{'error-class' : checkWeightStyleError(avf.weight)}">
+                    <div class="row m-0 w-100">
+                        <div class="material-textfield w-80">
+                            <input class="input-box-txt"
+                                [ngClass]="{'error-class-lable' : checkWeightStyleError(avf.weight)}" type="text"
+                                placeholder=" " formControlName="weight">
+                            <label class="label-txt"
+                                [ngClass]="{'error-class-lable' : checkWeightStyleError(avf.weight)}">Weight</label>
+                        </div>
+                        <div class="row m-0 w-20 justify-content-end">
+                            <select formControlName="weight_unit" class="input-box-txt txt-base-regular brand-color">
+                                <option value="kg">kg</option>
+                                <option value="lbs">lbs</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <mat-error class="error-txt-class" *ngIf="checkWeightError(avf.weight)">
+                    {{weightError}}
+                </mat-error>
+            </div>
+        </div>
+        <div class="row m-0 mt-3 mb-3 justify-content-between px-4">
+            <div class="text-box-30">
+                <div class="row m-0 text-box col-12 p-1"
+                    [ngClass]="{'error-class' : checkHeadCircumferenceStyleError(avf.head_circumference)}">
+                    <div class="row m-0 w-100">
+                        <div class="material-textfield w-80">
+                            <input class="input-box-txt"
+                                [ngClass]="{'error-class-lable' : checkHeadCircumferenceStyleError(avf.head_circumference)}"
+                                type="text" placeholder=" " formControlName="head_circumference">
+                            <label class="label-txt"
+                                [ngClass]="{'error-class-lable' : checkHeadCircumferenceStyleError(avf.head_circumference)}">Head
+                                Circumference</label>
+                        </div>
+                        <!-- <div class="row m-0 w-20 justify-content-end">
+                            <select formControlName="head_circumference_unit"
+                                class="input-box-txt txt-base-regular brand-color">
+                                <option value="cm">cm</option>
+                            </select>
+                        </div> -->
+                        <div class="row m-0 justify-content-end align-items-center w-20 pr-1">
+                            <span class="txt-base-regular brand-color">cm</span>
+                        </div>
+                    </div>
+                </div>
+                <mat-error class="error-txt-class" *ngIf="checkHeadCircumferenceError(avf.head_circumference)">
+                    {{headCircumferenceError}}
+                </mat-error>
+            </div>
+            <div class="text-box-30">
+                <div class="row m-0 text-box col-12 p-1"
+                    [ngClass]="{'error-class' : checkBoneMassStyleError(avf.bone_mass)}">
+                    <div class="row m-0 w-100">
+                        <div class="material-textfield w-80">
+                            <input class="input-box-txt"
+                                [ngClass]="{'error-class-lable' : checkBoneMassStyleError(avf.bone_mass)}" type="text"
+                                placeholder=" " formControlName="bone_mass">
+                            <label class="label-txt"
+                                [ngClass]="{'error-class-lable' : checkBoneMassStyleError(avf.bone_mass)}">Bone
+                                Mass</label>
+                        </div>
+                        <div class="row m-0 justify-content-end align-items-center w-20 pr-1">
+                            <span class="txt-base-regular brand-color">kg</span>
+                        </div>
+                    </div>
+                </div>
+                <mat-error class="error-txt-class" *ngIf="checkBoneMassError(avf.bone_mass)">
+                    {{boneMassError}}
+                </mat-error>
+            </div>
+            <div class="text-box-30">
+                <div class="row m-0 text-box col-12 p-1"
+                    [ngClass]="{'error-class' : checkHydrationStyleError(avf.hydration)}">
+                    <div class="row m-0 w-100">
+                        <div class="material-textfield w-80">
+                            <input class="input-box-txt"
+                                [ngClass]="{'error-class-lable' : checkHydrationStyleError(avf.hydration)}" type="text"
+                                placeholder=" " formControlName="hydration">
+                            <label class="label-txt"
+                                [ngClass]="{'error-class-lable' : checkHydrationStyleError(avf.hydration)}">Hydration</label>
+                        </div>
+                        <div class="row m-0 justify-content-end align-items-center w-20 pr-1">
+                            <span class="txt-base-regular brand-color">%</span>
+                        </div>
+                    </div>
+                </div>
+                <mat-error class="error-txt-class" *ngIf="checkHydrationError(avf.hydration)">
+                    {{hydrationError}}
+                </mat-error>
+            </div>
+        </div>
+        <div class="av-brd-btm"></div>
+
+        <!-- Temperature Reading -->
+        <div class="row m-0 justify-content-start align-items-center py-3">
+            <div class="av-box-1 row m-0 justify-content-start align-items-center pl-2 pr-4 py-1 w-22">
+                <div class="row m-0 justify-content-center align-items-center">
+                    <img src="./assets/images/temperature-record.svg" alt="temperature-record">
+                </div>
+                <div class="row m-0 justify-content-center align-items-center pl-3">
+                    <span class="txt-h3 text-white">Temperature</span>
+                </div>
+            </div>
+        </div>
+        <div class="row m-0 mt-3 mb-3 justify-content-between px-4">
+            <div class="text-box-30">
+                <div class="row m-0 text-box col-12 p-1"
+                    [ngClass]="{'error-class' : checkTemperatureStyleError(avf.temperature)}">
+                    <div class="row m-0 w-100">
+                        <div class="material-textfield w-63">
+                            <input class="input-box-txt"
+                                [ngClass]="{'error-class-lable' : checkTemperatureStyleError(avf.temperature)}"
+                                type="text" placeholder=" " formControlName="temperature">
+                            <label class="label-txt"
+                                [ngClass]="{'error-class-lable' : checkTemperatureStyleError(avf.temperature)}">Temperature</label>
+                        </div>
+                        <div class="row m-0 w-37 justify-content-end">
+                            <select formControlName="temperature_unit"
+                                class="input-box-txt txt-base-regular brand-color">
+                                <option value="°Celsius">°Celsius</option>
+                                <option value="°Fahrenheit">°Fahrenheit</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <mat-error class="error-txt-class" *ngIf="checkTemperatureError(avf.temperature)">
+                    {{temperatureError}}
+                </mat-error>
+            </div>
+            <div class="text-box-30">
+                <div class="text-box col-12 p-1 row m-0" id="temperatureReadingLocationField"
+                    [ngClass]="{'error-class' : (avf.temperatureReadingLocation.hasError('required') && avf.temperatureReadingLocation.touched)}"
+                    (click)="openTemperatureReadingLocationList()">
+                    <div class="material-textfield w-90">
+                        <input class="input-box-txt" id="temperatureReadingLocationInputField"
+                            [ngClass]="{'error-class-lable' : (avf.temperatureReadingLocation.hasError('required') && avf.temperatureReadingLocation.touched)}"
+                            type="text" placeholder=" " formControlName="temperatureReadingLocation" readonly>
+                        <label class="label-txt"
+                            [ngClass]="{'error-class-lable' : (avf.temperatureReadingLocation.hasError('required') && avf.temperatureReadingLocation.touched)}">Reading
+                            location</label>
+                    </div>
+                    <img (click)="openTemperatureReadingLocationList()" class="dropdown-arrow w-8"
+                        src="./assets/images/chevron-down.svg" alt="chevron-down">
+                </div>
+                <div *ngIf="showTemperatureReadingLocationList">
+                    <app-hi-select-box [type]="'single'" [searchEnable]="false"
+                        [dataList]="temperatureReadingLocationDataList"
+                        (setItemInComponent)="setTemperatureReadingLocation($event)" [showTyped]="false"
+                        [typedValue]="true" [width]="temperatureReadingLocationFieldWidth"></app-hi-select-box>
+                </div>
+                <!-- <mat-error class="error-txt-class" *ngIf="(avf.temperatureReadingLocation.hasError('required') && avf.temperatureReadingLocation.touched)">
+                    This field is required.
+                </mat-error> -->
+            </div>
+            <div class="text-box-30"></div>
+        </div>
+        <div class="row m-0 justify-content-start px-4 py-3">
+            <div class="row m-0 justify-content-center align-items-center cursor-pointer av-box-2 p-2 ml-2 mb-2"
+                *ngFor="let tag of temperatureTags; index as i;"
+                [ngClass]="{'tag-s' :  selectedTemperatureTags && selectedTemperatureTags.includes(tag)}"
+                (click)="addTag(tag, 'selectedTemperatureTags')">
+                <span class="tag-text"
+                    [ngClass]="{'tag-text-s' : selectedTemperatureTags && selectedTemperatureTags.includes(tag)}">{{tag}}</span>
+            </div>
+        </div>
+        <div class="av-brd-btm"></div>
+
+        <!-- Pulse Reading -->
+        <div class="row m-0 justify-content-start align-items-center py-3">
+            <div class="av-box-1 row m-0 justify-content-start align-items-center pl-2 pr-4 py-1 w-22">
+                <div class="row m-0 justify-content-center align-items-center">
+                    <img src="./assets/images/pulse-record.svg" alt="pulse-record">
+                </div>
+                <div class="row m-0 justify-content-center align-items-center pl-3">
+                    <span class="txt-h3 text-white">Pulse</span>
+                </div>
+            </div>
+        </div>
+        <div class="row m-0 mt-3 mb-3 justify-content-between px-4">
+            <div class="text-box-30">
+                <div class="row m-0 text-box col-12 p-1" [ngClass]="{'error-class' : checkPulseStyleError(avf.pulse)}">
+                    <div class="row m-0 w-100">
+                        <div class="material-textfield w-80">
+                            <input class="input-box-txt"
+                                [ngClass]="{'error-class-lable' : checkPulseStyleError(avf.pulse)}" type="text"
+                                placeholder=" " formControlName="pulse">
+                            <label class="label-txt"
+                                [ngClass]="{'error-class-lable' : checkPulseStyleError(avf.pulse)}">Pulse</label>
+                        </div>
+                        <div class="row m-0 justify-content-end align-items-center w-20 pr-1">
+                            <span class="txt-base-regular brand-color">bpm</span>
+                        </div>
+                    </div>
+                </div>
+                <mat-error class="error-txt-class" *ngIf="checkPulseError(avf.pulse)">
+                    {{pulseError}}
+                </mat-error>
+            </div>
+        </div>
+        <div class="row m-0 justify-content-start px-4 py-3">
+            <div class="row m-0 justify-content-center align-items-center cursor-pointer av-box-2 p-2 ml-2 mb-2"
+                *ngFor="let tag of pulseTags; index as i;"
+                [ngClass]="{'tag-s' :  selectedPulseTags && selectedPulseTags.includes(tag)}"
+                (click)="addTag(tag, 'selectedPulseTags')">
+                <span class="tag-text"
+                    [ngClass]="{'tag-text-s' : selectedPulseTags && selectedPulseTags.includes(tag)}">{{tag}}</span>
+            </div>
+        </div>
+        <div class="av-brd-btm"></div>
+
+        <!-- Blood Pressure Reading -->
+        <div class="row m-0 justify-content-start align-items-center py-3">
+            <div class="av-box-1 row m-0 justify-content-start align-items-center pl-2 pr-4 py-1 w-22">
+                <div class="row m-0 justify-content-center align-items-center">
+                    <img src="./assets/images/blood-pressure-record.svg" alt="blood-pressure-record">
+                </div>
+                <div class="row m-0 justify-content-center align-items-center pl-3">
+                    <span class="txt-h3 text-white">Blood Pressure</span>
+                </div>
+            </div>
+        </div>
+        <div class="row m-0 mt-3 mb-3 justify-content-between px-4">
+            <div class="text-box-30 row m-0 justify-content-between">
+                <div class="text-box-49">
+                    <div class="row m-0 text-box col-12 p-1"
+                        [ngClass]="{'error-class' : checkBPSystolicStyleError(avf.bp_systolic)}">
+                        <div class="row m-0">
+                            <div class="material-textfield w-65">
+                                <input class="input-box-txt"
+                                    [ngClass]="{'error-class-lable' : checkBPSystolicStyleError(avf.bp_systolic)}"
+                                    type="text" placeholder=" " formControlName="bp_systolic">
+                                <label class="label-txt"
+                                    [ngClass]="{'error-class-lable' : checkBPSystolicStyleError(avf.bp_systolic)}">BP
+                                    Systolic</label>
+                            </div>
+                            <div class="row m-0 justify-content-end align-items-center w-35 pr-1">
+                                <span class="txt-base-regular brand-color">mmHg</span>
+                            </div>
+                        </div>
+                    </div>
+                    <mat-error class="error-txt-class" *ngIf="checkBPSystolicError(avf.bp_systolic)">
+                        {{bpSystolicError}}
+                    </mat-error>
+                </div>
+                <div class="text-box-49">
+                    <div class="row m-0 text-box col-12 p-1"
+                        [ngClass]="{'error-class' : checkBPDiastolicStyleError(avf.bp_diastolic)}">
+                        <div class="row m-0">
+                            <div class="material-textfield w-65">
+                                <input class="input-box-txt"
+                                    [ngClass]="{'error-class-lable' : checkBPDiastolicStyleError(avf.bp_diastolic)}"
+                                    type="text" placeholder=" " formControlName="bp_diastolic">
+                                <label class="label-txt"
+                                    [ngClass]="{'error-class-lable' : checkBPDiastolicStyleError(avf.bp_diastolic)}">BP
+                                    Diastolic</label>
+                            </div>
+                            <div class="row m-0 justify-content-end align-items-center w-35 pr-1">
+                                <span class="txt-base-regular brand-color">mmHg</span>
+                            </div>
+                        </div>
+                    </div>
+                    <mat-error class="error-txt-class" *ngIf="checkBPDiastolicError(avf.bp_diastolic)">
+                        {{bpDiastolicError}}
+                    </mat-error>
+                </div>
+            </div>
+            <div class="text-box-30">
+                <div class="text-box col-12 p-1 row m-0" id="bpBodyPositionField"
+                    [ngClass]="{'error-class' : (avf.bpBodyPosition.hasError('required') && avf.bpBodyPosition.touched)}"
+                    (click)="openBpBodyPositionList()">
+                    <div class="material-textfield w-90">
+                        <input class="input-box-txt" id="bpBodyPositionInputField"
+                            [ngClass]="{'error-class-lable' : (avf.bpBodyPosition.hasError('required') && avf.bpBodyPosition.touched)}"
+                            type="text" placeholder=" " formControlName="bpBodyPosition" readonly>
+                        <label class="label-txt"
+                            [ngClass]="{'error-class-lable' : (avf.bpBodyPosition.hasError('required') && avf.bpBodyPosition.touched)}">Body
+                            position</label>
+                    </div>
+                    <img (click)="openBpBodyPositionList()" class="dropdown-arrow w-8"
+                        src="./assets/images/chevron-down.svg" alt="chevron-down">
+                </div>
+                <div *ngIf="showBpBodyPositionList">
+                    <app-hi-select-box [type]="'single'" [searchEnable]="false" [dataList]="bpBodyPositionDataList"
+                        (setItemInComponent)="setBpBodyPosition($event)" [showTyped]="false" [typedValue]="true"
+                        [width]="bpBodyPositionFieldWidth"></app-hi-select-box>
+                </div>
+                <!-- <mat-error class="error-txt-class" *ngIf="(avf.bpBodyPosition.hasError('required') && avf.bpBodyPosition.touched)">
+                    This field is required.
+                </mat-error> -->
+            </div>
+            <div class="text-box-30">
+                <div class="text-box col-12 p-1 row m-0" id="bpArmLocationField"
+                    [ngClass]="{'error-class' : (avf.bpArmLocation.hasError('required') && avf.bpArmLocation.touched)}"
+                    (click)="openBpArmLocationList()">
+                    <div class="material-textfield w-90">
+                        <input class="input-box-txt" id="bpArmLocationInputField"
+                            [ngClass]="{'error-class-lable' : (avf.bpArmLocation.hasError('required') && avf.bpArmLocation.touched)}"
+                            type="text" placeholder=" " formControlName="bpArmLocation" readonly>
+                        <label class="label-txt"
+                            [ngClass]="{'error-class-lable' : (avf.bpArmLocation.hasError('required') && avf.bpArmLocation.touched)}">Arm
+                            location</label>
+                    </div>
+                    <img (click)="openBpArmLocationList()" class="dropdown-arrow w-8"
+                        src="./assets/images/chevron-down.svg" alt="chevron-down">
+                </div>
+                <div *ngIf="showBpArmLocationList">
+                    <app-hi-select-box [type]="'single'" [searchEnable]="false" [dataList]="bpArmLocationDataList"
+                        (setItemInComponent)="setBpArmLocation($event)" [showTyped]="false" [typedValue]="true"
+                        [width]="bpArmLocationFieldWidth"></app-hi-select-box>
+                </div>
+                <!-- <mat-error class="error-txt-class" *ngIf="(avf.bpArmLocation.hasError('required') && avf.bpArmLocation.touched)">
+                    This field is required.
+                </mat-error> -->
+            </div>
+        </div>
+        <div class="row m-0 justify-content-start px-4 py-3">
+            <div class="row m-0 justify-content-center align-items-center cursor-pointer av-box-2 p-2 ml-2 mb-2"
+                *ngFor="let tag of bpTags; index as i;"
+                [ngClass]="{'tag-s' :  selectedBPTags && selectedBPTags.includes(tag)}"
+                (click)="addTag(tag, 'selectedBPTags')">
+                <span class="tag-text"
+                    [ngClass]="{'tag-text-s' : selectedBPTags && selectedBPTags.includes(tag)}">{{tag}}</span>
+            </div>
+        </div>
+        <div class="av-brd-btm"></div>
+
+        <!-- Blood Oxygen Reading -->
+        <div class="row m-0 justify-content-start align-items-center py-3">
+            <div class="av-box-1 row m-0 justify-content-start align-items-center pl-2 pr-4 py-1 w-22">
+                <div class="row m-0 justify-content-center align-items-center">
+                    <img src="./assets/images/blood-oxygen-record.svg" alt="blood-oxygen-record">
+                </div>
+                <div class="row m-0 justify-content-center align-items-center pl-3">
+                    <span class="txt-h3 text-white">Blood Oxygen</span>
+                </div>
+            </div>
+        </div>
+        <div class="row m-0 mt-3 mb-3 justify-content-between px-4">
+            <div class="text-box-30 row m-0 justify-content-between">
+                <div class="text-box-49">
+                    <div class="row m-0 text-box col-12 p-1"
+                        [ngClass]="{'error-class' : checkBloodOxygenStyleError(avf.blood_oxygen)}">
+                        <div class="row m-0">
+                            <div class="material-textfield w-65">
+                                <input class="input-box-txt"
+                                    [ngClass]="{'error-class-lable' : checkBloodOxygenStyleError(avf.blood_oxygen)}"
+                                    type="text" placeholder=" " formControlName="blood_oxygen">
+                                <label class="label-txt"
+                                    [ngClass]="{'error-class-lable' : checkBloodOxygenStyleError(avf.blood_oxygen)}">Blood
+                                    Oxygen</label>
+                            </div>
+                            <div class="row m-0 justify-content-end align-items-center w-35 pr-1">
+                                <span class="txt-base-regular brand-color">%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <mat-error class="error-txt-class" *ngIf="checkBloodOxygenError(avf.blood_oxygen)">
+                        {{bloodOxygenError}}
+                    </mat-error>
+                </div>
+                <div class="text-box-49">
+                    <div class="text-box row m-0 col-12 p-1"
+                        [ngClass]="{'error-class' : (avf.provision.hasError('required') && avf.provision.touched)}">
+                        <select formControlName="provision" class="input-box-txt">
+                            <option value="" disabled>Select provision</option>
+                            <option value="On Air">On Air</option>
+                            <option value="On Oxygen">On Oxygen</option>
+                        </select>
+                    </div>
+                    <mat-error class="error-txt-class"
+                        *ngIf="(avf.provision.hasError('required') && avf.provision.touched)">
+                        This field is required.
+                    </mat-error>
+                </div>
+            </div>
+            <div class="text-box-30 row m-0 justify-content-between">
+                <div class="text-box-49">
+                    <div class="row m-0 text-box col-12 p-1"
+                        [ngClass]="{'error-class' : checkBloodOxygenSupplementalO2StyleError(avf.bloodOxygenSupplementalO2)}">
+                        <div class="row m-0">
+                            <div class="material-textfield w-65">
+                                <input class="input-box-txt"
+                                    [ngClass]="{'error-class-lable' : checkBloodOxygenSupplementalO2StyleError(avf.bloodOxygenSupplementalO2)}"
+                                    type="text" placeholder=" " formControlName="bloodOxygenSupplementalO2">
+                                <label class="label-txt f-11"
+                                    [ngClass]="{'error-class-lable' : checkBloodOxygenSupplementalO2StyleError(avf.bloodOxygenSupplementalO2)}">Supplemental
+                                    O2</label>
+                            </div>
+                            <div class="row m-0 justify-content-end align-items-center w-35 pr-1">
+                                <span class="txt-base-regular brand-color">L/min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <mat-error class="error-txt-class"
+                        *ngIf="checkBloodOxygenSupplementalO2Error(avf.bloodOxygenSupplementalO2)">
+                        {{bloodOxygenError}}
+                    </mat-error>
+                </div>
+                <div class="text-box-49">
+                    <div class="text-box col-12 p-1 row m-0" id="bloodOxygenOxygenTherapyField"
+                        [ngClass]="{'error-class' : (avf.bloodOxygenOxygenTherapy.hasError('required') && avf.bloodOxygenOxygenTherapy.touched)}"
+                        (click)="openBloodOxygenOxygenTherapyList()">
+                        <div class="material-textfield w-85">
+                            <input class="input-box-txt" id="bloodOxygenOxygenTherapyInputField"
+                                [ngClass]="{'error-class-lable' : (avf.bloodOxygenOxygenTherapy.hasError('required') && avf.bloodOxygenOxygenTherapy.touched)}"
+                                type="text" placeholder=" " formControlName="bloodOxygenOxygenTherapy" readonly>
+                            <label class="label-txt"
+                                [ngClass]="{'error-class-lable' : (avf.bloodOxygenOxygenTherapy.hasError('required') && avf.bloodOxygenOxygenTherapy.touched)}">Oxygen
+                                therapy</label>
+                        </div>
+                        <img (click)="openBloodOxygenOxygenTherapyList()" class="dropdown-arrow w-15"
+                            src="./assets/images/chevron-down.svg" alt="chevron-down">
+                    </div>
+                    <div *ngIf="showBloodOxygenOxygenTherapyList">
+                        <app-hi-select-box [type]="'single'" [searchEnable]="false"
+                            [dataList]="bloodOxygenOxygenTherapyDataList"
+                            (setItemInComponent)="setBloodOxygenOxygenTherapy($event)" [showTyped]="false"
+                            [typedValue]="true" [width]="bloodOxygenOxygenTherapyFieldWidth"></app-hi-select-box>
+                    </div>
+                    <!-- <mat-error class="error-txt-class"
+                        *ngIf="(avf.bloodOxygenOxygenTherapy.hasError('required') && avf.bloodOxygenOxygenTherapy.touched)">
+                        This field is required.
+                    </mat-error> -->
+                </div>
+            </div>
+            <div class="text-box-30 row m-0 justify-content-between">
+                <div class="text-box-49">
+                    <div class="text-box col-12 p-1 row m-0" id="bloodOxygenReadingMethodField"
+                        [ngClass]="{'error-class' : (avf.bloodOxygenReadingMethod.hasError('required') && avf.bloodOxygenReadingMethod.touched)}"
+                        (click)="openBloodOxygenReadingMethodList()">
+                        <div class="material-textfield w-85">
+                            <input class="input-box-txt" id="bloodOxygenReadingMethodInputField"
+                                [ngClass]="{'error-class-lable' : (avf.bloodOxygenReadingMethod.hasError('required') && avf.bloodOxygenReadingMethod.touched)}"
+                                type="text" placeholder=" " formControlName="bloodOxygenReadingMethod" readonly>
+                            <label class="label-txt"
+                                [ngClass]="{'error-class-lable' : (avf.bloodOxygenReadingMethod.hasError('required') && avf.bloodOxygenReadingMethod.touched)}">Reading
+                                method</label>
+                        </div>
+                        <img (click)="openBloodOxygenReadingMethodList()" class="dropdown-arrow w-15"
+                            src="./assets/images/chevron-down.svg" alt="chevron-down">
+                    </div>
+                    <div *ngIf="showBloodOxygenReadingMethodList">
+                        <app-hi-select-box [type]="'single'" [searchEnable]="false"
+                            [dataList]="bloodOxygenReadingMethodDataList"
+                            (setItemInComponent)="setBloodOxygenReadingMethod($event)" [showTyped]="false"
+                            [typedValue]="true" [width]="bloodOxygenReadingMethodFieldWidth"></app-hi-select-box>
+                    </div>
+                    <!-- <mat-error class="error-txt-class"
+                        *ngIf="(avf.bloodOxygenReadingMethod.hasError('required') && avf.bloodOxygenReadingMethod.touched)">
+                        This field is required.
+                    </mat-error> -->
+                </div>
+                <div class="text-box-49">
+                    <div class="text-box col-12 p-1 row m-0" id="bloodOxygenMeasurementTypeField"
+                        [ngClass]="{'error-class' : (avf.bloodOxygenMeasurementType.hasError('required') && avf.bloodOxygenMeasurementType.touched)}"
+                        (click)="openBloodOxygenMeasurementTypeList()">
+                        <div class="material-textfield w-85">
+                            <input class="input-box-txt" id="bloodOxygenMeasurementTypeInputField"
+                                [ngClass]="{'error-class-lable' : (avf.bloodOxygenMeasurementType.hasError('required') && avf.bloodOxygenMeasurementType.touched)}"
+                                type="text" placeholder=" " formControlName="bloodOxygenMeasurementType" readonly>
+                            <label class="label-txt"
+                                [ngClass]="{'error-class-lable' : (avf.bloodOxygenMeasurementType.hasError('required') && avf.bloodOxygenMeasurementType.touched)}">Measurement
+                                type</label>
+                        </div>
+                        <img (click)="openBloodOxygenMeasurementTypeList()" class="dropdown-arrow w-15"
+                            src="./assets/images/chevron-down.svg" alt="chevron-down">
+                    </div>
+                    <div *ngIf="showBloodOxygenMeasurementTypeList">
+                        <app-hi-select-box [type]="'single'" [searchEnable]="false"
+                            [dataList]="bloodOxygenMeasurementTypeDataList"
+                            (setItemInComponent)="setBloodOxygenMeasurementType($event)" [showTyped]="false"
+                            [typedValue]="true" [width]="bloodOxygenMeasurementTypeFieldWidth"></app-hi-select-box>
+                    </div>
+                    <!-- <mat-error class="error-txt-class"
+                        *ngIf="(avf.bloodOxygenMeasurementType.hasError('required') && avf.bloodOxygenMeasurementType.touched)">
+                        This field is required.
+                    </mat-error> -->
+                </div>
+            </div>
+        </div>
+        <div class="row m-0 justify-content-start px-4 py-3">
+            <div class="row m-0 justify-content-center align-items-center cursor-pointer av-box-2 p-2 ml-2 mb-2"
+                *ngFor="let tag of boTags; index as i;"
+                [ngClass]="{'tag-s' :  selectedBOTags && selectedBOTags.includes(tag)}"
+                (click)="addTag(tag, 'selectedBOTags')">
+                <span class="tag-text"
+                    [ngClass]="{'tag-text-s' : selectedBOTags && selectedBOTags.includes(tag)}">{{tag}}</span>
+            </div>
+        </div>
+        <div class="av-brd-btm"></div>
+
+        <!-- Respiratory Rate Reading -->
+        <div class="row m-0 justify-content-start align-items-center py-3">
+            <div class="av-box-1 row m-0 justify-content-start align-items-center pl-2 pr-4 py-1 w-22">
+                <div class="row m-0 justify-content-center align-items-center">
+                    <img src="./assets/images/respiratory-rate-record.svg" alt="respiratory-rate-record">
+                </div>
+                <div class="row m-0 justify-content-center align-items-center pl-3">
+                    <span class="txt-h3 text-white">Respiratory Rate</span>
+                </div>
+            </div>
+        </div>
+        <div class="row m-0 mt-3 mb-3 justify-content-between px-4">
+            <div class="text-box-30">
+                <div class="row m-0 text-box col-12 p-1"
+                    [ngClass]="{'error-class' : checkRespiratoryRateStyleError(avf.respiratory_rate)}">
+                    <div class="row m-0 w-100">
+                        <div class="material-textfield w-80">
+                            <input class="input-box-txt"
+                                [ngClass]="{'error-class-lable' : checkRespiratoryRateStyleError(avf.respiratory_rate)}"
+                                type="text" placeholder=" " formControlName="respiratory_rate">
+                            <label class="label-txt"
+                                [ngClass]="{'error-class-lable' : checkRespiratoryRateStyleError(avf.respiratory_rate)}">Respiratory
+                                Rate</label>
+                        </div>
+                        <div class="row m-0 justify-content-end align-items-center w-20 pr-1">
+                            <span class="txt-base-regular brand-color">bpm</span>
+                        </div>
+                    </div>
+                </div>
+                <mat-error class="error-txt-class" *ngIf="checkRespiratoryRateError(avf.respiratory_rate)">
+                    {{respiratoryRateError}}
+                </mat-error>
+            </div>
+            <div class="text-box-30"></div>
+            <div class="text-box-30"></div>
+        </div>
+        <div class="row m-0 justify-content-start px-4 py-3">
+            <div class="row m-0 justify-content-center align-items-center cursor-pointer av-box-2 p-2 ml-2 mb-2"
+                *ngFor="let tag of raspiratoryTags; index as i;"
+                [ngClass]="{'tag-s' :  selectedRaspiratoryTags && selectedRaspiratoryTags.includes(tag)}"
+                (click)="addTag(tag, 'selectedRaspiratoryTags')">
+                <span class="tag-text"
+                    [ngClass]="{'tag-text-s' : selectedRaspiratoryTags && selectedRaspiratoryTags.includes(tag)}">{{tag}}</span>
+            </div>
+        </div>
+        <div class="av-brd-btm"></div>
+
+        <!-- Blood Glucose Reading -->
+        <div class="row m-0 justify-content-start align-items-center py-3">
+            <div class="av-box-1 row m-0 justify-content-start align-items-center pl-2 pr-4 py-1 w-22">
+                <div class="row m-0 justify-content-center align-items-center">
+                    <img src="./assets/images/blood-glucose-record.svg" alt="blood-glucose-record">
+                </div>
+                <div class="row m-0 justify-content-center align-items-center pl-3">
+                    <span class="txt-h3 text-white">Blood Glucose</span>
+                </div>
+            </div>
+        </div>
+        <div class="row m-0 mt-3 mb-3 justify-content-between px-4">
+            <div class="text-box-30">
+                <div class="row m-0 text-box col-12 p-1"
+                    [ngClass]="{'error-class' : checkBloodGlucoseStyleError(avf.blood_glucose)}">
+                    <div class="material-textfield w-70">
+                        <input class="input-box-txt"
+                            [ngClass]="{'error-class-lable' : checkBloodGlucoseStyleError(avf.blood_glucose)}"
+                            type="text" placeholder=" " formControlName="blood_glucose">
+                        <label class="label-txt"
+                            [ngClass]="{'error-class-lable' : checkBloodGlucoseStyleError(avf.blood_glucose)}">Blood
+                            Glucose</label>
+                    </div>
+                    <div class="row m-0 w-30" *ngIf="avf.blood_glucose_type.value === 'Blood Glucose'">
+                        <select formControlName="blood_glucose_unit" class="input-box-txt txt-base-regular brand-color">
+                            <option value="mg/dL">mg/dL</option>
+                            <option value="mmol/L">mmol/L</option>
+                        </select>
+                    </div>
+                </div>
+                <mat-error class="error-txt-class" *ngIf="checkBloodGlucoseError(avf.blood_glucose)">
+                    {{bloodGlucoseError}}
+                </mat-error>
+            </div>
+            <div class="text-box-30 row m-0 justify-content-between">
+                <div class="text-box-49">
+                    <div class="text-box col-12 p-1 row m-0" id="bloodGlucoseMealTimingField"
+                        [ngClass]="{'error-class' : (avf.bloodGlucoseMealTiming.hasError('required') && avf.bloodGlucoseMealTiming.touched)}"
+                        (click)="openBloodGlucoseMealTimingList()">
+                        <div class="material-textfield w-85">
+                            <input class="input-box-txt" id="bloodGlucoseMealTimingInputField"
+                                [ngClass]="{'error-class-lable' : (avf.bloodGlucoseMealTiming.hasError('required') && avf.bloodGlucoseMealTiming.touched)}"
+                                type="text" placeholder=" " formControlName="bloodGlucoseMealTiming" readonly>
+                            <label class="label-txt"
+                                [ngClass]="{'error-class-lable' : (avf.bloodGlucoseMealTiming.hasError('required') && avf.bloodGlucoseMealTiming.touched)}">Meal
+                                timing</label>
+                        </div>
+                        <img (click)="openBloodGlucoseMealTimingList()" class="dropdown-arrow w-15"
+                            src="./assets/images/chevron-down.svg" alt="chevron-down">
+                    </div>
+                    <div *ngIf="showBloodGlucoseMealTimingList">
+                        <app-hi-select-box [type]="'single'" [searchEnable]="false"
+                            [dataList]="bloodGlucoseMealTimingDataList"
+                            (setItemInComponent)="setBloodGlucoseMealTiming($event)" [showTyped]="false"
+                            [typedValue]="true" [width]="bloodGlucoseMealTimingFieldWidth"></app-hi-select-box>
+                    </div>
+                    <!-- <mat-error class="error-txt-class"
+                        *ngIf="(avf.bloodGlucoseMealTiming.hasError('required') && avf.bloodGlucoseMealTiming.touched)">
+                        This field is required.
+                    </mat-error> -->
+                </div>
+                <div class="text-box-49">
+                    <div class="text-box col-12 p-1 row m-0" id="bloodGlucoseMealTypeField"
+                        [ngClass]="{'error-class' : (avf.bloodGlucoseMealType.hasError('required') && avf.bloodGlucoseMealType.touched)}"
+                        (click)="openBloodGlucoseMealTypeList()">
+                        <div class="material-textfield w-85">
+                            <input class="input-box-txt" id="bloodGlucoseMealTypeInputField"
+                                [ngClass]="{'error-class-lable' : (avf.bloodGlucoseMealType.hasError('required') && avf.bloodGlucoseMealType.touched)}"
+                                type="text" placeholder=" " formControlName="bloodGlucoseMealType" readonly>
+                            <label class="label-txt"
+                                [ngClass]="{'error-class-lable' : (avf.bloodGlucoseMealType.hasError('required') && avf.bloodGlucoseMealType.touched)}">Meal
+                                type</label>
+                        </div>
+                        <img (click)="openBloodGlucoseMealTypeList()" class="dropdown-arrow w-15"
+                            src="./assets/images/chevron-down.svg" alt="chevron-down">
+                    </div>
+                    <div *ngIf="showBloodGlucoseMealTypeList">
+                        <app-hi-select-box [type]="'single'" [searchEnable]="false"
+                            [dataList]="bloodGlucoseMealTypeDataList"
+                            (setItemInComponent)="setBloodGlucoseMealType($event)" [showTyped]="false"
+                            [typedValue]="true" [width]="bloodGlucoseMealTypeFieldWidth"></app-hi-select-box>
+                    </div>
+                    <!-- <mat-error class="error-txt-class"
+                        *ngIf="(avf.bloodGlucoseMealType.hasError('required') && avf.bloodGlucoseMealType.touched)">
+                        This field is required.
+                    </mat-error> -->
+                </div>
+            </div>
+            <div class="text-box-30 row m-0 justify-content-between">
+                <div class="text-box-49">
+                    <div class="text-box col-12 p-1 row m-0" id="bloodGlucoseSleepTimingField"
+                        [ngClass]="{'error-class' : (avf.bloodGlucoseSleepTiming.hasError('required') && avf.bloodGlucoseSleepTiming.touched)}"
+                        (click)="openBloodGlucoseSleepTimingList()">
+                        <div class="material-textfield w-85">
+                            <input class="input-box-txt" id="bloodGlucoseSleepTimingInputField"
+                                [ngClass]="{'error-class-lable' : (avf.bloodGlucoseSleepTiming.hasError('required') && avf.bloodGlucoseSleepTiming.touched)}"
+                                type="text" placeholder=" " formControlName="bloodGlucoseSleepTiming" readonly>
+                            <label class="label-txt"
+                                [ngClass]="{'error-class-lable' : (avf.bloodGlucoseSleepTiming.hasError('required') && avf.bloodGlucoseSleepTiming.touched)}">Sleep
+                                timing</label>
+                        </div>
+                        <img (click)="openBloodGlucoseSleepTimingList()" class="dropdown-arrow w-15"
+                            src="./assets/images/chevron-down.svg" alt="chevron-down">
+                    </div>
+                    <div *ngIf="showBloodGlucoseSleepTimingList">
+                        <app-hi-select-box [type]="'single'" [searchEnable]="false"
+                            [dataList]="bloodGlucoseSleepTimingDataList"
+                            (setItemInComponent)="setBloodGlucoseSleepTiming($event)" [showTyped]="false"
+                            [typedValue]="true" [width]="bloodGlucoseSleepTimingFieldWidth"></app-hi-select-box>
+                    </div>
+                    <!-- <mat-error class="error-txt-class"
+                        *ngIf="(avf.bloodGlucoseSleepTiming.hasError('required') && avf.bloodGlucoseSleepTiming.touched)">
+                        This field is required.
+                    </mat-error> -->
+                </div>
+                <div class="text-box-49">
+                    <div class="text-box col-12 p-1 row m-0" id="bloodGlucoseSampleSourceField"
+                        [ngClass]="{'error-class' : (avf.bloodGlucoseSampleSource.hasError('required') && avf.bloodGlucoseSampleSource.touched)}"
+                        (click)="openBloodGlucoseSampleSourceList()">
+                        <div class="material-textfield w-85">
+                            <input class="input-box-txt" id="bloodGlucoseSampleSourceInputField"
+                                [ngClass]="{'error-class-lable' : (avf.bloodGlucoseSampleSource.hasError('required') && avf.bloodGlucoseSampleSource.touched)}"
+                                type="text" placeholder=" " formControlName="bloodGlucoseSampleSource" readonly>
+                            <label class="label-txt"
+                                [ngClass]="{'error-class-lable' : (avf.bloodGlucoseSampleSource.hasError('required') && avf.bloodGlucoseSampleSource.touched)}">Sample
+                                source</label>
+                        </div>
+                        <img (click)="openBloodGlucoseSampleSourceList()" class="dropdown-arrow w-15"
+                            src="./assets/images/chevron-down.svg" alt="chevron-down">
+                    </div>
+                    <div *ngIf="showBloodGlucoseSampleSourceList">
+                        <app-hi-select-box [type]="'single'" [searchEnable]="false"
+                            [dataList]="bloodGlucoseSampleSourceDataList"
+                            (setItemInComponent)="setBloodGlucoseSampleSource($event)" [showTyped]="false"
+                            [typedValue]="true" [width]="bloodGlucoseSampleSourceFieldWidth"></app-hi-select-box>
+                    </div>
+                    <!-- <mat-error class="error-txt-class"
+                        *ngIf="(avf.bloodGlucoseSampleSource.hasError('required') && avf.bloodGlucoseSampleSource.touched)">
+                        This field is required.
+                    </mat-error> -->
+                </div>
+            </div>
+        </div>
+        <div class="row m-0 mt-3 mb-3 justify-content-between px-4">
+            <div class="text-box-30">
+                <div class="row m-0 text-box col-12 p-1" [ngClass]="{'error-class' : checkHbA1cStyleError(avf.HbA1c)}">
+                    <div class="row m-0 w-100">
+                        <div class="material-textfield w-80">
+                            <input class="input-box-txt"
+                                [ngClass]="{'error-class-lable' : checkHbA1cStyleError(avf.HbA1c)}" type="text"
+                                placeholder=" " formControlName="HbA1c">
+                            <label class="label-txt"
+                                [ngClass]="{'error-class-lable' : checkHbA1cStyleError(avf.HbA1c)}">HbA1c</label>
+                        </div>
+                        <div class="row m-0 justify-content-end align-items-center w-20 pr-1">
+                            <span class="txt-base-regular brand-color">%</span>
+                        </div>
+                    </div>
+                </div>
+                <mat-error class="error-txt-class" *ngIf="checkHbA1cError(avf.HbA1c)">
+                    {{hbA1cError}}
+                </mat-error>
+            </div>
+            <div class="text-box-30"></div>
+            <div class="text-box-30"></div>
+        </div>
+        <div class="row m-0 justify-content-start px-4 py-3">
+            <div class="row m-0 justify-content-center align-items-center cursor-pointer av-box-2 p-2 ml-2 mb-2"
+                *ngFor="let tag of bgTags; index as i;"
+                [ngClass]="{'tag-s' :  selectedBGTags && selectedBGTags.includes(tag)}"
+                (click)="addTag(tag, 'selectedBGTags')">
+                <span class="tag-text"
+                    [ngClass]="{'tag-text-s' : selectedBGTags && selectedBGTags.includes(tag)}">{{tag}}</span>
+            </div>
+        </div>
+        <div class="av-brd-btm"></div>
+
+
+        <div class="row m-0 mt-3 mb-3 justify-content-between px-4">
+            <div class="text-box-30">
+                <!-- <div class="row m-0 pb-2">
+                    <span class="txt-h5">*Reading Time</span>
+                </div> -->
+                <div class="row m-0 align-items-center pb-2">
+                    <!-- <input type="checkbox" class="checkbox-size" [(ngModel)]="is_manual_timestamp"
+                        [ngModelOptions]="{standalone: true}"> -->
+                    <div class="row m-0 justify-content-center align-items-center" (click)="setManualTimestamp()">
+                        <img [src]="is_manual_timestamp ? './assets/images/box-check.svg' : './assets/images/box-un-check.svg'"
+                            alt="checkbox">
+                    </div>
+                    <span class="txt-base-regular pl-2">Enter manual time for this reading</span>
+                </div>
+                <div class="row m-0 justify-content-between"
+                    [ngStyle]="{'opacity': is_manual_timestamp ? 1 : 0.5, 'pointer-events' : is_manual_timestamp ? 'all' : 'none'}">
+                    <div class="text-box-49">
+                        <div class="row m-0 text-box col-12 p-1"
+                            [ngClass]="{'error-class' : checkReadingDateStyleError(avf.reading_date)}">
+                            <div class="material-textfield w-84">
+                                <input matInput [matDatepicker]="Reading_datePicker" class="input-box-txt"
+                                    [ngClass]="{'error-class-lable' : checkReadingDateStyleError(avf.reading_date)}"
+                                    type="text" placeholder=" " formControlName="reading_date" [max]="maxDate">
+                                <label class="label-txt"
+                                    [ngClass]="{'error-class-lable' : checkReadingDateStyleError(avf.reading_date)}">Date</label>
+                                <mat-datepicker #Reading_datePicker touchUi></mat-datepicker>
+                            </div>
+                            <img (click)="Reading_datePicker.open()" class="align-self-center"
+                                src="./assets/images/calendar.svg" alt="calendar">
+                        </div>
+                        <mat-error class="error-txt-class" *ngIf="checkReadingDateError(avf.reading_date)">
+                            {{readingDateError}}
+                        </mat-error>
+                    </div>
+                    <div class="text-box-49">
+                        <!-- <div class="row m-0 text-box col-12 p-1"
+                            [ngClass]="{'error-class' : checkReadingTimeStyleError(avf.reading_time)}">
+                            <div class="material-textfield w-84">
+                                <input matInput [ngxTimepicker]="Reading_timePicker" class="input-box-txt" [format]="24"
+                                    readonly
+                                    [ngClass]="{'error-class-lable' : checkReadingTimeStyleError(avf.reading_time)}"
+                                    type="text" placeholder=" " formControlName="reading_time">
+                                <label class="label-txt"
+                                    [ngClass]="{'error-class-lable' : checkReadingTimeStyleError(avf.reading_time)}">Time</label>
+                                <ngx-material-timepicker #Reading_timePicker></ngx-material-timepicker>
+                            </div>
+                            <img (click)="Reading_timePicker.open()" class="align-self-center"
+                                src="./assets/images/time.svg" alt="time">
+                        </div>
+                        <mat-error class="error-txt-class" *ngIf="checkReadingTimeError(avf.reading_time)">
+                            {{readingTimeError}}
+                        </mat-error> -->
+                    </div>
+                </div>
+            </div>
+            <div class="text-box-30">
+                <div class="row m-0 justify-content-between align-items-center">
+                    <div class="row m-0">
+                        <span class="txt-h5">Reminder</span>
+                    </div>
+                    <!-- <div class="row m-0 cursor-pointer" (click)="addReminder()">
+                        <div class="row m-0 justify-content-center align-items-center">
+                            <img src="./assets/images/plus.svg" alt="plus">
+                        </div>
+                        <span class="btn-txt-1 brand-color">Add New Reminder</span>
+                    </div> -->
+                </div>
+                <div class="row m-0 text-box col-12 p-1">
+                    <div class="row m-0 w-100" (click)="addReminder()">
+                        <div class="material-textfield w-80">
+                            <input class="input-box-txt" type="text" placeholder=" " value="Reminder" readonly>
+                        </div>
+                        <div class="row m-0 justify-content-end align-items-center w-20 pr-1">
+                            <div class="row m-0 justify-content-center align-items-center">
+                                <img src="./assets/images/arrow-right.svg" alt="arrow-right">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0 justify-content-start align-items-center pt-1" (click)="addReminder()">
+                    <span class="txt-base-regular">Add reminders for this reading</span>
+                </div>
+                <!-- <div class="p-2 h-150 reminder-main-box">
+                    <div class="row m-0 justify-content-between reminder-list-box p-1 mb-1"
+                        *ngFor="let item of reminderList; index as i;">
+                        <div class="row m-0">
+                            <div class="row m-0 justify-content-center align-items-center">
+                                <img src="./assets/images/reminder-bell.svg" alt="reminder-bell">
+                            </div>
+                            <div class="pl-2">
+                                <div class="row m-0 justify-content-start align-items-center">
+                                    <span class="btn-txt-1 brand-color">{{item?.reminder}}&nbsp;Reading</span>
+                                </div>
+                                <div class="row m-0 justify-content-start align-items-center">
+                                    <span class="reminder-time-txt">{{item?.time | date : 'dd
+                                        MMM yyyy'}}&nbsp;{{item?.time | date : 'h:mm a'}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-0 justify-content-end align-items-start cursor-pointer"
+                            (click)="removeReminder(i)">
+                            <img src="./assets/images/reminder-close.svg" alt="reminder-close">
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+            <div class="text-box-30"></div>
+        </div>
+        <div class="row m-0 mt-3 mb-3 px-4">
+            <div class="row m-0 justify-content-between reminder-list-box p-1 mb-2 ml-2 txt-box-22"
+                *ngFor="let item of reminderList; index as i;">
+                <div class="row m-0">
+                    <div class="row m-0 justify-content-center align-items-center">
+                        <img src="./assets/images/reminder-bell.svg" alt="reminder-bell">
+                    </div>
+                    <div class="pl-2">
+                        <div class="row m-0 justify-content-start align-items-center">
+                            <span class="btn-txt-1 brand-color">{{item?.reminder}}&nbsp;Reading</span>
+                        </div>
+                        <div class="row m-0 justify-content-start align-items-center">
+                            <span class="reminder-time-txt">{{item?.time | date : 'dd
+                                MMM yyyy'}}&nbsp;{{item?.time | date : 'h:mm a'}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0 justify-content-end align-items-start cursor-pointer" (click)="removeReminder(i)">
+                    <img src="./assets/images/reminder-close.svg" alt="reminder-close">
+                </div>
+            </div>
+        </div>
+        <div class="av-brd-btm"></div>
+
+        <div class="mt-3 mb-3 px-4">
+            <div class="row m-0 pb-2">
+                <span class="txt-h5">Notes</span>
+            </div>
+            <div class="text-box col-12 p-1 h-140">
+                <textarea class="input-box-txt h-75" type="text" formControlName="notes" maxlength="500"
+                    placeholder=""></textarea>
+                <div class="row m-0 justify-content-end align-items-center">
+                    <div class="row m-0 justify-content-center align-items-center cursor-pointer"
+                        (click)="attachmentUpload.click()">
+                        <img src="./assets/images/attachment.svg" alt="attachment">
+                        <div style="display: none">
+                            <input type='file' size="60" id="imageUpload" #attachmentUpload multiple
+                                (change)="onSelectAttachmentFile($event)" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="py-3">
+                <div class="row m-0">
+                    <div class="image-one" *ngFor='let url of attachments; let i = index'>
+                        <img (click)="removeClinicImages(url, i)" src="./assets/images/green-close.png"
+                            class="greecloseimage">
+                        <img class="image-one-img" [src]="url">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row m-0 mt-3 mb-3 justify-content-end px-4 pb-4">
+            <div class="row m-0 cursor-pointer">
+                <div (click)="addVitalReading()"
+                    class="reading-button row m-0 justify-content-center align-items-center py-2 px-4">
+                    <span class="reading-button-text">Save Reading</span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

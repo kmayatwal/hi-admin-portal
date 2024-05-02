@@ -1,0 +1,39 @@
+.health-trackers {
+    padding: 0 150px;
+    .w-90 {
+        width: 90%;
+    }
+
+    .save-btn-txt {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        color: #ffffff;
+    }
+
+    .back-btn-txt {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        color: #8D9198;
+    }
+
+    .back-btn {
+        background: #ffffff;
+        border: 1px solid #057CC3;
+        border-radius: 3px;
+    }
+    
+    .save-btn {
+        background: #057cc3;
+        border-radius: 3px;
+    }
+}
+
+::ng-deep .timepicker-overlay {
+    z-index: 10000000 !important;
+}
+
+::ng-deep .timepicker-backdrop-overlay {
+    z-index: 10000000 !important;
+}

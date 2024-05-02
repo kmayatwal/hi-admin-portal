@@ -1,0 +1,210 @@
+<div class="remote-monitoring-subscription-plan">
+    <div class="row m-0">
+        <div class="over-flow left-side col-2 p-0"
+            [ngClass]="{'col-1': sidebarMenuOpened, 'col-2': !sidebarMenuOpened}">
+            <app-patient-view-file-side-menu (toggleMenuSidebar)="toggleMenuSidebar()" [patientId]="patientId"
+                (setPatientFile)="setPatientFile($event)" [routePage]="'profile/remote-monitoring'"
+                [status]="remoteMonitoringData?.status">
+            </app-patient-view-file-side-menu>
+        </div>
+        <div class="over-flow col-10 p-0" [ngClass]="{'col-11': sidebarMenuOpened, 'col-10': !sidebarMenuOpened}"
+            *ngIf="dataLoaded">
+            <div class="d-flex justify-content-between p-3">
+                <div class="font-heading2">Remote Monitoring Subscription Program</div>
+                <!-- <div class="mt-2" *ngIf="remoteMonitoringData?.status !== 'CANCELED'"><span
+                        class="cancel-btn mr-3 cursor-pointer" (click)="cancelRemoteMonitoring()"><img
+                            src="./assets/images/clock-remove-outline.svg" alt="edit"
+                            class="mr-2">Cancel</span><span class="cursor-pointer"
+                        (click)="openRemoteMonitoringEditFlow()"><img src="./assets/images/edit.svg"
+                            alt="edit"></span></div> -->
+            </div>
+            <div class="grid heading-box p-3 font-body-bold">
+                <div>Name : {{remoteMonitoringData?.monitoringPlan}}</div>
+                <div *ngIf="remoteMonitoringData?.aimMonitoringPlan?.length">Aim :
+                    {{remoteMonitoringData?.aimMonitoringPlan}}</div>
+            </div>
+            <div class="d-flex justify-content-between p-3 font-body-bold">
+                <div>Start Date : {{(remoteMonitoringData?.startDate) | date : 'dd MMM,yyyy h:mm a'}}</div>
+                <div>End Date : {{(remoteMonitoringData?.endDate) | date : 'dd MMM,yyyy h:mm a'}}</div>
+                <div class="d-flex justify-content-center align-items-center status-box w-80"
+                    [ngClass]="colorMap[remoteMonitoringData.status?.toLowerCase()]">
+                    <span class="secondary-text"
+                        [ngClass]="textColorMap[remoteMonitoringData.status?.toLowerCase()]">{{remoteMonitoringData.status}}</span>
+                </div>
+                <div class="amount-box">Amount: {{planAmount}}</div>
+            </div>
+            <div class="p-3 grid border-top-grey" *ngIf="remoteMonitoringData?.rmEmergencyResponse?.notes?.length">
+                <div class="font-heading5-bold"><img src="./assets/images/monitoring-notes.svg"
+                        alt="attachment-2" class="mr-2">Notes</div>
+                <div class="font-body">{{remoteMonitoringData?.rmEmergencyResponse?.notes}}</div>
+            </div>
+            <div class="border-top-grey p-3 d-flex">
+                <div class="col p-0 mr-5">
+                    <div class="row m-0 mb-2 mt-3"><img src="./assets/images/heart-rate.svg" alt="attachment-2"
+                            class="mr-2">Monitored Trackers</div>
+                    <div class="row m-0 mb-2 mt-3 blue-background p-2 font-body-bold text-white">
+                        <div class="col-3">Monitored Trackers</div>
+                        <div class="col-4">Reporting Time</div>
+                        <div class="col-2">Frequency</div>
+                        <div class="col-3">Care Team</div>
+                    </div>
+                    <div class="row m-0 mb-2 mt-3 p-2 font-body" *ngFor="let item of rmHealthTrackers; let i = index">
+                        <div class="col-3">{{item?.vitalName}}</div>
+                        <div class="col-4">{{item?.time}}</div>
+                        <div class="col-2">{{getReadingFrequency(item.time)}}</div>
+                        <div class="col-3">{{allCareTeamName}}</div>
+                    </div>
+                </div>
+                <div class="col p-0 compliance-item-box">
+                    <app-medication-compliance [clinic]="stateService.selectedClinic$"
+                        [patientId]="patientId"></app-medication-compliance>
+                </div>
+            </div>
+            <div class="border-top-grey p-3" *ngIf="isAppointmentAvailable">
+                <app-patient-file-vitals [patientId]="patientId" [patientFile]="patientFile"
+                    [comesFrom]="'remote-monitoring'"></app-patient-file-vitals>
+            </div>
+            <div class="row m-0 justify-content-start align-items-center">
+                <div class="d-flex p-3">
+                    <span class="font-heading5-bold mb-2"><img src="./assets/images/health-metrics.svg"
+                            alt="health-metrics" class="mr-2">Health Metrics</span>
+                </div>
+                <div class="set-btn py-2 px-3 row m-0 justify-content-center align-items-center cursor-pointer">
+                    <span class="save-btn-txt" (click)="openSetTarget()">Set Target</span>
+                </div>
+            </div>
+            <div class="p-3">
+                <app-health-metrics [rmdata]="remoteMonitoringData"></app-health-metrics>
+            </div>
+            <div class="d-flex p-3 border-top-grey" *ngIf="docUrls.length">
+                <span class="font-heading5-bold mb-2"><img src="./assets/images/attachment-2.svg"
+                        alt="attachment-2" class="mr-2">Attachments</span>
+            </div>
+            <div class="d-flex justify-content-between mr-5 mb-2 p-3" *ngFor="let item of docUrls; let i = index">
+                <div><img src="./assets/images/documents.svg" alt="doc" class="mr-2">{{getFileName(item)}}</div>
+                <div>
+                    <a href="{{item}}" target="_blank" download>
+                        <img src="./assets/images/download.svg" alt="download" class="mr-2" alt="download">
+                    </a>
+                </div>
+            </div>
+            <div class="d-flex p-3 border-top-grey">
+                <span class="font-heading5-bold mb-2"><img src="./assets/images/emergency-response-plan.svg"
+                        alt="doc" class="mr-2">Emergency Response Plan</span>
+            </div>
+            <div class="d-flex mb-3 p-3">
+                <div class="patient-box p-3 mr-3">
+                    <div class="d-flex mb-3">
+                        <img src="./assets/images/emergency-icon.svg" alt="plan" class="mr-2"><span
+                            class="margin-top-auto booked-text-color">Emergency Contact Details</span>
+                    </div>
+                    <div class="d-flex justify-content-around pt-3"
+                        *ngFor="let patient of rmEmergencyContacts; let i = index"
+                        [ngClass]="{'border-top-grey': i > 0}">
+                        <div class="grid text-center">
+                            <div class="font-heading3">Name</div>
+                            <div class="font-body-small">{{patient?.name}}</div>
+                        </div>
+                        <div class="grid text-center">
+                            <div class="font-heading3">Relation</div>
+                            <div class="font-body-small">{{patient?.relation}}</div>
+                        </div>
+                        <div class="grid text-center">
+                            <div class="font-heading3">Contact Number</div>
+                            <div class="font-body-small">{{patient?.mobileNumber || '-'}}</div>
+                        </div>
+                        <div class="grid text-center">
+                            <div class="font-heading3">Email Id</div>
+                            <div class="font-body-small">{{patient?.emailId || '-'}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="care-team-box p-3" *ngIf="careTeamAssigneesArray?.length">
+                    <div class="d-flex mb-3">
+                        <img src="./assets/images/care-team-icon.svg" alt="plan" class="mr-2"><span
+                            class="margin-top-auto font-blue">Care Team</span>
+                    </div>
+                    <div class="d-flex justify-content-around pt-3 pb-2"
+                        *ngFor="let careTeam of careTeamAssigneesArray; let i = index"
+                        [ngClass]="{'border-top-grey': i > 0}">
+                        <div class="grid text-center">
+                            <div class="font-heading3">Name</div>
+                            <div class="font-body-small">{{careTeamName(careTeam)}}</div>
+                        </div>
+                        <div class="grid text-center">
+                            <div class="font-heading3">Contact Number</div>
+                            <div class="font-body-small">{{careTeam.mobileNumber}}</div>
+                        </div>
+                        <div class="grid text-center">
+                            <div class="font-heading3">Email Id</div>
+                            <div class="font-body-small">{{careTeam.emailId || '-'}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid border-top-grey p-3">
+                <div class="font-heading5-bold mb-2">Protocols</div>
+                <div class="font-body mb-3" [innerHTML]="htmlContent"></div>
+            </div>
+            <div class="d-flex p-3 border-top-grey" *ngIf="relevantMedicalInfoPresent">
+                <span class="ont-heading5-bold mb-2"><img src="./assets/images/relevant-medical-info.svg"
+                        alt="doc" class="mr-2">Relevant Medical Information</span>
+            </div>
+            <div class="d-flex justify-content-between p-3">
+                <div class="medical-box" *ngIf="isRelevantMedicalInfoSelected('Allergies')">
+                    <!-- <app-patient-file-allergies></app-patient-file-allergies> -->
+                    <app-remote-monitoring-allergy></app-remote-monitoring-allergy>
+                </div>
+                <div class="medical-box" *ngIf="isRelevantMedicalInfoSelected('Diagnosis/Condition')">
+                    <!-- <app-patient-file-chronic-condition></app-patient-file-chronic-condition> -->
+                    <app-remote-monitoring-medical-condition></app-remote-monitoring-medical-condition>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between p-3"
+                *ngIf="isRelevantMedicalInfoSelected('Existing Medical History')">
+                <div class="medical-box">
+                    <!-- <app-patient-file-family-medical-history></app-patient-file-family-medical-history> -->
+                    <app-remote-monitoring-family-medical-history></app-remote-monitoring-family-medical-history>
+                </div>
+            </div>
+            <div class="px-3 pb-3">
+                <app-patient-file-symptom [patientId]="patientId"></app-patient-file-symptom>
+            </div>
+            <div class="d-flex border-top-grey p-3 justify-content-between">
+                <div class="font-heading5-bold mb-2">Notes</div>
+                <div class="save-btn py-2 px-3 row m-0 justify-content-center align-items-center cursor-pointer"
+                    *ngIf="remoteMonitoringNotes?.length">
+                    <span class="save-btn-txt" (click)="openRemoteMonitoring()">Add Notes</span>
+                </div>
+            </div>
+            <div class="col h-400 justify-content-center pt-5" *ngIf="remoteMonitoringNotes?.length === 0">
+                <div
+                    class="save-btn py-2 px-3 d-flex justify-content-center align-items-center cursor-pointer margin-auto mt-5">
+                    <span class="save-btn-txt" (click)="openRemoteMonitoring()">Add Notes</span>
+                </div>
+                <div class="note-text w-800 mt-5">Recording notes is an important aspect of remote monitoring program as
+                    it allows care takers to document any significant observations or changes in a patient's condition.
+                    When recording notes, be sure to include the date and time, as well as specific details about the
+                    observation or change. It is also important to use clear and concise language to ensure that the
+                    note is easily understood by other care team members.</div>
+            </div>
+            <div class="col h-400" *ngIf="remoteMonitoringNotes?.length">
+                <div class="row m-0 note-table p-2">
+                    <div class="col-3">Date</div>
+                    <div class="col-2">Author</div>
+                    <div class="col-7">Preview</div>
+                </div>
+                <div class="row m-0 p-2" *ngFor="let item of remoteMonitoringNotes; let i = index">
+                    <div class="col-3">{{item.createdAt | date : 'dd MMM,yyyy hh:mm aa'}}</div>
+                    <div class="col-2">{{item.userName || '-'}}</div>
+                    <div class="col-7">{{item.desciption}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="over-flow col-10 p-0" *ngIf="!dataLoaded">
+            <div class="spinner-border text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+</div>

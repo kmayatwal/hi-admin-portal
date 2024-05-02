@@ -1,0 +1,63 @@
+<div class="remote-monitoring-family-medical-history">
+    <div class="row m-0 justify-content-start align-items-center border-color-design m-3">
+        <div class="row m-0 col-8 p-0 justify-content-start align-items-center pb-3">
+            <span class="pvf-cm-txt-1">Family Medical History</span>
+        </div>
+    </div>
+    <div class="py-5" *ngIf="patientFMHList?.length === 0">
+        <div class="justify-content-center align-items-center py-3">
+            <div class="row m-0 justify-content-center align-items-center">
+                <img src="./assets/images/famaily-medical-history.svg" alt="famaily-medical-history">
+            </div>
+            <div class="row m-0 justify-content-center align-items-center py-2">
+                <span class="no-data">No Family Medical History Recorded</span>
+            </div>
+        </div>
+    </div>
+    <div class="py-1" [ngClass]="{'pr-1' : patientFMHList?.length > 3}">
+        <div class="h-376 px-3" *ngIf="patientFMHList?.length > 0">
+            <div class="item-box border-bottom pt-2 my-2" *ngFor="let fmh of patientFMHList;let i=index;">
+                <div class="row m-0 justify-content-between px-2">
+                    <div class="col-8 p-0">
+                        <div class="row m-0 flex-column justify-content-ceneter align-items-start">
+                            <div class="row m-0 justify-content-start align-items-center">
+                                <span class="pf-a-txt-2">{{fmh.relationship || '-'}}</span>
+                            </div>
+                            <div class="row m-0 justify-content-start align-items-center pt-1">
+                                <span class="pf-a-txt-4">{{fmh.medicalProblem || '-'}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 p-0 row m-0 justify-content-end">
+                        <div class="">
+                            <div class="row m-0 pf-box-1 justify-content-center align-items-center p-2" [ngClass]="{
+                                    'pf-box-mild':fmh.currentStatus === 'Alive',
+                                    'pf-box-severe':fmh.currentStatus === 'Deceased'}">
+                                <span class="pf-a-txt-3" [ngClass]="{
+                                        'pf-a-mild':fmh.currentStatus === 'Alive',
+                                        'pf-a-severe':fmh.currentStatus === 'Deceased'}">{{fmh.currentStatus}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0 justify-content-between px-2">
+                    <div class="row m-0 py-2">
+                        <span class="pf-a-txgt-5">Year Of Birth: </span><span class="pf-a-txt-6">&nbsp;{{fmh.yearOfBirth
+                            || '-'}}</span>
+                    </div>
+                    <div class="row m-0 py-2" *ngIf="fmh.currentStatus === 'Deceased'">
+                        <span class="pf-a-txgt-5">Age: </span><span class="pf-a-txt-6">&nbsp;{{fmh.age
+                            || '-'}}</span>
+                    </div>
+                </div>
+                <div *ngIf="fmh.recordedUserDetail"
+                    class="row m-0 justify-content-end align-items-center border-top py-1 pr-2">
+                    <span class="recorded-by">Recorded by {{getName(fmh.recordedUserDetail)}} on
+                        {{fmh.createdAt
+                        |
+                        date: 'dd MMM y' }} at {{fmh.createdAt | date: 'hh.mm a'}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

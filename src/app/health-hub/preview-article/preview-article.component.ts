@@ -63,7 +63,7 @@ export class PreviewArticleComponent implements OnInit {
         ...getFeedById,
         formattedDate,
         readTime,
-        images: "/assets/images/profile/hi-logo.svg",
+        images: "/assets/images/hi-logo.svg",
       };
     }
 

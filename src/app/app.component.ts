@@ -40,6 +40,8 @@ export class AppComponent {
 	private isPlaying: boolean = false;
 	private callType: string = '';
 
+	hideSideMenu: boolean = false;
+
 	// messaging = getMessaging();
 
 
@@ -164,4 +166,15 @@ export class AppComponent {
 	getAvatar(userData, bgColorCode) {
 		return `https://ui-avatars.com/api/?name=${userData?.firstName}+${userData?.lastName}&background=${bgColorCode}&color=66676B`;
 	}
+
+	ngAfterViewInit(): void {
+		this.router.events.subscribe((event) => {
+			if (event instanceof NavigationEnd) {
+				const currentRoute = event.urlAfterRedirects;
+				console.log('this is currentRoute', currentRoute);
+				this.hideSideMenu = currentRoute.includes('/remote-monitorin-subscription-plan') ? true : false;
+			}
+		});
+	}
+
 }

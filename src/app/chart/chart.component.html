@@ -1,0 +1,18 @@
+<div class="chart-component">
+  <div *ngIf="!hasChartData" class="no-chart-data">
+    <img src="./assets/images/no-chart-data.svg" alt="empty graph">
+  </div>
+  <div readonly='true'>
+    <div class="myChart hide" [ngClass]="hasChartData?'show':'hide'"> <!--[colors]="chartColors"-->
+      <!-- <canvas #myCanvas baseChart height="275" [type]="'line'" [datasets]="chartDatasets" [labels]="chartLabels"
+        [options]="chartOptions" [legend]="legend" (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)">
+      </canvas> -->
+      <canvas id="chartcomponent" #myCanvas baseChart height="275" (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)">
+      </canvas>
+    </div>
+    <div class="chartjs-tooltip" id="tooltip0"></div>
+    <div class="chartjs-tooltip" id="tooltip1"></div>
+  </div>
+</div>

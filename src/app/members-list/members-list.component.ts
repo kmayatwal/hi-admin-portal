@@ -646,10 +646,12 @@ export class MembersListComponent implements OnInit {
   }
 
   viewFile(appointment) {
+    console.log('this si appointment', appointment);
     this.stateService.patientFile$ = appointment.patient;
-    this.router.navigate(['/consultation', appointment.appointmentId], {
-      queryParams: { myPatient: true },
-    });
+    this.router.navigate(['/remote-monitorin-subscription-plan', '65'], { queryParams: { patientId: appointment.patientId } });
+    // this.router.navigate(['/consultation', appointment.appointmentId], {
+    //   queryParams: { myPatient: true },
+    // });
   }
 
   printBill(appointment) {
@@ -802,6 +804,10 @@ export class MembersListComponent implements OnInit {
 
   get pf() {
     return this.patientForm.controls;
+  }
+
+  routeToPlan({ id, patientId }) {
+    this.router.navigate(['/remote-monitorin-subscription-plan', id], { queryParams: { patientId } });
   }
 
   searchGenericName = (text$: Observable<string>) =>

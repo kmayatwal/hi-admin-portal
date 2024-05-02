@@ -1,0 +1,117 @@
+.dot-green {
+    height: 10px;
+    width: 10px;
+    background: green;
+    border-radius: 50%;
+}
+.moderate {
+    background: #fca600 !important;
+}
+.severe {
+    background: #f46a6a !important;
+}
+.vital-box {
+    background: #ffffff;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    max-width: 19%;
+    flex: 0 0 19%;
+}
+.vital-name {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    // line-height: 20px;
+    color: #66676b;
+}
+.vital-time {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    // line-height: 16px;
+    color: #858585;
+}
+.vital-value {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    // line-height: 33px;
+    color: #2a2d32;
+}
+.vital-unit {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    // line-height: 33px;
+    color: #858585;
+}
+.day-box {
+    background: #e0eef7;
+    border-radius: 50px;
+}
+.value-color-mild {
+    color: #34c38f;
+}
+.value-color-moderate {
+    color: #fca600;
+}
+.value-color-Severe {
+    color: #f46a6a;
+}
+.border-left-mild {
+    border-left: solid #34c38f;
+}
+.border-left-moderate {
+    border-left: solid #fca600;
+}
+.border-left-Severe {
+    border-left: solid #f46a6a;
+}
+.border-left-solid {
+    border-left-style: solid;
+}
+.txt-1 {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: #057cc3;
+}
+::ng-deep .glasgow-coma-scale-width .modal-dialog {
+    max-width: 900px;
+}
+.vital-box-dummy {
+    max-width: 19%;
+    flex: 0 0 19%;
+}
+.save-btn {
+    background: #057cc3;
+    border-radius: 3px;
+}
+.save-btn-txt {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #ffffff;
+}
+
+::ng-deep .add-vital-width .modal-dialog {
+    max-width: 1300px;
+}
+
+.pfv-txt-bmi {
+    color: #2a2d32;
+    font-family: Poppins;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}

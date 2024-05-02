@@ -1,0 +1,940 @@
+<div *ngIf="loading" class="Loader">Loading...</div>
+<div class="vital-graph">
+    <div *ngIf="showGraph" class="col-12 p-0 row m-0">
+        <div class="vg-box-w-20 border-right">
+            <div class="row m-0 p-4">
+                <img src="./assets/images/vital-graph.svg" alt="vital-graph" class="mr-2">
+                <span class="vital-style-text">Vitals</span>
+            </div>
+            <div (click)="selectVital('temperature')" class="row m-0 cursor-pointer"
+                [ngClass]="{'selected-vital': selectedVital === 'temperature'}">
+                <div class="w-2" [ngClass]="{'brand-color-bg' : selectedVital === 'temperature'}"></div>
+                <div class="row m-0 py-3 pl-3">
+                    <div class="row m-0 justify-content-center align-items-center mr-2">
+                        <img class="h-20"
+                            [src]="selectedVital === 'temperature' ? './assets/images/temperature-s.svg' : './assets/images/thermometer.svg'"
+                            alt="temperature">
+                    </div>
+                    <span class="vital-sidebar-heading-text"
+                        [ngClass]="{'selected-vital-text': selectedVital === 'temperature'}">Temperature</span>
+                </div>
+            </div>
+            <div (click)="selectVital('pulse')" class="row m-0 cursor-pointer"
+                [ngClass]="{'selected-vital': selectedVital === 'pulse'}">
+                <div class="w-2" [ngClass]="{'brand-color-bg' : selectedVital === 'pulse'}"></div>
+                <div class="row m-0 py-3 pl-3">
+                    <div class="row m-0 justify-content-center align-items-center mr-2">
+                        <img class="h-20"
+                            [src]="selectedVital === 'pulse' ? './assets/images/pulse-s.svg' : './assets/images/pulse.svg'"
+                            alt="pulse">
+                    </div>
+                    <span class="vital-sidebar-heading-text"
+                        [ngClass]="{'selected-vital-text': selectedVital === 'pulse'}">Pulse</span>
+                </div>
+            </div>
+            <div (click)="selectVital('bloodPressure')" class="row m-0 cursor-pointer"
+                [ngClass]="{'selected-vital': selectedVital === 'bloodPressure'}">
+                <div class="w-2" [ngClass]="{'brand-color-bg' : selectedVital === 'bloodPressure'}"></div>
+                <div class="row m-0 py-3 pl-3">
+                    <div class="row m-0 justify-content-center align-items-center mr-2">
+                        <img class="h-20"
+                            [src]="selectedVital === 'bloodPressure' ? './assets/images/blood-pressure-s.svg' : './assets/images/blood-pressure.svg'"
+                            alt="bloodPressure">
+                    </div>
+                    <span class="vital-sidebar-heading-text"
+                        [ngClass]="{'selected-vital-text': selectedVital === 'bloodPressure'}">Blood Pressure</span>
+                </div>
+            </div>
+            <div (click)="selectVital('bloodOxygen')" class="row m-0 cursor-pointer"
+                [ngClass]="{'selected-vital': selectedVital === 'bloodOxygen'}">
+                <div class="w-2" [ngClass]="{'brand-color-bg' : selectedVital === 'bloodOxygen'}"></div>
+                <div class="row m-0 py-3 pl-3">
+                    <div class="row m-0 justify-content-center align-items-center mr-2">
+                        <img class="h-20"
+                            [src]="selectedVital === 'bloodOxygen' ? './assets/images/blood-oxygen-s.svg' : './assets/images/blood_oxygen.svg'"
+                            alt="bloodOxygen">
+                    </div>
+                    <span class="vital-sidebar-heading-text"
+                        [ngClass]="{'selected-vital-text': selectedVital === 'bloodOxygen'}">Blood Oxygen</span>
+                </div>
+            </div>
+            <div (click)="selectVital('respiratoryRate')" class="row m-0 cursor-pointer"
+                [ngClass]="{'selected-vital': selectedVital === 'respiratoryRate'}">
+                <div class="w-2" [ngClass]="{'brand-color-bg' : selectedVital === 'respiratoryRate'}"></div>
+                <div class="row m-0 py-3 pl-3">
+                    <div class="row m-0 justify-content-center align-items-center mr-2">
+                        <img class="h-20"
+                            [src]="selectedVital === 'respiratoryRate' ? './assets/images/respiratory-rate-s.svg' : './assets/images/respiratory_rate.svg'"
+                            alt="respiratoryRate">
+                    </div>
+                    <span class="vital-sidebar-heading-text"
+                        [ngClass]="{'selected-vital-text': selectedVital === 'respiratoryRate'}">Respiratory Rate</span>
+                </div>
+            </div>
+            <div (click)="selectVital('bloodSugar')" class="row m-0 cursor-pointer"
+                [ngClass]="{'selected-vital': selectedVital === 'bloodSugar'}">
+                <div class="w-2" [ngClass]="{'brand-color-bg' : selectedVital === 'bloodSugar'}"></div>
+                <div class="row m-0 py-3 pl-3">
+                    <div class="row m-0 justify-content-center align-items-center mr-2">
+                        <img class="h-20"
+                            [src]="selectedVital === 'bloodSugar' ? './assets/images/blood-glucose-s.svg' : './assets/images/blood_sugar.svg'"
+                            alt="bloodSugar">
+                    </div>
+                    <span class="vital-sidebar-heading-text"
+                        [ngClass]="{'selected-vital-text': selectedVital === 'bloodSugar'}">Blood Glucose</span>
+                </div>
+            </div>
+            <!-- <div (click)="selectVital('headCircumference')" class="p-2 pl-4 cursor-pointer"
+                [ngClass]="{'selected-vital': selectedVital === 'headCircumference'}">
+                <span class="vital-sidebar-heading-text"
+                    [ngClass]="{'selected-vital-text': selectedVital === 'headCircumference'}">Head Circumference</span>
+            </div>
+            <div (click)="selectVital('boneMass')" class="p-2 pl-4 cursor-pointer"
+                [ngClass]="{'selected-vital': selectedVital === 'boneMass'}">
+                <span class="vital-sidebar-heading-text"
+                    [ngClass]="{'selected-vital-text': selectedVital === 'boneMass'}">Bone Mass</span>
+            </div>
+            <div (click)="selectVital('hydration')" class="p-2 pl-4 cursor-pointer"
+                [ngClass]="{'selected-vital': selectedVital === 'hydration'}">
+                <span class="vital-sidebar-heading-text"
+                    [ngClass]="{'selected-vital-text': selectedVital === 'hydration'}">Hydration</span>
+            </div> -->
+        </div>
+        <div class="vg-box-w-80 py-3 pt-4">
+            <div class="pb-2">
+                <div class="row m-0 justify-content-between">
+                    <div class="col-4 p-0 av-box-1 row m-0 justify-content-start align-items-center pl-2 pr-4 py-1">
+                        <div class="row m-0 justify-content-center align-items-center">
+                            <img [src]="headingImg" alt="pulse-heading">
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center pl-3">
+                            <span class="txt-h3 text-white">{{title === 'Blood Sugar' ? 'Blood Glucose' : title}}</span>
+                        </div>
+                    </div>
+                    <div class="col-8 p-0 row m-0 justify-content-end pr-4">
+                        <!-- <div *ngIf="title === 'Blood Pressure'" class="row m-0 p-0">
+                            <div class="systolic row m-0 d-flex jc-ai-c">
+                                <img src="./assets/images/ststolic.png" class="close-image cursor-pointer">
+                                <span class="blood-pressure-text blood-pressure-text-s ml-2">Systolic</span>
+                            </div>
+                        </div>
+                        <div *ngIf="title === 'Blood Pressure'" class="row m-0 p-0 px-3">
+                            <div class="diastolic row m-0 d-flex jc-ai-c">
+                                <img src="./assets/images/diastolic.png" class="close-image cursor-pointer">
+                                <span class="blood-pressure-text blood-pressure-text-d  ml-2">Diastolic</span>
+                            </div>
+                        </div> -->
+                        <div class="close-imagediv cursor-pointer" (click)="close()">
+                            <img (click)="close()" src="./assets/images/close.png"
+                                class="close-image cursor-pointer">
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0 px-3 pt-1">
+                    <div class="col-6 p-0 row m-0">
+                        <span *ngIf="lastRecordedVitalDate" class="vital-time">Last recorded
+                            {{lastRecordedVitalDate}}</span>
+                        <span *ngIf="!lastRecordedVitalDate" class="vital-time">Record data to see statistics</span>
+                    </div>
+                    <div class="col-6 p-0 row m-0 justify-content-end">
+                        <div class="row m-0 justify-content-center align-items-center">
+                            <div class="dot-green"></div>
+                            <div class="row m-0 pl-1">
+                                <span class="secondary-text">Mild</span>
+                            </div>
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center pl-3">
+                            <div class="dot-green moderate"></div>
+                            <div class="row m-0 pl-1">
+                                <span class="secondary-text">Moderate</span>
+                            </div>
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center pl-3">
+                            <div class="dot-green severe"></div>
+                            <div class="row m-0 pl-1">
+                                <span class="secondary-text">Severe</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div *ngIf="title === 'Blood Sugar'" class="row m-0 p-0 col-12 pt-2 px-3">
+                <div class="row m-0 p-0 col-4 tabs">
+                    <div class="mb-l-12 cursor-pointer" [ngClass]="{'single-tab-bb' : selectedBSTab === 'bloodSugar'}"
+                        (click)="selectBloodSugar('bloodSugar')">
+                        <span class="single-tab" [ngClass]="{'single-tab-s' : selectedBSTab === 'bloodSugar'}">Blood
+                            Sugar</span>
+                    </div>
+                    <div class="mb-l-12 cursor-pointer" [ngClass]="{'single-tab-bb' : selectedBSTab === 'HbA1C'}"
+                        (click)="selectBloodSugar('HbA1C')">
+                        <span class="single-tab" [ngClass]="{'single-tab-s' : selectedBSTab === 'HbA1C'}">HbA1C</span>
+                    </div>
+                </div>
+                <div class="col-6 p-0 row m-0 justify-content-end">
+                    <div class="text-box row m-0 col-5 p-1">
+                        <div class="material-textfield w-84">
+                            <input matInput [matDatepicker]="startDate_picker" placeholder=" " class="input-box-txt"
+                                type="text" [(ngModel)]="startDate" (dateChange)="setStartDate($event)"
+                                [max]="getStartDateMaxDate()">
+                            <label class="label-txt">Start Date</label>
+                            <mat-datepicker #startDate_picker></mat-datepicker>
+                        </div>
+                        <div (click)="startDate_picker.open()" class="row m-0 justify-content-center align-items-center">
+                            <img src="./assets/images/calendar.svg" alt="calendar">
+                        </div>
+                    </div>
+                    <div class="row m-0 justify-content-center align-items-center px-2">
+                        -
+                    </div>
+                    <div class="text-box row m-0 col-5 p-1">
+                        <div class="material-textfield w-84">
+                            <input matInput [matDatepicker]="endDate_picker" placeholder=" " class="input-box-txt"
+                                type="text" [(ngModel)]="endDate" (dateChange)="setEndDate($event)"
+                                [max]="getEndDateMaxDate()" [min]="getEndDateMinDate()">
+                            <label class="label-txt">End Date</label>
+                            <mat-datepicker #endDate_picker></mat-datepicker>
+                        </div>
+                        <div (click)="endDate_picker.open()" class="row m-0 justify-content-center align-items-center">
+                            <img src="./assets/images/calendar.svg" alt="calendar">
+                        </div>
+                    </div>
+                </div>
+                <div class="row col-2 justify-content-end m-0 p-0 blood-pressure ng-star-inserted">
+                    <div class="save-btn row m-0 justify-content-center align-items-center cursor-pointer px-3"
+                        (click)="recordVital()">
+                        <span class="save-btn-txt">Record Data</span>
+                    </div>
+                </div>
+            </div> -->
+            <!-- <div class="row m-0 p-0 col-12 px-3" [ngClass]="{'pt-2' : title === 'Blood Sugar'}">
+                <div class="row m-0 col-4 p-0">
+                    <div (click)="selectTime('day')" class="border-bottom-vital-type cursor-pointer"
+                        [ngClass]="{'border-bottom-vital-type-s': selectedTime === 'day'}">
+                        <span class="vital-time-text" [ngClass]="{'vital-time-type-s': selectedTime === 'day'}">Day</span>
+                    </div>
+    
+                    <div (click)="selectTime('week')" class="border-bottom-vital-type cursor-pointer"
+                        [ngClass]="{'border-bottom-vital-type-s': selectedTime === 'week'}">
+                        <span class="vital-time-text" [ngClass]="{'vital-time-type-s': selectedTime === 'week'}">Week</span>
+                    </div>
+    
+                    <div (click)="selectTime('month')" class="border-bottom-vital-type cursor-pointer"
+                        [ngClass]="{'border-bottom-vital-type-s': selectedTime === 'month'}">
+                        <span class="vital-time-text"
+                            [ngClass]="{'vital-time-type-s': selectedTime === 'month'}">Month</span>
+                    </div>
+    
+                    <div (click)="selectTime('year')" class="border-bottom-vital-type cursor-pointer"
+                        [ngClass]="{'border-bottom-vital-type-s': selectedTime === 'year'}">
+                        <span class="vital-time-text" [ngClass]="{'vital-time-type-s': selectedTime === 'year'}">Year</span>
+                    </div>
+                </div>
+                <div *ngIf="title !== 'Blood Sugar'" class="col-6 p-0 row m-0 justify-content-end">
+                    <div class="text-box row m-0 col-3 p-1">
+                        <div class="material-textfield w-80">
+                            <input matInput [matDatepicker]="startDate_picker" placeholder=" " class="input-box-txt"
+                                type="text" [(ngModel)]="startDate" (dateChange)="setStartDate($event)"
+                                [max]="getStartDateMaxDate()">
+                            <label class="label-txt">Start Date</label>
+                            <mat-datepicker #startDate_picker></mat-datepicker>
+                        </div>
+                        <div (click)="startDate_picker.open()" class="row m-0 justify-content-center align-items-center">
+                            <img class="w-18" src="./assets/images/calendar.svg" alt="calendar">
+                        </div>
+                    </div>
+                    <div class="row m-0 justify-content-center align-items-center px-2">
+                        -
+                    </div>
+                    <div class="text-box row m-0 col-3 p-1">
+                        <div class="material-textfield w-80">
+                            <input matInput [matDatepicker]="endDate_picker" placeholder=" " class="input-box-txt"
+                                type="text" [(ngModel)]="endDate" (dateChange)="setEndDate($event)"
+                                [max]="getEndDateMaxDate()" [min]="getEndDateMinDate()">
+                            <label class="label-txt">End Date</label>
+                            <mat-datepicker #endDate_picker></mat-datepicker>
+                        </div>
+                        <div (click)="endDate_picker.open()" class="row m-0 justify-content-center align-items-center">
+                            <img class="w-18" src="./assets/images/calendar.svg" alt="calendar">
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="title !== 'Blood Sugar'" class="row col-2 justify-content-end m-0 p-0 blood-pressure">
+                    <div class="row m-0 p-0">
+                        <div class="save-btn row m-0 justify-content-center align-items-center cursor-pointer px-3"
+                            (click)="recordVital()" [ngClass]="{'disabled': !canEditVitals}">
+                            <span class="save-btn-txt">Record Data</span>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="row m-0  px-3 justify-content-end px-3">
+
+                <div *ngIf="title === 'Blood Oxygen'" class="vg-box-w-15 pr-2" [ngClass]="{'disabled': !vitalHistory}">
+                    <div class="text-box col-12 p-1 row m-0" id="bloodOxygenReadingTypeField"
+                        (click)="openBloodOxygenReadingTypeList()">
+                        <div class="material-textfield w-80">
+                            <input class="input-box-txt" id="bloodOxygenReadingTypeInputField" type="text"
+                                placeholder=" " [(ngModel)]="bloodOxygenReadingType" readonly>
+                        </div>
+                        <img (click)="openBloodOxygenReadingTypeList()" class="w-20"
+                            src="./assets/images/chevron-down.svg" alt="chevron-down">
+                    </div>
+                    <div *ngIf="showBloodOxygenReadingTypeList">
+                        <app-hi-select-box [type]="'single'" [searchEnable]="false"
+                            [dataList]="bloodOxygenReadingTypeDataList"
+                            (setItemInComponent)="setBloodOxygenReadingType($event)" [showTyped]="false"
+                            [typedValue]="true" [width]="bloodOxygenReadingTypeFieldWidth"></app-hi-select-box>
+                    </div>
+                </div>
+
+                <div *ngIf="title === 'Blood Sugar'" class="vg-box-w-14 pr-2" [ngClass]="{'disabled': !vitalHistory}">
+                    <div class="text-box col-12 p-1 row m-0" id="bloodGlucoseReadingTypeField"
+                        (click)="openBloodGlucoseReadingTypeList()">
+                        <div class="material-textfield w-80">
+                            <input class="input-box-txt" id="bloodGlucoseReadingTypeInputField" type="text"
+                                placeholder=" " [(ngModel)]="bloodGlucoseReadingType" readonly>
+                        </div>
+                        <img (click)="openBloodGlucoseReadingTypeList()" class="w-20"
+                            src="./assets/images/chevron-down.svg" alt="chevron-down">
+                    </div>
+                    <div *ngIf="showBloodGlucoseReadingTypeList">
+                        <app-hi-select-box [type]="'single'" [searchEnable]="false"
+                            [dataList]="bloodGlucoseReadingTypeDataList"
+                            (setItemInComponent)="setBloodGlucoseReadingType($event)" [showTyped]="false"
+                            [typedValue]="true" [width]="bloodGlucoseReadingTypeFieldWidth"></app-hi-select-box>
+                    </div>
+                </div>
+
+                <div *ngIf="title === 'Blood Sugar' && bloodGlucoseReadingType !== 'HbA1C'" class="vg-box-w-14 pr-2"
+                    [ngClass]="{'disabled': !vitalHistory}">
+                    <div class="text-box col-12 p-1 row m-0" id="bloodGlucoseMealTimingField"
+                        (click)="openBloodGlucoseMealTimingList()">
+                        <div class="material-textfield w-80">
+                            <input class="input-box-txt" id="bloodGlucoseMealTimingInputField" type="text"
+                                placeholder=" " [(ngModel)]="bloodGlucoseMealTiming" readonly>
+                        </div>
+                        <img (click)="openBloodGlucoseMealTimingList()" class="w-20"
+                            src="./assets/images/chevron-down.svg" alt="chevron-down">
+                    </div>
+                    <div *ngIf="showBloodGlucoseMealTimingList">
+                        <app-hi-select-box [type]="'single'" [searchEnable]="false"
+                            [dataList]="bloodGlucoseMealTimingDataList"
+                            (setItemInComponent)="setBloodGlucoseMealTiming($event)" [showTyped]="false"
+                            [typedValue]="true" [width]="bloodGlucoseMealTimingFieldWidth"></app-hi-select-box>
+                    </div>
+                </div>
+
+                <div *ngIf="title === 'Blood Sugar' && bloodGlucoseReadingType !== 'HbA1C'" class="vg-box-w-14 pr-2"
+                    [ngClass]="{'disabled': !vitalHistory}">
+                    <div class="text-box col-12 p-1 row m-0" id="bloodGlucoseUnitField"
+                        (click)="openBloodGlucoseUnitList()">
+                        <div class="material-textfield w-80">
+                            <input class="input-box-txt" id="bloodGlucoseUnitInputField" type="text" placeholder=" "
+                                [(ngModel)]="bloodGlucoseUnit" readonly>
+                        </div>
+                        <img (click)="openBloodGlucoseUnitList()" class="w-20"
+                            src="./assets/images/chevron-down.svg" alt="chevron-down">
+                    </div>
+                    <div *ngIf="showBloodGlucoseUnitList">
+                        <app-hi-select-box [type]="'single'" [searchEnable]="false"
+                            [dataList]="bloodGlucoseUnitDataList" (setItemInComponent)="setBloodGlucoseUnit($event)"
+                            [showTyped]="false" [typedValue]="true"
+                            [width]="bloodGlucoseUnitFieldWidth"></app-hi-select-box>
+                    </div>
+                </div>
+
+                <div *ngIf="title === 'Temperature'" class="vg-box-w-15 pr-2" [ngClass]="{'disabled': !vitalHistory}">
+                    <div class="text-box col-12 p-1 row m-0" id="temperatureTypeField"
+                        (click)="openTemperatureTypeList()">
+                        <div class="material-textfield w-80">
+                            <input class="input-box-txt" id="temperatureTypeInputField" type="text" placeholder=" "
+                                [(ngModel)]="temperatureType" readonly>
+                        </div>
+                        <img (click)="openTemperatureTypeList()" class="w-20"
+                            src="./assets/images/chevron-down.svg" alt="chevron-down">
+                    </div>
+                    <div *ngIf="showTemperatureTypeList">
+                        <app-hi-select-box [type]="'single'" [searchEnable]="false" [dataList]="temperatureTypeDataList"
+                            (setItemInComponent)="setTemperatureType($event)" [showTyped]="false" [typedValue]="true"
+                            [width]="temperatureTypeFieldWidth"></app-hi-select-box>
+                    </div>
+                </div>
+
+                <div class="vg-box-w-15 pr-2">
+                    <div class="text-box col-12 p-1 row m-0" id="graphTimeField" (click)="openGraphTimeList()">
+                        <div class="material-textfield w-80">
+                            <input class="input-box-txt" id="graphTimeInputField" type="text" placeholder=" "
+                                [(ngModel)]="graphTime" readonly>
+                        </div>
+                        <img (click)="openGraphTimeList()" class="w-20" src="./assets/images/chevron-down.svg"
+                            alt="chevron-down">
+                    </div>
+                    <div *ngIf="showGraphTimeList">
+                        <app-hi-select-box [type]="'single'" [searchEnable]="false" [dataList]="graphTimeDataList"
+                            (setItemInComponent)="setGraphTime($event)" [showTyped]="false" [typedValue]="true"
+                            [width]="graphTimeFieldWidth"></app-hi-select-box>
+                    </div>
+                </div>
+
+                <div class="vg-box-w-29 row m-0 p-0 justify-content-end pr-2">
+                    <div class="text-box row m-0 col p-1 vg-box-w-45">
+                        <div class="material-textfield w-80">
+                            <input matInput [matDatepicker]="startDate_picker" placeholder=" " class="input-box-txt"
+                                type="text" [(ngModel)]="startDate" (dateChange)="setStartDate($event)"
+                                [max]="getStartDateMaxDate">
+                            <label class="label-txt">Start Date</label>
+                            <mat-datepicker #startDate_picker></mat-datepicker>
+                        </div>
+                        <div (click)="startDate_picker.open()"
+                            class="row m-0 justify-content-center align-items-center">
+                            <img class="w-18" src="./assets/images/calendar.svg" alt="calendar">
+                        </div>
+                    </div>
+                    <div class="row m-0 justify-content-center align-items-center px-2">
+                        -
+                    </div>
+                    <div class="text-box row m-0 col p-1 vg-box-w-45">
+                        <div class="material-textfield w-80">
+                            <input matInput [matDatepicker]="endDate_picker" placeholder=" " class="input-box-txt"
+                                type="text" [(ngModel)]="endDate" (dateChange)="setEndDate($event)"
+                                [max]="getEndDateMaxDate" [min]="getEndDateMinDate">
+                            <label class="label-txt">End Date</label>
+                            <mat-datepicker #endDate_picker></mat-datepicker>
+                        </div>
+                        <div (click)="endDate_picker.open()" class="row m-0 justify-content-center align-items-center">
+                            <img class="w-18" src="./assets/images/calendar.svg" alt="calendar">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="vg-box-w-14 row m-0 justify-content-end">
+                    <div class="save-btn row m-0 justify-content-center align-items-center cursor-pointer px-3"
+                        (click)="recordVital()" [ngClass]="{'disabled': (isAppointmentCancelled || isCompleted)}">
+                        <span class="save-btn-txt">Record Data</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0 justify-content-start align-items-center px-3">
+                <span class="vg-date-txt">{{getDateText}}</span>
+            </div>
+            <div class="row m-0 vital-area px-3" *ngIf="title == 'Blood Pressure'">
+                <div class="pt-3 vital-records">
+                    <div class="row m-0 justify-content-center align-items-center">
+                        <div class="dot-green dot-systolic"></div>
+                        <div class="row m-0 pl-1">
+                            <span class="secondary-text">Systolic</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-3 vital-records">
+                    <div class="row m-0 justify-content-center align-items-center">
+                        <div class="dot-green dot-diastolic"></div>
+                        <div class="row m-0 pl-1">
+                            <span class="secondary-text">Diastolic</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0 vital-area px-3">
+                <div class="pt-3 vital-records" *ngIf="title !== 'Blood Pressure'">
+                    <div class="vital-status p-2 my-2" [ngStyle]="{'background': selectedVitalRange?.max?.background}">
+                        <div class="row m-0">
+                            <img *ngIf="selectedVitalRange?.max"
+                                src="./assets/images/arrow-up-{{selectedVitalRange?.max.range}}.svg"
+                                class="img-size" alt="arrow-up">
+                            <img *ngIf="!selectedVitalRange?.max" src="./assets/images/arrow-up-normal.svg"
+                                class="img-size" alt="arrow-up">
+                            <span class="vital-range-text pl-2">Max</span>
+                        </div>
+                        <div>
+                            <span *ngIf="selectedVitalRange?.max" class="vital-val"
+                                [ngStyle]="{'color': selectedVitalRange?.max?.color}">{{selectedVitalRange?.max.value}}<span
+                                    class="vital-unit-text">{{selectedVitalRange?.max.unit}}</span></span>
+                            <span *ngIf="!selectedVitalRange?.max" class="vital-text-blank">--</span>
+                        </div>
+                    </div>
+                    <div class="vital-status p-2 my-2" [ngStyle]="{'background': selectedVitalRange?.avg?.background}">
+                        <div class="row m-0">
+                            <img *ngIf="selectedVitalRange?.avg"
+                                src="./assets/images/arrow-up-down-{{selectedVitalRange?.avg.range}}.svg"
+                                class="img-size" alt="arrow-up-down">
+                            <img *ngIf="!selectedVitalRange?.avg" src="./assets/images/arrow-up-down-normal.svg"
+                                class="img-size" alt="arrow-up-down">
+                            <span class="vital-range-text pl-2">Average</span>
+                        </div>
+                        <div>
+                            <span *ngIf="selectedVitalRange?.avg" class="vital-val vital-avg"
+                                [ngStyle]="{'color': selectedVitalRange?.avg.color}">{{selectedVitalRange?.avg.value}}<span
+                                    class="vital-unit-text">{{selectedVitalRange?.avg.unit}}</span></span>
+                            <span *ngIf="!selectedVitalRange?.avg" class="vital-text-blank">--</span>
+                        </div>
+                    </div>
+                    <div class="vital-status p-2 my-2" [ngStyle]="{'background': selectedVitalRange?.min?.background}">
+                        <div class="row m-0">
+                            <img *ngIf="selectedVitalRange?.min"
+                                src="./assets/images/arrow-down-{{selectedVitalRange?.min.range}}.svg"
+                                class="img-size" alt="arrow-down">
+                            <img *ngIf="!selectedVitalRange?.min" src="./assets/images/arrow-down-normal.svg"
+                                class="img-size" alt="arrow-down">
+                            <span class="vital-range-text pl-2">Min</span>
+                        </div>
+                        <div>
+                            <span *ngIf="selectedVitalRange?.min" class="vital-val vital-max"
+                                [ngStyle]="{'color': selectedVitalRange?.min.color}">{{selectedVitalRange?.min.value}}<span
+                                    class="vital-unit-text">{{selectedVitalRange?.min.unit}}</span></span>
+                            <span *ngIf="!selectedVitalRange?.min" class="vital-text-blank">--</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-3 vital-records" *ngIf="title == 'Blood Pressure'">
+                    <div class="vital-status-2 p-2 my-2"
+                        [ngStyle]="{'background': selectedVitalRange?.max?.background}">
+                        <div class="row m-0">
+                            <img *ngIf="selectedVitalRange?.max"
+                                src="./assets/images/arrow-up-{{selectedVitalRange?.max.range}}.svg"
+                                class="img-size" alt="arrow-up">
+                            <img *ngIf="!selectedVitalRange?.max" src="./assets/images/arrow-up-normal.svg"
+                                class="img-size" alt="arrow-up">
+                            <span class="vital-range-text pl-2">Max</span>
+                        </div>
+                        <div>
+                            <span *ngIf="selectedVitalRange?.max" class="vital-val"
+                                [ngStyle]="{'color': selectedVitalRange?.max?.color}">{{(selectedVitalRange?.max.value).split('/')[0]}}<span
+                                    class="vital-unit-text">{{selectedVitalRange?.max.unit}}</span></span>
+                            <span *ngIf="!selectedVitalRange?.max" class="vital-text-blank">--</span>
+                        </div>
+                    </div>
+                    <div class="vital-status-2 p-2 my-2"
+                        [ngStyle]="{'background': selectedVitalRange?.avg?.background}">
+                        <div class="row m-0">
+                            <img *ngIf="selectedVitalRange?.avg"
+                                src="./assets/images/arrow-up-down-{{selectedVitalRange?.avg.range}}.svg"
+                                class="img-size" alt="arrow-up-down">
+                            <img *ngIf="!selectedVitalRange?.avg" src="./assets/images/arrow-up-down-normal.svg"
+                                class="img-size" alt="arrow-up-down">
+                            <span class="vital-range-text pl-2">Average</span>
+                        </div>
+                        <div>
+                            <span *ngIf="selectedVitalRange?.avg" class="vital-val vital-avg"
+                                [ngStyle]="{'color': selectedVitalRange?.avg.color}">{{(selectedVitalRange?.avg.value).split('/')[0]}}<span
+                                    class="vital-unit-text">{{selectedVitalRange?.avg.unit}}</span></span>
+                            <span *ngIf="!selectedVitalRange?.avg" class="vital-text-blank">--</span>
+                        </div>
+                    </div>
+                    <div class="vital-status-2 p-2 my-2"
+                        [ngStyle]="{'background': selectedVitalRange?.min?.background}">
+                        <div class="row m-0">
+                            <img *ngIf="selectedVitalRange?.min"
+                                src="./assets/images/arrow-down-{{selectedVitalRange?.min.range}}.svg"
+                                class="img-size" alt="arrow-down">
+                            <img *ngIf="!selectedVitalRange?.min" src="./assets/images/arrow-down-normal.svg"
+                                class="img-size" alt="arrow-down">
+                            <span class="vital-range-text pl-2">Min</span>
+                        </div>
+                        <div>
+                            <span *ngIf="selectedVitalRange?.min" class="vital-val vital-max"
+                                [ngStyle]="{'color': selectedVitalRange?.min.color}">{{(selectedVitalRange?.min.value).split('/')[0]}}<span
+                                    class="vital-unit-text">{{selectedVitalRange?.min.unit}}</span></span>
+                            <span *ngIf="!selectedVitalRange?.min" class="vital-text-blank">--</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-3 vital-records" *ngIf="title == 'Blood Pressure'">
+                    <div class="vital-status-2 p-2 my-2"
+                        [ngStyle]="{'background': selectedVitalRange?.max?.background}">
+                        <div class="row m-0">
+                            <img *ngIf="selectedVitalRange?.max"
+                                src="./assets/images/arrow-up-{{selectedVitalRange?.max.range}}.svg"
+                                class="img-size" alt="arrow-up">
+                            <img *ngIf="!selectedVitalRange?.max" src="./assets/images/arrow-up-normal.svg"
+                                class="img-size" alt="arrow-up">
+                            <span class="vital-range-text pl-2">Max</span>
+                        </div>
+                        <div>
+                            <span *ngIf="selectedVitalRange?.max" class="vital-val"
+                                [ngStyle]="{'color': selectedVitalRange?.max?.color}">{{(selectedVitalRange?.max.value).split('/')[1]}}<span
+                                    class="vital-unit-text">{{selectedVitalRange?.max.unit}}</span></span>
+                            <span *ngIf="!selectedVitalRange?.max" class="vital-text-blank">--</span>
+                        </div>
+                    </div>
+                    <div class="vital-status-2 p-2 my-2"
+                        [ngStyle]="{'background': selectedVitalRange?.avg?.background}">
+                        <div class="row m-0">
+                            <img *ngIf="selectedVitalRange?.avg"
+                                src="./assets/images/arrow-up-down-{{selectedVitalRange?.avg.range}}.svg"
+                                class="img-size" alt="arrow-up-down">
+                            <img *ngIf="!selectedVitalRange?.avg" src="./assets/images/arrow-up-down-normal.svg"
+                                class="img-size" alt="arrow-up-down">
+                            <span class="vital-range-text pl-2">Average</span>
+                        </div>
+                        <div>
+                            <span *ngIf="selectedVitalRange?.avg" class="vital-val vital-avg"
+                                [ngStyle]="{'color': selectedVitalRange?.avg.color}">{{(selectedVitalRange?.avg.value).split('/')[1]}}<span
+                                    class="vital-unit-text">{{selectedVitalRange?.avg.unit}}</span></span>
+                            <span *ngIf="!selectedVitalRange?.avg" class="vital-text-blank">--</span>
+                        </div>
+                    </div>
+                    <div class="vital-status-2 p-2 my-2"
+                        [ngStyle]="{'background': selectedVitalRange?.min?.background}">
+                        <div class="row m-0">
+                            <img *ngIf="selectedVitalRange?.min"
+                                src="./assets/images/arrow-down-{{selectedVitalRange?.min.range}}.svg"
+                                class="img-size" alt="arrow-down">
+                            <img *ngIf="!selectedVitalRange?.min" src="./assets/images/arrow-down-normal.svg"
+                                class="img-size" alt="arrow-down">
+                            <span class="vital-range-text pl-2">Min</span>
+                        </div>
+                        <div>
+                            <span *ngIf="selectedVitalRange?.min" class="vital-val vital-max"
+                                [ngStyle]="{'color': selectedVitalRange?.min.color}">{{(selectedVitalRange?.min.value).split('/')[1]}}<span
+                                    class="vital-unit-text">{{selectedVitalRange?.min.unit}}</span></span>
+                            <span *ngIf="!selectedVitalRange?.min" class="vital-text-blank">--</span>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="!loading" class="row pt-4 pr-3 pl-3 align-items-end app-chart">
+                    <!-- <img src="./assets/images/blankGraph.png" class="blankGraph-img" alt="logo"> -->
+                    <app-chart *ngIf="graphData" [graph]="graphData" [vitalType]="selectedVital" [readingType]="bloodGlucoseReadingType"></app-chart>
+                </div>
+            </div>
+            <div class="col-12 p-0 recent-readings px-3">
+                <div class="row m-0 pt-3 pb-2 jc-sb">
+                    <span class="recent-readings">Recent Readings</span>
+                    <span *ngIf="currentYearVitalRecord?.length" class="view-all cursor-pointer"
+                        (click)="showTable()">View All</span>
+                </div>
+                <div *ngIf="!currentYearVitalRecord.length" class="col-12 p-0 row m-0 jc-sb">
+                    <div class="vital-recent-readings-blank d-flex jc-ai-c">
+                        <span class="vital-recent-readings-text-blank ">No data avalible</span>
+                    </div>
+                </div>
+                <div class="col-12 p-0 row m-0 jc-sb">
+                    <div class="mx-w-49 min-h-180 p-2 row m-0 flex-column justify-content-between"
+                        *ngFor="let item of currentYearVitalRecord | slice:0:2">
+                        <div class="row m-0 justify-content-between">
+                            <div class="row m-0 justify-content-center align-items-center">
+                                <span class="vg-date">{{item.date}}</span>
+                            </div>
+                            <div class="row m-0 justify-content-center align-items-center">
+                                <span class="vital-val" [ngStyle]="{'color': item.color}">{{item.value}}<span
+                                        class="vital-time fs-16">{{item.unit}}</span></span>
+                            </div>
+                        </div>
+                        <div class="pb-1 note">
+                            <span>{{item.notes || 'No written notes'}}</span>
+                        </div>
+                        <div class="row m-0">
+                            <div class="row m-0 justify-content-center align-items-center vg-tags cursor-pointer px-2 py-1 mr-2 mb-2"
+                                *ngFor="let tag of item.tags">
+                                <span class="vg-tag-text">{{tag}}</span>
+                            </div>
+                            <!-- <div *ngIf="item.tags.length > 5">
+                                <span class="brand-color">+ {{item.tags.length - 5}}</span>
+                            </div> -->
+                        </div>
+
+                        <div class="row m-0 justify-content-start align-items-center" *ngIf="title === 'Temperature'">
+                            <span class="vg-add-info-txt-1">Reading location: <span
+                                    class="vg-add-info-txt-2">{{item.readingLocation || '-'}}</span></span>
+                        </div>
+
+                        <div class="row m-0 justify-content-between" *ngIf="title === 'Blood Pressure'">
+                            <div class="row m-0 justify-content-center align-items-center">
+                                <span class="vg-add-info-txt-1">Body Position: <span
+                                        class="vg-add-info-txt-2">{{item.bodyPosition || '-'}}</span></span>
+                            </div>
+                            <div class="row m-0 justify-content-center align-items-center">
+                                <span class="vg-add-info-txt-1">Arm location: <span
+                                        class="vg-add-info-txt-2">{{item.armLocation || '-'}}</span></span>
+                            </div>
+                        </div>
+
+                        <div *ngIf="title === 'Blood Oxygen'">
+                            <div class="row m-0 justify-content-between pb-2">
+                                <div class="col-6 p-0 row m-0 justify-content-start align-items-start">
+                                    <span class="vg-add-info-txt-1">Reading Method: <span
+                                            class="vg-add-info-txt-2">{{item.readingMethod || '-'}}</span></span>
+                                </div>
+                                <div class="col-6 p-0 row m-0 justify-content-start align-items-center">
+                                    <span class="vg-add-info-txt-1">Measurement Type: <span
+                                            class="vg-add-info-txt-2">{{item.measurementType || '-'}}</span></span>
+                                </div>
+                            </div>
+                            <div class="row m-0 justify-content-between">
+                                <div class="col-6 p-0 row m-0 justify-content-start align-items-start">
+                                    <span class="vg-add-info-txt-1">Supplemental oxygen: <span
+                                            class="vg-add-info-txt-2">{{item.supplementalO2 || '-'}}</span></span>
+                                </div>
+                                <div class="col-6 p-0 row m-0 justify-content-start align-items-center">
+                                    <span class="vg-add-info-txt-1">Oxygen Therapy: <span
+                                            class="vg-add-info-txt-2">{{item.therapy || '-'}}</span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div *ngIf="title === 'Blood Sugar'">
+                            <div class="row m-0 justify-content-between pb-2">
+                                <div class="row m-0 justify-content-center align-items-start">
+                                    <span class="vg-add-info-txt-1">Meal Timing: <span
+                                            class="vg-add-info-txt-2">{{item.mealTiming || '-'}}</span></span>
+                                </div>
+                                <div class="row m-0 justify-content-center align-items-center">
+                                    <span class="vg-add-info-txt-1">Meal Type: <span
+                                            class="vg-add-info-txt-2">{{item.mealType || '-'}}</span></span>
+                                </div>
+                            </div>
+                            <div class="row m-0 justify-content-between">
+                                <div class="row m-0 justify-content-center align-items-start">
+                                    <span class="vg-add-info-txt-1">Sleep Timing: <span
+                                            class="vg-add-info-txt-2">{{item.sleepTiming || '-'}}</span></span>
+                                </div>
+                                <div class="row m-0 justify-content-center align-items-center">
+                                    <span class="vg-add-info-txt-1">Sample Source: <span
+                                            class="vg-add-info-txt-2">{{item.sampleSource || '-'}}</span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row m-0 justify-content-start align-items-center">
+                            <img [src]="item.attachmentUrls ? './assets/images/attachment-2.svg' : './assets/images/no-attachment.svg'"
+                                alt="attachment">
+                            <span class="vg-txt-3 pl-1"
+                                [ngClass]="{'vg-attach' : item.attachmentUrls}">{{item.attachmentUrls
+                                ? (item.attachmentUrls.length + ' Attachments') : 'No attachment'}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!showGraph && graphData && !loading" class="col-12 p-0 px-3 py-4">
+        <div class="row m-0">
+            <div *ngIf="title === 'Temperature'" class="vg-box-w-65 vg-detail-box p-2">
+                <div class="row m-0 justify-content-start align-items-center">
+                    <span class="vg-txt-4">The ideal body temperature range is generally considered to be between <span
+                            class="vg-txt-5">36.1°C to 37.2°C (97°F to 99°F)</span></span>
+                </div>
+                <div class="row m-0 justify-content-start align-items-center pt-2">
+                    <span class="vg-txt-6">References:</span>
+                </div>
+                <div class="row m-0 justify-content-start align-items-center">
+                    <span class="vg-txt-7 pr-1"> &#8226; American Academy of Pediatrics. (2017). Fever and your
+                        baby.</span>
+                    <a class="vg-txt-8"
+                        href="https://www.healthychildren.org/English/health-issues/conditions/fever/Pages/Fever-and-Your-Baby.aspx"
+                        target="_blank">
+                        https://www.healthychildren.org/English/health-issues/conditions/fever/Pages/Fever-and-Your-Baby.aspx
+                    </a>
+                </div>
+                <div class="row m-0 justify-content-start align-items-center">
+                    <span class="vg-txt-7 pr-1"> &#8226; Cleveland Clinic. (2021). Body temperature: Normal ranges in
+                        adults
+                        and
+                        children.</span>
+                    <a class="vg-txt-8"
+                        href="https://my.clevelandclinic.org/health/diagnostics/17685-body-temperature-normal-ranges-in-adults-and-children"
+                        target="_blank">
+                        https://my.clevelandclinic.org/health/diagnostics/17685-body-temperature-normal-ranges-in-adults-and-children
+                    </a>
+                </div>
+            </div>
+            <div *ngIf="title === 'Pulse'" class="vg-box-w-65 vg-detail-box p-2">
+                <div class="row m-0 justify-content-start align-items-center">
+                    <span class="vg-txt-4">The ideal range of heartbeat for <span class="vg-txt-5">adults</span> at rest
+                        is typically between <span class="vg-txt-5">60 and 100 bpm</span>. For children, the ideal range
+                        of heartbeat varies based on age and can range from <span class="vg-txt-5">70 to 120 bpm for
+                            infants, 80 to 130 bpm for toddlers</span>, and <span class="vg-txt-5">70 to 110 bpm for
+                            children ages 6 to 15.</span></span>
+                </div>
+                <div class="row m-0 justify-content-start align-items-center pt-2">
+                    <span class="vg-txt-6">References:</span>
+                </div>
+                <div class="row m-0 justify-content-start align-items-center">
+                    <span class="vg-txt-7 pr-1"> &#8226; American Heart Association. (2021). Heart rate.</span>
+                    <a class="vg-txt-8"
+                        href="https://www.heart.org/en/health-topics/heart-attack/diagnosing-a-heart-attack/heart-rate"
+                        target="_blank">
+                        https://www.heart.org/en/health-topics/heart-attack/diagnosing-a-heart-attack/heart-rate
+                    </a>
+                </div>
+                <div class="row m-0 justify-content-start align-items-center">
+                    <span class="vg-txt-7 pr-1"> &#8226; Mayo Clinic. (2021). Resting heart rate: What is normal?</span>
+                    <a class="vg-txt-8"
+                        href="https://www.mayoclinic.org/healthy-lifestyle/fitness/expert-answers/heart-rate/faq-20057979"
+                        target="_blank">
+                        https://www.mayoclinic.org/healthy-lifestyle/fitness/expert-answers/heart-rate/faq-20057979
+                    </a>
+                </div>
+            </div>
+            <div *ngIf="title === 'Blood Pressure'" class="vg-box-w-65 vg-detail-box p-2">
+                <div class="row m-0 justify-content-start align-items-center">
+                    <span class="vg-txt-4">Ideal blood pressure for adults is <span class="vg-txt-5">120/80 mm Hg or
+                            lower.</span> For children, the ideal range varies based on age and height.</span>
+                </div>
+                <div class="row m-0 justify-content-start align-items-center pt-2">
+                    <span class="vg-txt-6">References:</span>
+                </div>
+                <div class="row m-0 justify-content-start align-items-center">
+                    <span class="vg-txt-7 pr-1"> &#8226; American Heart Association. (2021). Understanding Blood
+                        Pressure Readings.</span>
+                    <a class="vg-txt-8"
+                        href="https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings"
+                        target="_blank">
+                        https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings.
+                    </a>
+                </div>
+            </div>
+            <div *ngIf="title === 'Blood Oxygen'" class="vg-box-w-65 vg-detail-box p-2">
+                <div class="row m-0 justify-content-start align-items-center">
+                    <span class="vg-txt-4">The ideal range of blood oxygen for kids and adults is between <span
+                            class="vg-txt-5">95% and 100%.</span></span>
+                </div>
+                <div class="row m-0 justify-content-start align-items-center pt-2">
+                    <span class="vg-txt-6">References:</span>
+                </div>
+                <div class="row m-0 justify-content-start align-items-center">
+                    <span class="vg-txt-7 pr-1"> &#8226; American Lung Association. (n.d.). Understanding Your Oxygen
+                        Equipment.</span>
+                    <a class="vg-txt-8"
+                        href="https://www.lung.org/lung-health-diseases/lung-procedures-and-tests/understanding-your-oxygen-equipment"
+                        target="_blank">
+                        https://www.lung.org/lung-health-diseases/lung-procedures-and-tests/understanding-your-oxygen-equipment.
+                    </a>
+                </div>
+                <div class="row m-0 justify-content-start align-items-center">
+                    <span class="vg-txt-7 pr-1"> &#8226; National Heart, Lung, and Blood Institute. (2021, January).
+                        What is Blood Oxygen Saturation?</span>
+                    <a class="vg-txt-8"
+                        href="https://www.nhlbi.nih.gov/health-topics/all-publications-and-resources/what-blood-oxygen-saturation"
+                        target="_blank">
+                        https://www.nhlbi.nih.gov/health-topics/all-publications-and-resources/what-blood-oxygen-saturation.
+                    </a>
+                </div>
+            </div>
+            <div *ngIf="title === 'Respiratory Rate'" class="vg-box-w-65 vg-detail-box p-2">
+                <div class="row m-0 justify-content-start align-items-center">
+                    <span class="vg-txt-4">The ideal range of respiratory rate for adults is <span
+                            class="vg-txt-5">12-20 breaths per minute</span> and for children, it varies with
+                        age.</span>
+                </div>
+                <div class="row m-0 justify-content-start align-items-center pt-2">
+                    <span class="vg-txt-6">References:</span>
+                </div>
+                <div class="row m-0 justify-content-start align-items-center">
+                    <span class="vg-txt-7 pr-1"> &#8226; American Heart Association. (2019). Respiratory Rate. Retrieved
+                        from</span>
+                    <a class="vg-txt-8"
+                        href="https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings/respiratory-rate"
+                        target="_blank">
+                        https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings/respiratory-rate.
+                    </a>
+                </div>
+                <div class="row m-0 justify-content-start align-items-center">
+                    <span class="vg-txt-7 pr-1"> &#8226; Davis, K. A. (2019). Respiratory rate. In StatPearls
+                        [Internet]. StatPearls Publishing.</span>
+                </div>
+            </div>
+            <div *ngIf="title === 'Blood Sugar'" class="vg-box-w-65 vg-detail-box p-2">
+                <div class="row m-0 justify-content-start align-items-center">
+                    <span class="vg-txt-4">The ideal range for blood sugar in adults is <span class="vg-txt-5">70-130
+                            mg/dL</span> before meals and
+                        <span class="vg-txt-5">&lt;180 mg/dL</span> after meals. In kids, it is 70-150 mg/dL.</span>
+                </div>
+                <div class="row m-0 justify-content-start align-items-center pt-2">
+                    <span class="vg-txt-6">References:</span>
+                </div>
+                <div class="row m-0 justify-content-start align-items-center">
+                    <span class="vg-txt-7 pr-1"> &#8226; American Diabetes Association. (2021). Standards of Medical
+                        Care in Diabetes - 2021. Diabetes Care, 44(Supplement 1), S15-S33. doi: 10.2337/dc21-S002</span>
+                </div>
+                <div class="row m-0 justify-content-start align-items-center">
+                    <span class="vg-txt-7 pr-1"> &#8226; American Diabetes Association. (2021). Children and
+                        Adolescents: Standards of Medical Care in Diabetes - 2021. Diabetes Care, 44(Supplement 1),
+                        S180-S199. doi: 10.2337/dc21-S013</span>
+                </div>
+            </div>
+            <div class="vg-box-w-35 pl-3">
+                <div class="row m-0 justify-content-end align-items-center">
+                    <div class="row m-0 justify-content-center align-items-center">
+                        <div class="dot-green"></div>
+                        <div class="row m-0 pl-1">
+                            <span class="secondary-text">Mild</span>
+                        </div>
+                    </div>
+                    <div class="row m-0 justify-content-center align-items-center pl-3">
+                        <div class="dot-green moderate"></div>
+                        <div class="row m-0 pl-1">
+                            <span class="secondary-text">Moderate</span>
+                        </div>
+                    </div>
+                    <div class="row m-0 justify-content-center align-items-center pl-3">
+                        <div class="dot-green severe"></div>
+                        <div class="row m-0 pl-1">
+                            <span class="secondary-text">Severe</span>
+                        </div>
+                    </div>
+                    <div class="row m-0 justify-content-center align-items-center cursor-pointer pl-3"
+                        (click)="download()">
+                        <img src="./assets/images/download.svg" class="close-image cursor-pointer">
+                    </div>
+                    <div class="row m-0 justify-content-center align-items-center cursor-pointer pl-3"
+                        (click)="close()">
+                        <img src="./assets/images/close.svg" class="close-image cursor-pointer">
+                    </div>
+                </div>
+                <div class="row m-0 justify-content-center pt-2">
+                    <div class="vg-box-w-30 pr-2">
+                        <div class="text-box col-12 p-1 row m-0" id="graphTimeField" (click)="openGraphTimeList()">
+                            <div class="material-textfield w-80">
+                                <input class="input-box-txt" id="graphTimeInputField" type="text" placeholder=" "
+                                    [(ngModel)]="graphTime" readonly>
+                            </div>
+                            <img (click)="openGraphTimeList()" class="w-20"
+                                src="./assets/images/chevron-down.svg" alt="chevron-down">
+                        </div>
+                        <div *ngIf="showGraphTimeList">
+                            <app-hi-select-box [type]="'single'" [searchEnable]="false" [dataList]="graphTimeDataList"
+                                (setItemInComponent)="setGraphTime($event)" [showTyped]="false" [typedValue]="true"
+                                [width]="graphTimeFieldWidth"></app-hi-select-box>
+                        </div>
+                    </div>
+                    <div class="vg-box-w-70 row m-0 p-0 justify-content-end pr-2">
+                        <div class="text-box row m-0 col p-1 vg-box-w-45">
+                            <div class="material-textfield w-80">
+                                <input matInput [matDatepicker]="startDate_picker" placeholder=" " class="input-box-txt"
+                                    type="text" [(ngModel)]="startDate" (dateChange)="setStartDate($event)"
+                                    [max]="getStartDateMaxDate">
+                                <label class="label-txt">Start Date</label>
+                                <mat-datepicker #startDate_picker></mat-datepicker>
+                            </div>
+                            <div (click)="startDate_picker.open()"
+                                class="row m-0 justify-content-center align-items-center">
+                                <img class="w-18" src="./assets/images/calendar.svg" alt="calendar">
+                            </div>
+                        </div>
+                        <div class="row m-0 justify-content-center align-items-center px-2">
+                            -
+                        </div>
+                        <div class="text-box row m-0 col p-1 vg-box-w-45">
+                            <div class="material-textfield w-80">
+                                <input matInput [matDatepicker]="endDate_picker" placeholder=" " class="input-box-txt"
+                                    type="text" [(ngModel)]="endDate" (dateChange)="setEndDate($event)"
+                                    [max]="getEndDateMaxDate" [min]="getEndDateMinDate">
+                                <label class="label-txt">End Date</label>
+                                <mat-datepicker #endDate_picker></mat-datepicker>
+                            </div>
+                            <div (click)="endDate_picker.open()"
+                                class="row m-0 justify-content-center align-items-center">
+                                <img class="w-18" src="./assets/images/calendar.svg" alt="calendar">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pt-3">
+            <app-vital-table [graphTable]="title" [graphTableData]="currentYearVitalRecord"
+                (onScrollGetGraph)="onScrollGetGraph($event)"></app-vital-table>
+        </div>
+    </div>
+</div>

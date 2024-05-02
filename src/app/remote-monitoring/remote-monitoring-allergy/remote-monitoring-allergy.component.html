@@ -1,0 +1,71 @@
+<div class="remote-monitoring-allergy">
+    <div class="row m-0 justify-content-start align-items-center border-color-design m-3">
+        <div class="row m-0 col-8 p-0 justify-content-start align-items-center pb-3">
+            <span class="pvf-cm-txt-1">Allergies</span>
+        </div>
+    </div>
+    <div class="py-5" *ngIf="patientAllergiesList?.length === 0">
+        <div class="justify-content-center align-items-center py-3">
+            <div class="row m-0 justify-content-center align-items-center">
+                <img src="./assets/images/allergies.svg" alt="allergies">
+            </div>
+            <div class="row m-0 justify-content-center align-items-center py-2">
+                <span class="no-data">No Allergy Recorded</span>
+            </div>
+        </div>
+    </div>
+    <div class="py-1" [ngClass]="{'pr-1' : patientAllergiesList?.length > 3}">
+        <div class="h-376 px-3" *ngIf="patientAllergiesList?.length > 0">
+            <div class="item-box border-bottom pt-2 my-2" *ngFor="let allergy of patientAllergiesList;let i=index;">
+                <div class="row m-0 justify-content-between px-2">
+                    <div class="col-8 p-0">
+                        <div class="row m-0 flex-column justify-content-ceneter align-items-start">
+                            <div class="row m-0 justify-content-start align-items-center">
+                                <span class="pf-a-txt-2">{{allergy.substance || '-'}}</span>
+                            </div>
+                            <div class="row m-0 justify-content-start align-items-center pt-1">
+                                <span class="pf-a-txt-4"
+                                    [ngClass]="{
+                                        'pf-a-mild':allergy.status === 'Active',
+                                        'pf-a-severe':allergy.status === 'In-active' || allergy.status == 'Resolved'}">{{allergy.status ||
+                                    '-'}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 p-0 row m-0 justify-content-end">
+                        <div class="">
+                            <div class="row m-0 pf-box-1 justify-content-center align-items-center p-2" [ngClass]="{
+                                    'pf-box-mild':allergy.criticality === 'Mild',
+                                    'pf-box-moderate':allergy.criticality === 'Moderate',
+                                    'pf-box-severe':allergy.criticality === 'Severe'}">
+                                <span class="pf-a-txt-3" [ngClass]="{
+                                        'pf-a-mild':allergy.criticality === 'Mild',
+                                        'pf-a-moderate':allergy.criticality === 'Moderate',
+                                        'pf-a-severe':allergy.criticality === 'Severe'}">{{allergy.criticality}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0 justify-content-between px-2">
+                    <div class="row m-0 py-2">
+                        <span class="pf-a-txgt-5">Start: </span><span class="pf-a-txt-6">&nbsp;{{allergy.abatementDate
+                            ||
+                            '-'}}</span>
+                    </div>
+                    <div class="row m-0 py-2" *ngIf="allergy.status === 'In-active'">
+                        <span class="pf-a-txgt-5">End: </span><span class="pf-a-txt-6">&nbsp;{{allergy.lastOccurenceDate
+                            ||
+                            '-'}}</span>
+                    </div>
+                </div>
+                <div *ngIf="allergy.recordedUserDetail"
+                    class="row m-0 justify-content-end align-items-center border-top py-1 pr-2">
+                    <span class="recorded-by">Recorded by {{getName(allergy.recordedUserDetail)}} on
+                        {{allergy.createdAt
+                        |
+                        date: 'dd MMM y' }} at {{allergy.createdAt | date: 'hh.mm a'}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

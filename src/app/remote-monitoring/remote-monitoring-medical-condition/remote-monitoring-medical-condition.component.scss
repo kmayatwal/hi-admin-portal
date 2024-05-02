@@ -1,0 +1,215 @@
+.remote-monitoring-medical-condition {
+    .border-color-design {
+        border-bottom: 2px solid #f2f2f2;
+    }
+    .pvf-cm-txt-1 {
+        color: var(--gray-2, #4f4f4f);
+        font-family: Poppins-SemiBold;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 100%; /* 14px */
+    }
+    .pf-a-txt-2 {
+        color: var(--Black, #2a2d32);
+        font-family: Poppins;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+    .pf-a-txt-3 {
+        // color: var(--Fail, #F46A6A);
+        text-align: center;
+        font-family: Poppins;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+    .pf-a-txt-4 {
+        color: var(--Fail, #f46a6a);
+        /* 12px (Secondary Text) */
+        font-family: Poppins-Regular;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+    .rm-txt-6 {
+        color: #057cc3;
+        text-align: center;
+
+        /* 12px (Secondary Text) */
+        font-family: Poppins-Regular;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+    .rm-txt-7 {
+        color: var(--Patient-Primary, #2db1a4);
+        text-align: center;
+
+        /* 12px (Secondary Text) */
+        font-family: Poppins-Regular;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+    .rm-txt-8 {
+        font-family: Poppins-Regular;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 18px;
+        color: #f46a6a;
+    }
+    .rm-txt-3 {
+        font-family: Poppins-Regular;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 18px;
+        color: #2db1a4;
+    }
+    .pf-a-severe {
+        color: #f46a6a !important;
+    }
+    .pf-a-moderate {
+        color: #fca600 !important;
+    }
+    .pf-a-mild {
+        color: #2db1a4 !important;
+    }
+    .pf-box-severe {
+        background: rgba(244, 106, 106, 0.15) !important;
+    }
+    .pf-box-moderate {
+        background: rgba(252, 166, 0, 0.15) !important;
+    }
+    .pf-box-mild {
+        background: rgba(81, 190, 152, 0.2) !important;
+    }
+    .pf-box-1 {
+        border-radius: 3px;
+    }
+    .pf-a-btn-active {
+        background: #e0f2ed;
+        border-radius: 3px;
+    }
+    .pf-a-btn-inactive {
+        background: #fee7e8;
+        border-radius: 32px;
+    }
+    .pf-a-txt-4 {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 100%;
+    }
+    .pf-a-txgt-5 {
+        font-family: Poppins-Regular;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 100%;
+        color: #828282;
+    }
+    .pf-a-txt-6 {
+        font-family: Poppins-Regular;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 100%;
+        color: #4f4f4f;
+    }
+    .txt-2 {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        color: #2a2d32;
+    }
+    .no-data {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 27px;
+        color: #858585;
+    }
+    .item-box {
+        border-radius: 4px;
+        background: var(--White, #fff);
+
+        /* Light */
+        box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.12);
+    }
+
+    .h-376 {
+        height: 370px;
+        overflow-x: scroll;
+
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+    // .h-376::-webkit-scrollbar {
+    //     display: none;
+    // }
+    /* Hide scrollbar for IE, Edge and Firefox */
+    // .h-376 {
+    //     -ms-overflow-style: none; /* IE and Edge */
+    //     scrollbar-width: none; /* Firefox */
+    // }
+    .h-376::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    /* Track */
+    .h-376::-webkit-scrollbar-track {
+        // background: #f1f1f1;
+
+        //   background: #FFFFFF !important;
+        box-shadow: none;
+    }
+    /* Handle */
+    .h-376::-webkit-scrollbar-thumb {
+        background: #d4d5d6;
+        border-radius: 20px;
+        outline: none;
+    }
+
+    /* Handle on hover */
+    .h-376::-webkit-scrollbar-thumb:hover {
+        background: #9d9d9d;
+    }
+
+    .notification_loader {
+        text-align: center;
+        .loader {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #1d1d1f;
+            animation: spin 1s ease-in-out infinite;
+            -webkit-animation: spin 1s ease-in-out infinite;
+
+            @keyframes spin {
+                to {
+                    -webkit-transform: rotate(360deg);
+                }
+            }
+            @-webkit-keyframes spin {
+                to {
+                    -webkit-transform: rotate(360deg);
+                }
+            }
+        }
+    }
+}

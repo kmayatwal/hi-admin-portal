@@ -5,6 +5,7 @@ import {
   GET_PATIENTS_BY_DOCTOR_ID,
   GET_VITAL_METRIC_CHART_STATS,
   GET_VITAL_RECORDING_STATS,
+  GET_PATIENT_AGE_DISTRIBUTION
 } from "src/app/graphql.module";
 
 export const getMedicalCompliance = async (
@@ -188,6 +189,36 @@ export const getAllMedicinesByDoctors = async (
     return result.data.getAllMedicinesByDoctors;
   } catch (error) {
     console.error("Error fetching getAllMedicinesByDoctors:", error);
+    throw error;
+  }
+};
+
+export const getPatientAgeDistribution = async (
+  graphqlService,
+  stateService,
+  filterInput
+) => {
+  const input = {
+    clinicId: stateService.selectedClinic$.clinicId,
+    doctorIds: filterInput.doctorId,
+    startDate: filterInput.startDate,
+    endDate: filterInput.endDate,
+  };
+
+  try {
+    const result = await graphqlService?.getGraphqlData({
+      showLoader: true,
+      definition: {
+        query: GET_PATIENT_AGE_DISTRIBUTION,
+        variables: {
+          ...input,
+        },
+      },
+    });
+
+    return result.data.getPatientAgeDistribution;
+  } catch (error) {
+    console.error("Error fetching new patient list:", error);
     throw error;
   }
 };

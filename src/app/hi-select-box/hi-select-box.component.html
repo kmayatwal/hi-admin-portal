@@ -3,7 +3,7 @@
         <!-- Serach Box if Enabled -->
         <div class="row m-0 txt-bx-brd-btm mb-1" *ngIf="searchEnable">
             <div *ngIf="showSearchIcon" class="w-8 row m-0 justify-content-center align-items-center">
-                <img src="./assets/images/profile/searchicon.svg" alt="searchicon">
+                <img src="./assets/images/searchicon.svg" alt="searchicon">
             </div>
             <div class="col-11 p-0">
                 <input class="input-box-txt" type="text" placeholder="Search" [(ngModel)]="search"
@@ -20,7 +20,7 @@
             <div class="row m-0 justify-content-start align-items-center p-2 cursor-pointer search-txt"
                 (click)="setItem(item, i)" *ngFor="let item of dataList; let i=index;">
                 <div class="row m-0 justify-content-center align-items-center" *ngIf="type === 'multiSelect'">
-                    <img [src]="item?.isSelected ? './assets/images/profile/box-check.svg' : './assets/images/profile/box-un-check.svg'"
+                    <img [src]="item?.isSelected ? './assets/images/box-check.svg' : './assets/images/box-un-check.svg'"
                         alt="box-check">
                 </div>
                 <span class="txt-base-medium pl-1" [ngStyle]="textStyle">{{item?.value || item?.name }}</span>

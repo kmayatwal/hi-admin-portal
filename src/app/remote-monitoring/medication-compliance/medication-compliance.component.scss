@@ -1,0 +1,72 @@
+.total-revenue {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #057cc3;
+}
+.revenue {
+    height: 300px;
+
+    .chartWrapper {
+        position: relative;
+        margin-top: 2%;
+        margin-left: 1%;
+    }
+
+    .chartWrapper > canvas {
+        position: absolute;
+        left: 0;
+        top: 0;
+        pointer-events: none;
+    }
+
+    .chartAreaWrapper {
+        width: auto;
+        height: 100% !important;
+        overflow-x: scroll;
+        overflow-y: hidden;
+    }
+    .myChartmainDiv > canvas {
+        position: absolute;
+        left: 0;
+        top: 0;
+        pointer-events: none;
+    }
+    .myChart {
+        &.hide {
+            visibility: hidden;
+            position: absolute;
+        }
+        &.show {
+            visibility: visible;
+            position: relative;
+        }
+    }
+    .no-chart-data {
+        display: flex;
+        height: 271px;
+        align-items: flex-end;
+    }
+}
+
+.item-heading-border {
+    border-bottom: 2px solid #e9edf2;
+}
+
+.w-93 {
+    width: 93%;
+}
+.w-7 {
+    width: 7%;
+}
+.w-80 {
+    width: 80%;
+}
+.w-20 {
+    width: 20%;
+}
+.w-12 {
+    width: 12%;
+}
