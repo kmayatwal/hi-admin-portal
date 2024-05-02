@@ -24,6 +24,9 @@ import { AuthGuard } from './_guards';
 import { ToastrModule } from 'ngx-toastr';
 import { MatSliderModule } from '@angular/material/slider';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 // import {
 //   CustomAdapter,
 //   CustomDateParserFormatter,
@@ -55,6 +58,7 @@ import { CreateArticleComponent } from './health-hub/create-article/create-artic
 import { PreviewArticleComponent } from './health-hub/preview-article/preview-article.component';
 import { ArticleDescriptionComponent } from './health-hub/create-article/article-description/article-description.component';
 import { HiSelectBoxComponent } from './hi-select-box/hi-select-box.component';
+import { DashboardDateComponent } from './dashboard/dashboard-date/dashboard-date.component';
 // import * as cornerstoneWADOImageLoader from 'cornerstone-wado-image-loader';
 // import * as cornerstone from 'cornerstone-core';
 
@@ -80,7 +84,8 @@ export function createApollo(httpLink: HttpLink) {
     CreateArticleComponent,
     PreviewArticleComponent,
     ArticleDescriptionComponent,
-    HiSelectBoxComponent
+    HiSelectBoxComponent,
+    DashboardDateComponent
   ],
   imports: [
     ApolloModule,
@@ -104,6 +109,9 @@ export function createApollo(httpLink: HttpLink) {
     MatSliderModule,
     NgbCarouselModule,
     AngularEditorModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatFormFieldModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [

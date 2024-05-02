@@ -299,14 +299,14 @@
                         <span class="patient-visit-date text-capitalize">{{patient?.appointmentMode}} Visit</span>
                     </div> -->
                 </div>
-                <div class="col-2 p-0 d-flex flex-column justify-xl-content-center align-items-center px-1 side-border">
+                <div class="col-2 p-0 d-flex flex-column justify-content-center align-items-center px-1 side-border">
                     <div class="d-flex justify-content-center align-items-center status-box w-80"
                         [ngClass]="colorMap[patient?.appointmentStatus?.toLowerCase()]">
                         <span class="secondary-text"
                             [ngClass]="textColorMap[patient?.appointmentStatus?.toLowerCase()]">{{appointmentStatus[patient?.appointmentStatus]
                             || '-'}}</span>
                     </div>
-                    <div *ngIf="patient?.appointmentStatus != 'FULFILLED' && patient?.appointmentStatus != 'NOSHOW'"
+                    <!--<div *ngIf="patient?.appointmentStatus != 'FULFILLED' && patient?.appointmentStatus != 'NOSHOW'"
                         class="row m-0 justify-content-xl-center align-items-center">
                         <div class="row m-0 py-2">
                             <div class="row m-0 justify-content-center align-items-center"
@@ -326,31 +326,20 @@
                                 <span class="txt-base-medium">No Show</span>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
                 <div class="col-2 p-0 row m-0 justify-content-center align-items-center px-1 side-border">
-                    <div>
-                        <div *ngIf="!patient?.triageCategory">
-                            -
-                        </div>
-                        <div *ngIf="patient?.triageCategory"
-                            class="justify-content-center align-items-center triage-box" [ngClass]="getClass(patient)">
-                            <span class="pfd-triage-add-btn-txt text-white">{{getTriageCategory(patient)}}</span>
-                        </div>
+                    <div class="row m-0 justify-content-center align-items-center">
+                        <span class="patient-visit-date">Doctor Name</span>
                     </div>
                 </div>
                 <div class="col-1 p-0 row m-0 justify-content-center align-items-center px-1 side-border">
-                    <div>
-                        <div *ngIf="!patient?.billingStatus">
-                            -
-                        </div>
-                        <div *ngIf="patient?.billingStatus" class="justify-content-center align-items-center bill-box"
-                            [ngClass]="getBillingClass(patient)">
-                            <span class="pfd-triage-add-btn-txt text-white d-flex text-center">{{(patient?.billingStatus
-                                === 'PARTIAL_PAID'
-                                ? 'PARTIAL PAID' : patient?.billingStatus) || 'Partially
-                                Paid'}}</span>
-                        </div>
+                    <div class="row m-0 justify-content-center align-items-center">
+                        <span class="patient-visit-date">6.1%</span>
+                    </div>
+                    <div class="row m-0 justify-content-center align-items-center">
+                        <span class="hba1c-txt-2">Last value: 6.3% recorded on 15 March 2024 at
+                            3:30pm</span>
                     </div>
                 </div>
                 <div class="col-1 p-0 row m-0 justify-content-center align-items-center px-1 side-border">

@@ -155,6 +155,9 @@ export class LoginComponent implements OnInit {
     const password = 'Art@1234';
     this.stateService.doctorData$ = { name: 'Hi Hub', email: 'hi.hub@artlir.com', access_token: 'AFDSLAZN40G43FDNV48Q3NKDV48' };
     this.utilityService.setCurrentUser(this.stateService.doctorData$);
+    this.stateService.selectedClinic$ = {
+      clinicId: '572'
+    }
     this.router.navigate(['/dashboard']);
   }
 

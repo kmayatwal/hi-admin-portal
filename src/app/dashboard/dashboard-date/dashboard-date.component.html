@@ -1,0 +1,32 @@
+<div class="dashboard-date">
+    <div class="row m-0 justify-content-end align-items-center">
+        <div class="vg-box-w-29 row m-0 p-0 justify-content-end pr-2">
+            <div class="text-box row m-0 col p-1 vg-box-w-45">
+                <div class="material-textfield w-80">
+                    <input matInput [matDatepicker]="startDate_picker" placeholder=" " class="input-box-txt" type="text"
+                        [(ngModel)]="startDate" (dateChange)="setStartDate($event)" [max]="getStartDateMaxDate">
+                    <label class="label-txt">Start Date</label>
+                    <mat-datepicker #startDate_picker></mat-datepicker>
+                </div>
+                <div (click)="startDate_picker.open()" class="row m-0 justify-content-center align-items-center">
+                    <img class="w-18" src="./assets/images/calendar.svg" alt="calendar">
+                </div>
+            </div>
+            <div class="row m-0 justify-content-center align-items-center px-2">
+                -
+            </div>
+            <div class="text-box row m-0 col p-1 vg-box-w-45">
+                <div class="material-textfield w-80">
+                    <input matInput [matDatepicker]="endDate_picker" placeholder=" " class="input-box-txt" type="text"
+                        [(ngModel)]="endDate" (dateChange)="setEndDate($event)" [max]="getEndDateMaxDate"
+                        [min]="getEndDateMinDate">
+                    <label class="label-txt">End Date</label>
+                    <mat-datepicker #endDate_picker></mat-datepicker>
+                </div>
+                <div (click)="endDate_picker.open()" class="row m-0 justify-content-center align-items-center">
+                    <img class="w-18" src="./assets/images/calendar.svg" alt="calendar">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

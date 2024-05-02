@@ -197,12 +197,9 @@ export class CreateArticleComponent implements OnInit {
         this.tempFeaturedURL = reader.result;
       }
     }
-    console.log('this is this.tempFeaturedURL', this.tempFeaturedURL);
     if (imgFile) {
       this.spinner.show();
       this.apiService.imgUpload(imgFile, 'single').subscribe((data: any) => {
-        // this.digitalSignatureForm.get('digitalSignature').setValue(data[0].url);
-        console.log('this is featuredURL', data);
         this.featuredURL = data[0].url;
         this.featuredImageName = this.featuredURL.split('/')[this.featuredURL.split('/').length - 1];
         this.spinner.hide();
@@ -226,7 +223,6 @@ export class CreateArticleComponent implements OnInit {
 
   async createArticle() {
     if (this.createArticleForm.valid) {
-      console.log('this is this.stateService.articleDescription$', this.stateService.articleDescription$);
       if (!this.tempFeaturedURL) {
         this.toastr.error('Please add featured image');
         return;
@@ -237,8 +233,6 @@ export class CreateArticleComponent implements OnInit {
         return;
       }
 
-      // const htmlContentFromApi = this.stateService.articleDescription$;
-      // let safeHtml = this.sanitizer.bypassSecurityTrustHtml(htmlContentFromApi);
       let content = {
         images: this.featuredURL,
         title: this.createArticleForm.get('blogTitle').value,
@@ -249,7 +243,6 @@ export class CreateArticleComponent implements OnInit {
         username: this.createArticleForm.get('postedBy').value
       }
 
-      console.log('this si content', content);
       const result: any = await this.graphqlService?.getGraphqlData({
         showLoader: true,
         definition: {

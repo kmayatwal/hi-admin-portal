@@ -1,2 +1,593 @@
-.dashboard {
+.dahsboard-bg-color {
+    background-color: #f7f7f7;
+}
+
+* {
+    font-family: "Poppins";
+}
+
+.typo1 {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.typo2 {
+    font-size: 12px;
+    font-style: normal;
+    line-height: normal;
+}
+
+.typo3 {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.typo4 {
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.typography5 {
+    font-size: 14px;
+    font-style: normal;
+    line-height: normal;
+}
+
+.typo6 {
+    font-size: 25px;
+    font-style: normal;
+    line-height: normal;
+}
+
+.typo7 {
+    font-size: 32px;
+    font-style: normal;
+    line-height: normal;
+}
+
+.weight1 {
+    font-weight: 400;
+}
+
+.weight2 {
+    font-weight: 300;
+}
+
+.gp-10 {
+    gap: 10px;
+}
+
+.gp-15 {
+    gap: 15px;
+}
+
+.b-color {
+    color: #2a2d32;
+}
+
+.g-light {
+    color: #8d98af;
+}
+
+.g-color {
+    color: #45c49c;
+}
+
+.r-color {
+    color: #fc5a5a;
+}
+
+.col-lg-7 {
+    max-width: 56.333333% !important;
+}
+
+.mh-100 {
+    height: 25em !important;
+}
+
+.myCharts {
+    padding: 10px;
+    gap: 12px;
+}
+
+.chart-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.blue-dot {
+    border-radius: 50%;
+    background: #057cc3;
+    height: 12px;
+    width: 12px;
+}
+
+.green-dot {
+    border-radius: 50%;
+    background: #2db1a4;
+    height: 12px;
+    width: 12px;
+}
+
+.lb-dot {
+    border-radius: 50%;
+    background: #e0eef7;
+    height: 12px;
+    width: 12px;
+}
+
+.yellow-dot {
+    border-radius: 50%;
+    background: #fea736;
+    height: 12px;
+    width: 12px;
+}
+
+.red-dot {
+    border-radius: 50%;
+    background: #f00;
+    height: 12px;
+    width: 12px;
+}
+
+.pink-dot {
+    border-radius: 50%;
+    background: #ff7c98;
+    height: 12px;
+    width: 12px;
+}
+
+.skyBlue-dot {
+    border-radius: 50%;
+    background: #00aff0;
+    height: 12px;
+    width: 12px;
+}
+
+.magenta-dot {
+    border-radius: 50%;
+    background: #3487eb;
+    height: 12px;
+    width: 12px;
+}
+
+.purple-dot {
+    border-radius: 50%;
+    background: #7b5cdc;
+    height: 12px;
+    width: 12px;
+}
+
+.legend-border {
+    border: 1px solid #f1f1f5;
+    border-radius: 18px;
+    padding: 8px;
+}
+
+.doughnutChart-bg {
+    background-image: url("/assets/images/analytics/Stretcher.png");
+    background-repeat: no-repeat;
+    background-size: 100px;
+    background-position-x: center;
+    background-position-y: 35%;
+}
+
+.appointmentTableHead {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    background: #057cc31a;
+    padding: 8px;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.appointmentTableData {
+    padding: 12px;
+}
+
+.doughnutChart-centerTxt {
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    translate: -50% -50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardioChart {
+    border-radius: 50%;
+    height: 85px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.h-line {
+    border-bottom: 1px solid #f1f1f5;
+}
+
+.info-sign {
+    border: 1px solid;
+    border-radius: 50%;
+    height: 16px;
+    width: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.bar {
+    height: 13px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.outerBar {
+    height: 12px;
+    border-radius: 5px;
+    background: #eeeeee;
+    width: 100%;
+}
+
+.innerBar {
+    height: 12px;
+    border-radius: 5px;
+    background: #23a9f9;
+}
+
+.noData {
+    background: url("/assets/images/no-chart-data.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 100%;
+    height: 85%;
+}
+
+.circular-progress {
+    position: relative;
+    height: 85px;
+    width: 85px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circular-progress::before {
+    content: "";
+    position: absolute;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    background-color: #ffff;
+}
+
+.percentage {
+    position: relative;
+}
+
+.waitTimeChart {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.patientLogo {
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+}
+
+.more {
+    height: 15px;
+    width: 15px;
+}
+
+.view-delete-box {
+    position: absolute;
+    z-index: 1000;
+    background: #ffffff;
+    border: 1px solid #dadada;
+    box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.12);
+    border-radius: 3px;
+}
+
+.view-delete-txt:hover {
+    background: #e0eef7 !important;
+}
+
+.set-footer {
+    position: relative;
+    bottom: 5%;
+    border-top: 1px solid #f1f1f5;
+    width: 95%;
+    padding-top: 10px;
+}
+
+.weekFilter {
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    height: 45px;
+    padding: 5px;
+}
+
+.selectDropdown {
+    cursor: pointer;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    height: 35px;
+    padding: 5px;
+    width: 12em;
+}
+
+.geoLegend-bar1 {
+    background: #aba8b0;
+    height: 13px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.geoLegend-bar2 {
+    background: #23adde;
+    height: 13px;
+}
+
+.geoLegend-bar3 {
+    background: #3487eb;
+    height: 13px;
+}
+
+.geoLegend-bar4 {
+    background: #7b5cdc;
+    height: 13px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.geoBars {
+    gap: 1px;
+}
+
+.w-24 {
+    width: 24%;
+}
+
+.info-header {
+    padding: 15px;
+    background: #fff;
+    border-radius: 20px;
+    margin-left: 8px !important;
+    margin-right: 9px !important;
+}
+
+.v-line {
+    border-right: 1px solid #f1f1f5;
+}
+
+.col4 {
+    width: 32% !important;
+}
+
+.pillPercentageSec {
+    background: #F4F9EC;
+    height: 100px;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.hover-div {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 60px;
+    transition: margin-top 0.5s ease-in-out;
+    transition: width 1s ease-in-out;
+}
+
+.hover-div:hover {
+    white-space: normal;
+    cursor: pointer;
+    width: 100vw;
+    margin-top: 24px;
+}
+
+.iconBg {
+    background-color: #f2f6fb;
+    padding-left: 6px;
+    padding-right: 6px;
+    margin-right: 5px;
+}
+
+.h-40 {
+    height: 40%;
+}
+
+.col2 {
+    width: 20%;
+    gap: 5px;
+}
+
+.col3 {
+    width: 25%;
+    gap: 5px;
+}
+
+.responsive-table {
+    overflow-x: auto;
+
+    table {
+        width: 100%;
+        border: 1px solid transparent;
+    }
+
+    th,
+    td {
+        text-align: left;
+        padding: 8px;
+    }
+}
+
+.max-12 {
+    max-height: 12em;
+}
+
+.max-16 {
+    max-height: 16em;
+}
+
+.max-25 {
+    max-height: 25em;
+}
+
+$mobile: "(min-width: 320px) and (max-width: 767px)";
+$tablet: "(min-width: 768px) and (max-width: 991px)";
+$desktop: "(min-width: 992px) and (max-width: 1179px)";
+$miniDesk: "(min-width: 1180px) and (max-width: 1399px)";
+
+@media #{$tablet, $mobile, $desktop} {
+    .col-lg-7 {
+        width: 100% !important;
+    }
+
+    .typo4 {
+        font-size: 20px;
+    }
+
+    .col4 {
+        width: 48% !important;
+    }
+}
+
+@media #{$desktop} {
+    .doughnutChart-bg {
+        background-position-y: 31%;
+        background-size: 120px;
+    }
+
+    .doughnutChart-centerTxt {
+        top: 34%;
+        font-size: 16px;
+    }
+
+    .max-16 {
+        max-height: 17em;
+    }
+}
+
+@media #{$mobile, $tablet} {
+    .respHeader {
+        flex-direction: column;
+        justify-content: flex-start !important;
+        align-items: start !important;
+        gap: 5px;
+    }
+
+    .selectDropdown {
+        width: 20em;
+    }
+
+    .fullWidth {
+        min-width: 100% !important;
+    }
+
+    .doughnutChart-bg {
+        background-position-y: 46%;
+    }
+}
+
+@media #{$desktop, $miniDesk} {
+    .doughnutChart-centerTxt {
+        font-size: 16px;
+    }
+}
+
+@media #{$tablet} {
+    .doughnutChart-centerTxt {
+        top: 47%;
+    }
+
+    .max-25 {
+        max-height: fit-content;
+    }
+}
+
+@media #{$miniDesk} {
+    .doughnutChart-bg {
+        background-position-y: 36%;
+    }
+
+    .col4 {
+        width: 48% !important;
+    }
+}
+
+@media #{$tablet, $desktop, $miniDesk} {
+    .hover-div {
+        width: 90px;
+    }
+}
+
+@media #{$mobile} {
+    .col-lg-7 {
+        min-width: 100% !important;
+    }
+
+    .doughnutChart-centerTxt {
+        top: 44%;
+        font-size: 16px;
+    }
+
+    .mt-0 {
+        margin-top: 0 !important;
+    }
+
+    .respLegends {
+        flex-direction: column;
+        justify-content: flex-start !important;
+        align-items: start !important;
+        gap: 5px;
+    }
+
+    .col4 {
+        min-width: 100% !important;
+    }
+
+    .h-40 {
+        height: 25%;
+    }
+
+    .col3 {
+        width: 45%;
+    }
+
+    .h-75 {
+        height: 75%;
+    }
+
+    .geoBars {
+        margin-top: 0.5em;
+    }
+
+    .typography5 {
+        font-size: 16px;
+    }
+
+    .v-line {
+        border-right: none;
+        border-bottom: 1px solid #b4b4b4;
+    }
 }
