@@ -127,29 +127,16 @@ export class DashboardComponent implements OnInit {
     this.getAdditionalData();
   }
 
-  setStartDate($event) {
-    if (this.endDate !== '') {
-      this.updateAllCharts(
-        this.defaultDocIds,
-        this.startDate ?? this.defaultStartDate,
-        this.endDate ?? this.defaultEndDate
-      );
-    }
-    // this.getVitalHistory(this.selectedVital, 'random');
-  }
+  setDate($event) {
 
-  setEndDate($event) {
-    if (this.startDate === '')
-      this.toastr.error('Please select start date');
-    else {
-      this.updateAllCharts(
-        this.defaultDocIds,
-        this.startDate ?? this.defaultStartDate,
-        this.endDate ?? this.defaultEndDate
-      );
-      // this.selectedTime = 'random';
-      // this.getVitalHistory(this.selectedVital, this.selectedTime);
-    }
+    this.startDate = $event.startDate;
+    this.endDate = $event.endDate;
+
+    this.updateAllCharts(
+      this.defaultDocIds,
+      this.startDate ?? this.defaultStartDate,
+      this.endDate ?? this.defaultEndDate
+    );
   }
 
 
@@ -491,7 +478,7 @@ export class DashboardComponent implements OnInit {
       );
     }
   }
-  
+
   getBorderStyle(index, deg) {
     let style = {};
     switch (index) {

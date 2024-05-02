@@ -3,8 +3,8 @@
 </ngx-spinner>
 <app-header></app-header>
 <div class="dashboard p-3 dahsboard-bg-color">
-    <app-dashboard-date></app-dashboard-date>
-    <div class="row m-0 justify-content-start align-items-center py-3">
+    <app-dashboard-date (setDate)="setDate($event)"></app-dashboard-date>
+    <div class="row m-0 justify-content-start align-items-center py-5">
         <div class="col-3 p-0 border-right p-2 px-3">
             <div class="row m-0 hh-box-1 pb-3 cursor-pointer">
                 <span class="ds-txt-1">Total Members</span>
